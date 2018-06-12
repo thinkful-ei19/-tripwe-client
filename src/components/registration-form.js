@@ -9,11 +9,11 @@ const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
     onSubmit(values) {
-        const { username, password, fullname} = values;
-        const user = { username, password, fullname };
+        const { username, password, fullname, email} = values;
+        const user = { username, password, fullname, email };
         return this.props
             .dispatch(registerUser(user))
-            .then(() => this.props.dispatch(login(username, password)));
+            .then(() => this.props.dispatch(login(email, password)));
     }
 
     render() {
@@ -23,13 +23,21 @@ export class RegistrationForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
-                <label htmlFor="fullname">Fullname</label>
+                <label htmlFor="fullname">Full Name</label>
                 <Field component={Input} type="text" name="fullname" />
                 <label htmlFor="username">Username</label>
                 <Field
                     component={Input}
                     type="text"
                     name="username"
+                    validate={[required, nonEmpty, isTrimmed]}
+                />
+                <label htmlFor="email">Email</label>
+                <Field
+                    component={Input}
+                    name="email"
+                    type="email"
+                    placeHolder="email@email.com"
                     validate={[required, nonEmpty, isTrimmed]}
                 />
                 <label htmlFor="password">Password</label>
