@@ -1,0 +1,25 @@
+.lp-header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    background-color: rgba($color-white-2, 0.15);
+
+    &__logo {
+
+        margin-left: 1rem;
+
+        &--image {
+            height: 5rem;
+            width: 5rem;
+        }
+    }
+
+    &__buttons {
+        & > * {
+            margin: 0 1rem;
+        }
+    }
+
+}

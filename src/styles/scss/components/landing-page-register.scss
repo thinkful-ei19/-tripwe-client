@@ -1,0 +1,58 @@
+.lp-register {
+    background-color: $color-primary-blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center;
+    padding: 10rem 0;
+
+    &__cta {
+        margin: 0 10rem;
+        &--text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: $color-white;
+        }
+    }
+
+    &__heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        background-image: url('../assets/card-header-3.svg');
+        background-size: cover;
+        background-position: center;
+        &--text {
+            color: $color-white-2;
+            padding: 3.5rem 0;
+        }
+    }
+
+    &__card {
+        background-color: $color-white;
+        margin: 0 10rem;
+    }
+
+    &__form {
+        padding: 0 5rem;
+        
+        &--button {
+            background-color: $color-white;
+            padding: 1rem 2rem;
+            color: $color-primary-green;
+            border: 2px solid $color-primary-green;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+
+            &:hover {
+                background-color: $color-primary-green;
+                color: $color-white;
+            }
+        }
+    }
+
+}

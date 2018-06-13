@@ -1,0 +1,182 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+  @media (max-width: 112.5em) {
+    html {
+      font-size: 62.5%; } }
+  @media (max-width: 85.375em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 60em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 40em) {
+    html {
+      font-size: 37.5%; } }
+
+body {
+  box-sizing: border-box;
+  padding: 0rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7; }
+
+button {
+  cursor: pointer; }
+
+.form-input input {
+  background-color: #efefef;
+  border: 2px solid #efefef;
+  border-radius: 0.5rem;
+  width: 100%; }
+
+.card {
+  margin: 2rem 5rem;
+  padding-bottom: 5rem;
+  width: 35rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+
+.lp-login__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background-image: url("../assets/card-header-2.svg");
+  background-size: cover;
+  background-position: center; }
+  .lp-login__heading--text {
+    color: #efefef;
+    padding: 3.5rem 0; }
+
+.lp-login__form {
+  padding: 0 5rem; }
+  .lp-login__form--button {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    color: #9DA46E;
+    border: 2px solid #9DA46E;
+    border-radius: 0.5rem;
+    margin-top: 1rem; }
+    .lp-login__form--button:hover {
+      background-color: #9DA46E;
+      color: #fff; }
+
+.lp-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 90vh;
+  max-height: 100vh; }
+  .lp-main__wave {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+    .lp-main__wave--path {
+      fill: #13262B;
+      stroke: #13262B; }
+
+.lp-register {
+  background-color: #13262B;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10rem 0; }
+  .lp-register__cta {
+    margin: 0 10rem; }
+    .lp-register__cta--text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      color: #fff; }
+  .lp-register__heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background-image: url("../assets/card-header-3.svg");
+    background-size: cover;
+    background-position: center; }
+    .lp-register__heading--text {
+      color: #efefef;
+      padding: 3.5rem 0; }
+  .lp-register__card {
+    background-color: #fff;
+    margin: 0 10rem; }
+  .lp-register__form {
+    padding: 0 5rem; }
+    .lp-register__form--button {
+      background-color: #fff;
+      padding: 1rem 2rem;
+      color: #9DA46E;
+      border: 2px solid #9DA46E;
+      border-radius: 0.5rem;
+      margin-top: 1rem; }
+      .lp-register__form--button:hover {
+        background-color: #9DA46E;
+        color: #fff; }
+
+.lp-about__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background-image: url("../assets/card-header-1.svg");
+  background-size: cover;
+  background-position: center; }
+  .lp-about__heading--text {
+    color: #efefef;
+    padding: 3.5rem 0; }
+
+.lp-about__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 5rem; }
+  .lp-about__content--icon {
+    font-size: 3rem; }
+
+.lp-hero {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("../assets/hero.jpg");
+  background-size: cover; }
+  .lp-hero__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; }
+    .lp-hero__heading--text {
+      font-size: 8rem;
+      color: #efefef;
+      margin-bottom: 5rem; }
+  .lp-hero__wave {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+    .lp-hero__wave--path {
+      fill: #fff; }
+
+.lp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  background-color: rgba(239, 239, 239, 0.15); }
+  .lp-header__logo {
+    margin-left: 1rem; }
+    .lp-header__logo--image {
+      height: 5rem;
+      width: 5rem; }
+  .lp-header__buttons > * {
+    margin: 0 1rem; }
