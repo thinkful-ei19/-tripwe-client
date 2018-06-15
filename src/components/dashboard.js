@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import DashboardHeader from './dashboard-header';
+import Description from './description';
+import Accommodations from './accommodations';
+import Plans from './plans';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -13,7 +17,11 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-username">
                     Username: {this.props.username}
                 </div>
-                <div className="dashboard-name">Name: {this.props.name}</div>
+              
+                <DashboardHeader />
+                <Description />
+                <Accommodations />
+                <Plans />
                 
             </div>
         );
