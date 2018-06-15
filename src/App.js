@@ -8,6 +8,7 @@ import RegistrationPage from './components/registration-page';
 import LogOut from './components/logout';
 import { refreshAuthToken } from './actions/auth';
 
+
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
         if (!prevProps.loggedIn && this.props.loggedIn) {
