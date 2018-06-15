@@ -23,13 +23,13 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-username">
                     Username: {this.props.username}
                 </div>
-              
-                 <DashboardHeader />
-           
+         
+                <div className="dashboard-header">{this.props.closestTrip.trip ?
+                    <DashboardHeader dashboardHeader={this.props.closestTrip.trip} />
+                    : ''}</div>
                 <div className="descriptions">{this.props.closestTrip.trip.description ?
                     <Description description={this.props.closestTrip.trip.description} />
                     : ''}</div>
-              
                 <div className="accommodations">{this.props.closestTrip.accommodations ?
                     <Accommodations accommodations={this.props.closestTrip.accommodations} />
                     : ''}</div>
@@ -43,11 +43,12 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state.trip.closestTrip, 'dashboard');
     const { currentUser } = state.auth;
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.fullname}`,
-        closestTrip: state.trip.closestTrip
+        closestTrip: state.trip.closestTrip,
     };
 };
 
