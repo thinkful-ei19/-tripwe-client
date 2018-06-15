@@ -6,7 +6,7 @@ import { required, nonEmpty } from '../validators';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
-        return this.props.dispatch(login(values.username, values.password));
+        return this.props.dispatch(login(values.loginUsername, values.loginPassword));
     }
 
     render() {
@@ -19,32 +19,37 @@ export class LoginForm extends React.Component {
             );
         }
         return (
-            <form
-                className="login-form"
-                onSubmit={this.props.handleSubmit(values =>
-                    this.onSubmit(values)
-                )}>
-                {error}
-                <label htmlFor="username">Username</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="username"
-                    id="username"
-                    validate={[required, nonEmpty]}
-                />
-                <label htmlFor="password">Password</label>
-                <Field
-                    component={Input}
-                    type="password"
-                    name="password"
-                    id="password"
-                    validate={[required, nonEmpty]}
-                />
-                <button disabled={this.props.pristine || this.props.submitting}>
-                    Log in
-                </button>
-            </form>
+            <div className="lp-login card">
+                <div className="lp-login__heading">
+                    <h1 className="lp-login__heading--text">Log in</h1>
+                </div>
+                <form
+                    className="login-form lp-login__form"
+                    onSubmit={this.props.handleSubmit(values =>
+                        this.onSubmit(values)
+                    )}>
+                    {error}
+                    <label htmlFor="loginUsername">Username</label>
+                    <Field
+                        component={Input}
+                        type="text"
+                        name="loginUsername"
+                        id="loginUsername"
+                        validate={[required, nonEmpty]}
+                    />
+                    <label htmlFor="loginPassword">Password</label>
+                    <Field
+                        component={Input}
+                        type="password"
+                        name="loginPassword"
+                        id="loginPassword"
+                        validate={[required, nonEmpty]}
+                    />
+                    <button className="lp-login__form--button" disabled={this.props.pristine || this.props.submitting}>
+                        Log in
+                    </button>
+                </form>
+            </div>
         );
     }
 }

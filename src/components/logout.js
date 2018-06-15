@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { clearAuth} from '../actions/auth';
+import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
 
 
@@ -15,8 +15,8 @@ export class LogOut extends React.Component {
         let logOutButton;
         if (this.props.loggedIn) {
             logOutButton = (
-                <button className="logout-button" onClick={() => this.logOut()}>Log out</button>
-           
+                <button className="logout-button d-nav__logout--button" onClick={() => this.logOut()}>Log out</button>
+
             );
         }
         return (
@@ -29,7 +29,7 @@ export class LogOut extends React.Component {
 
 const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null,
-   
+
 });
 
 export default connect(mapStateToProps)(LogOut);

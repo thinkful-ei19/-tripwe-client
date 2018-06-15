@@ -1,0 +1,32 @@
+.lp-hero {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('../assets/hero.jpg');
+    background-size: cover;
+
+    &__heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        &--text {
+            font-size: 8rem;
+            color: $color-white-2;
+            margin-bottom: 5rem;
+        }
+
+    }
+
+    &__wave {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        &--path {
+            fill: $color-white;
+        }
+
+    }
+
+}
