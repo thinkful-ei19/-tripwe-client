@@ -25,7 +25,10 @@ export class Dashboard extends React.Component {
                 </div>
               
                  <DashboardHeader />
-                <Description />
+           
+                <div className="descriptions">{this.props.closestTrip.trip.description ?
+                    <Description description={this.props.closestTrip.trip.description} />
+                    : ''}</div>
               
                 <div className="accommodations">{this.props.closestTrip.accommodations ?
                     <Accommodations accommodations={this.props.closestTrip.accommodations} />
