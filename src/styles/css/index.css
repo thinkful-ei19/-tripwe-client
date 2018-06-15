@@ -180,3 +180,61 @@ button {
       width: 5rem; }
   .lp-header__buttons > * {
     margin: 0 1rem; }
+
+.d-nav {
+  background-color: #333;
+  width: 300px;
+  height: 100vh;
+  float: left; }
+  .d-nav__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .d-nav__logo {
+    margin-left: 2.5rem;
+    height: 5rem;
+    width: 5rem; }
+  .d-nav__logout--button {
+    margin-right: 2.5rem;
+    color: #efefef;
+    background: none;
+    border: none;
+    font-size: 2rem; }
+  .d-nav__list {
+    margin: 4rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none; }
+    .d-nav__list--item {
+      margin-bottom: 1rem; }
+    .d-nav__list--button {
+      color: #efefef;
+      background: none;
+      border: none;
+      font-size: 2.5rem; }
+
+.group {
+  width: 500px;
+  float: right; }
+  .group__list {
+    list-style: none; }
+
+.g-member {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ECFAFF;
+  margin: 1.5rem 0;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15); }
+  .g-member__main {
+    display: flex;
+    flex-direction: column; }
+  .g-member__flight-info > * {
+    margin: 0 0.5rem; }
+  .g-member__name {
+    font-size: 2rem;
+    margin-left: 0.5rem; }
+  .g-member__info--icon {
+    font-size: 3.5rem; }

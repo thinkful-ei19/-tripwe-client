@@ -1,0 +1,10 @@
+.group {
+    width: 500px;
+    float: right;
+    &__list {
+        list-style: none;
+        &--item {
+
+        }
+    }
+}
