@@ -8,6 +8,7 @@ import RegistrationPage from './components/registration-page';
 import LogOut from './components/logout';
 import { refreshAuthToken } from './actions/auth';
 
+
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
         if (!prevProps.loggedIn && this.props.loggedIn) {
@@ -36,17 +37,19 @@ export class App extends React.Component {
         clearInterval(this.refreshInterval);
     }
 
-    render() {
-        return (
-            <div className="app">
-                {/* <LogOut /> */}
-                <Route exact path="/" component={LandingPage} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/register" component={RegistrationPage} />
-
-            </div>
-        );
-    }
+ 
+  render() {
+    return (
+      <div className="app">
+        <LogOut />
+       
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/register" component={RegistrationPage} />
+       
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({

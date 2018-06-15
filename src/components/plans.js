@@ -1,16 +1,33 @@
-
 import React from 'react';
 
-export default function Plans(props) {
+const mockData = [
+    {
+        "id": 1,
+        "description": "walking down melrose",
+        "date": "2018-10-02T04:00:00.000Z"
+    },
+    {
+        "id": 2,
+        "description": "walking down melrose",
+        "date": "2018-10-02T04:00:00.000Z"
+    }
+]
 
+export default function Plans(props) {
+    const plans = mockData.map((obj, index) => {
+        return (
+            <tr className="plans" key={index}>
+                <td>{obj.date}</td><td>{obj.description}</td>
+            </tr>
+        );
+    })
     return (
-        <div className="plans-table">
-            <dl className="plans-dl-horizontal">
-                <dt>Date</dt>
-                <dd>date</dd>
-                <dt>Plan</dt>
-                <dd>{plan text</dd>
-            </dl>
-        </div>
+        <table className="plans-table">
+            <thead><tr><th>Date</th><th>Plan</th></tr></thead>
+            <tbody>
+                {plans}
+            </tbody>
+        </table>
     )
-};
+
+} 

@@ -5,6 +5,10 @@ import DashboardNavigation from './dashboard-navigation';
 import DashboardContent from './dashboard-content';
 
 import { fetchTripData } from '../actions/trip';
+import DashboardHeader from './dashboard-header';
+import Description from './description';
+import Accommodations from './accommodations';
+import Plans from './plans';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -19,9 +23,12 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-username">
                     Username: {this.props.username}
                 </div>
-
-                <div className="dashboard-name">Name: {this.props.name}</div>
-
+              
+                <DashboardHeader />
+                <Description />
+                <Accommodations />
+                <Plans />
+                
             </div>
         );
     }
