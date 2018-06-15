@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import {fetchTripData} from '../actions/trip';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
-        
+      this.props.dispatch(fetchTripData());
     }
 
     render() {
@@ -14,7 +15,7 @@ export class Dashboard extends React.Component {
                     Username: {this.props.username}
                 </div>
                 <div className="dashboard-name">Name: {this.props.name}</div>
-                
+
             </div>
         );
     }
@@ -25,7 +26,6 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.fullname} ${currentUser.fullname}`,
-      
     };
 };
 
