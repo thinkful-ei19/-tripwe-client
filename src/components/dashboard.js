@@ -24,10 +24,15 @@ export class Dashboard extends React.Component {
                     Username: {this.props.username}
                 </div>
               
-                <DashboardHeader />
+                 <DashboardHeader />
                 <Description />
-                <Accommodations />
-                <Plans />
+              
+                <div className="accommodations">{this.props.closestTrip.accommodations ?
+                    <Accommodations accommodations={this.props.closestTrip.accommodations} />
+                    : ''}</div>
+                <div className="plans">{this.props.closestTrip.plans ?
+                    <Plans plans={this.props.closestTrip.plans} />
+                    : ''}</div>
                 
             </div>
         );
@@ -39,6 +44,7 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.fullname}`,
+        closestTrip: state.trip.closestTrip
     };
 };
 
