@@ -5,11 +5,21 @@
     background-color: $color-secondary-blue;
     margin: 1.5rem 0;
     padding: 0.5rem 1.5rem;
-    box-shadow: 0 0.25rem 1rem rgba($color-black, .15);
+    box-shadow: 0 0.25rem 1.5rem rgba($color-black, .15);
 
     &__main {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+
+        &--icon {
+            font-size: 3.5rem;
+        }
+
+        &--sub {
+            display: flex;
+            flex-direction: column;
+            margin-left: 1rem;
+        }
     }
 
     &__flight-info {

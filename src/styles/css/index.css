@@ -184,8 +184,7 @@ button {
 .d-nav {
   background-color: #333;
   width: 300px;
-  height: 100vh;
-  float: left; }
+  height: 100vh; }
   .d-nav__top {
     display: flex;
     align-items: center;
@@ -215,8 +214,7 @@ button {
       font-size: 2.5rem; }
 
 .group {
-  width: 500px;
-  float: right; }
+  width: 600px; }
   .group__list {
     list-style: none; }
 
@@ -227,10 +225,16 @@ button {
   background-color: #ECFAFF;
   margin: 1.5rem 0;
   padding: 0.5rem 1.5rem;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15); }
+  box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.15); }
   .g-member__main {
     display: flex;
-    flex-direction: column; }
+    align-items: center; }
+    .g-member__main--icon {
+      font-size: 3.5rem; }
+    .g-member__main--sub {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1rem; }
   .g-member__flight-info > * {
     margin: 0 0.5rem; }
   .g-member__name {

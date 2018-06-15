@@ -12,7 +12,7 @@ const dummyData = [
 
 const Group = (props) => {
 
-    console.log(props);
+    // console.log(props);
 
     const groupMemberList = props.group.map((member, index) => {
         return (<li className="group__list--item" key={index}>
