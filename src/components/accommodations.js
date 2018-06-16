@@ -1,33 +1,8 @@
 import React from 'react';
 
 
-const mockData = [
-        {
-            "name": "Hilton",
-            "users": [
-                {
-                    "fullname": "victoria",   
-                },
-                {
-                    "fullname": "Oral Dalay",
-                }
-            ]
-        },
-        {
-             "name": "Sheraton",
-            "users": [
-                {
-                    "fullname": "bianca",                   
-                },
-                {
-                    "fullname": "sehs",
-                }
-            ]
-        }
-    ]
-
 export default function Accommodations(props) {
-    const accommodations = mockData.map((obj, index) => {
+    const accommodations = props.accommodations.map((obj, index) => {
         var users= "";
         obj.users.forEach(function(user) {
             users += user.fullname + ",";

@@ -1,4 +1,6 @@
 import React from 'react';
+import CountDownToDate from './countDownToDate';
+import './dashboard-header.css';
 
 const mockData = {
     "trip": {
@@ -11,14 +13,17 @@ const mockData = {
         "departure": "2018-10-30T04:00:00.000Z"
 }
 }
+
+//https://source.unsplash.com/featured/?
 export default function DashboardHeader(props) {
 //console.log(props);
     return (
         <div className="dash-header">
-            <div className="dash-header_main">
-                {/* <p className="dash-header_countdown">{props.countdown}</p> */}
+                <CountDownToDate givenDate={'08/ 17 / 2018'} />
                 <p className="dash-header_countdown">{mockData.trip.name}</p>
                 <p className="dash-header_destination">{mockData.trip.destination}</p>
+            <div className="dash-header_backgroundimg">
+                <img src="https://source.unsplash.com/featured/?{las vegas}" />
             </div>
         </div>
     )
