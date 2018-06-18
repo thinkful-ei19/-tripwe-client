@@ -37,19 +37,17 @@ export class App extends React.Component {
         clearInterval(this.refreshInterval);
     }
 
- 
-  render() {
-    return (
-      <div className="app">
-        <LogOut />
-       
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/register" component={RegistrationPage} />
-       
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="app">
+                {/* <LogOut /> */}
+                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/register" component={RegistrationPage} />
+
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => ({

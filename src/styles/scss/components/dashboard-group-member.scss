@@ -2,10 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: $color-secondary-blue;
+    // background-color: $color-secondary-blue;
+    // background-color: #7D5A63;
+    background: linear-gradient(to left,#7D5A63, #8C6670);
+    color: $color-white-2;
     margin: 1.5rem 0;
     padding: 0.5rem 1.5rem;
-    box-shadow: 0 0.25rem 1.5rem rgba($color-black, .15);
+    box-shadow: 0 0.5rem 1.5rem rgba($color-black, .15);
 
     &__main {
         display: flex;

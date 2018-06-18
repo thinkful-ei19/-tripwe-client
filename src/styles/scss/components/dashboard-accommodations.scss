@@ -1,0 +1,21 @@
+.accommodations {
+    margin: 4rem 5rem;
+    
+    &__table {
+        background-color: $color-white-2;
+        box-shadow: 0 0.5rem 1.5rem rgba($color-black, .15);
+        width: 100%;
+        &--head {
+            background-color: $color-primary-red;
+            color: $color-white;
+        }
+    }
+    &__row {
+        &--acc {
+            text-align: center;
+        }
+        &--users {
+            text-align: center;
+        }
+    }
+}

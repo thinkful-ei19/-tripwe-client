@@ -1,41 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import { fetchTripData } from '../actions/trip';
 
 import Group from './group';
+import DashboardHeader from './dashboard-header';
+import Description from './description';
+import Accommodations from './accommodations';
+import Plans from './plans';
 
 class DashboardContent extends Component {
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         group: [],
-    //         description: ''
-    //     };
-    // }
-
-    componentWillMount() {
-        // const data = fetch('http://localhost:8080/api/dashboard', {
-        //     method: 'GET',
-        //     headers: { Authorization: `Bearer ${this.props.authToken}` }
-        // })
-        //     .then(res => {
-        //         return res.json();
-        //     })
-        //     .then(res => {
-        //         console.log(res);
-        //         this.setState({ group: res.closestTrip.group, description: res.closestTrip.trip.description });
-        //     });
+    componentDidMount() {
+        this.props.dispatch(fetchTripData());
     }
 
     render() {
-
-        console.log(this.props.currentTrip);
-
         return (
-            <div>
-                <p>{this.props.currentTrip.trip.description}</p>
-                <Group group={this.props.currentTrip.group} />
+            <div className="d-content">
+                {/* <DashboardHeader /> */}
+                <div className="dashboard-header">{this.props.closestTrip.trip ?
+                    <DashboardHeader dashboardHeader={this.props.closestTrip.trip} />
+                    : ''}
+                </div>
+                <div className="d-content__main">
+                    <div className="d-content__main--sub">
+                        <div className="description">
+                            {
+                                this.props.closestTrip.trip.description ?
+                                    <Description description={this.props.closestTrip.trip.description} />
+                                    : ''
+                            }
+                        </div>
+
+                        <div className="accommodations">
+                            {
+                                this.props.closestTrip.accommodations ?
+                                    <Accommodations accommodations={this.props.closestTrip.accommodations} />
+                                    : ''
+                            }
+                        </div>
+                        <div className="plans">
+                            {
+                                this.props.closestTrip.plans ?
+                                    <Plans plans={this.props.closestTrip.plans} />
+                                    : ''
+                            }
+                        </div>
+                    </div>
+                    <div className="group">
+                        {this.props.closestTrip.group ? <Group group={this.props.closestTrip.group} /> : ''}
+                    </div>
+                </div>
+
             </div>
         );
     }
@@ -46,7 +62,7 @@ const mapStateToProps = state => {
     return {
         currentUser,
         authToken: state.auth.authToken,
-        currentTrip: state.trip.closestTrip
+        closestTrip: state.trip.closestTrip
     };
 };
 
