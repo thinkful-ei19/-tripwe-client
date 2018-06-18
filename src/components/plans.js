@@ -18,16 +18,20 @@ export default function Plans(props) {
         );
     });
     return (
-        <table className="plans__table">
-            <thead className="plans__table--head">
-                <tr>
-                    <th>Date</th>
-                    <th>Plan</th>
-                </tr>
-            </thead>
-            <tbody>
-                {plans}
-            </tbody>
-        </table>
+        <div>
+            {/* <i className="fas fa-plus plans__add"></i> */}
+            <table className="plans__table">
+                <thead className="plans__table--head">
+                    <tr>
+                        <th>Date</th>
+                        <th>Plan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {plans}
+                </tbody>
+            </table>
+            <button className="plans__add">Add plan</button>
+        </div>
     );
 }
