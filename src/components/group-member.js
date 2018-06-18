@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'react-moment';
 
 const GroupMember = (props) => {
     return (
@@ -12,7 +13,12 @@ const GroupMember = (props) => {
                         <i className="fas fa-arrow-right g-member__dep--icon"></i>
                         <span className="g-member__arr--airport">{props.incomingarrivalairport}</span>
                         <span className="g-member__flight-num">Flight {props.incomingflightnum}</span>
-                        <span className="g-member__arr--time">arriving @ {props.incomingarrivaltime}</span>
+                        <span className="g-member__arr--time">
+                            arriving on &ensp;
+                            <Moment format='MM/DD/YYYY'>
+                                {props.incomingarrivaltime}
+                            </Moment>
+                        </span>
                     </p>
                 </div>
             </div>

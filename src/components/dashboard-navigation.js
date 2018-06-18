@@ -10,7 +10,7 @@ const DashboardNavigation = () => {
                 <img className="d-nav__logo" src={logo} alt="tripWe logo" />
                 <LogOut className="d-nav__logout" />
             </div>
-            <nav role="navigation">
+            <nav>
                 <ul className="d-nav__list">
                     <li className="d-nav__list--item">
                         <button className="d-nav__list--button">Trip</button>

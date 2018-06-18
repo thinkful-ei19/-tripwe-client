@@ -1,0 +1,25 @@
+.d-header {
+    height: 30rem;
+    background-size: cover;
+    background-position: center center;
+    color: $color-white;
+    position: relative;
+    &__countdownDate {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        font-size: 3rem;
+    }
+    &__name {
+        font-size: 5rem;
+        position: absolute;
+        bottom: 0.5rem;
+        left: 2rem;
+    }
+    &__destination {
+        position: absolute;
+        bottom: 1rem;
+        right: 2rem;
+        font-size: 3rem;
+    }
+}

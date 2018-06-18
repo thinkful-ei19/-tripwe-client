@@ -9,7 +9,7 @@ html {
     font-size: 62.5%; //1 rem = 10px; 10px / 16px = 62.5%
 
     @include respond(big-desktop) {
-        font-size: 62.5%; //1 rem = 12px, 12/16 = 75%
+        font-size: 55%; //1 rem = 12px, 12/16 = 75%
     }
     @include respond(tab-land) {
         font-size: 50%; //1 rem = 9px, 9/16 = 56.25%
@@ -26,7 +26,7 @@ html {
 body {
     box-sizing: border-box;
     padding: 0rem;
-
+    // height: 200vh;
     //App-specific Default Settings
     font-family: 'Lato', sans-serif;
     font-weight: 400;
@@ -35,20 +35,9 @@ body {
     // color: $color-grey-dark;
 }
 
-// .app {
-
-//     display: flex;
-//     flex-direction: column;
-//     min-height: 100vh;
-
-//     &__content {
-//         flex: 1 0 auto;
-//     }
-// }
 
 button {
     cursor: pointer;
-    // color: $color-black;
 }
 
 .form-input input {
@@ -57,3 +46,13 @@ button {
     border-radius: 0.5rem;
     width: 100%;
 }
+
+table {
+    border-collapse: collapse;
+  }
+
+td, 
+th {
+    border: 1px solid #ddd;
+    padding: 0.75rem 0;
+}  

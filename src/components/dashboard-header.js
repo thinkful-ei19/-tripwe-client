@@ -1,30 +1,27 @@
 import React from 'react';
+import Moment from 'react-moment';
+import moment from 'moment';
 import CountDownToDate from './countDownToDate';
 // import './dashboard-header.css';
 
-const mockData = {
-    "trip": {
-        "id": 1,
-        "user_id": 1,
-        "name": "US Trip",
-        "destination": "Los Angeles",
-        "description": "fun in the sun",
-        "arrival": "2018-09-30T04:00:00.000Z",
-        "departure": "2018-10-30T04:00:00.000Z"
-    }
-}
-
-//https://source.unsplash.com/featured/?
 export default function DashboardHeader(props) {
-    //console.log(props);
+
+    let img = 'none';
+    const imgUrl = `https://source.unsplash.com/1600x900/?${props.dashboardHeader.destination}`;
+    if (props.dashboardHeader.destination) {
+        img = `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${imgUrl})`;
+    }
+
+    let now = moment();
+
     return (
-        <div className="dash-header">
-            <CountDownToDate givenDate={'08/ 17 / 2018'} />
-            <p className="dash-header_countdown">{mockData.trip.name}</p>
-            <p className="dash-header_destination">{mockData.trip.destination}</p>
-            <div className="dash-header_backgroundimg">
-                <img style={{ height: 300, width: '100%' }} src="https://source.unsplash.com/featured/?las%20vegas" />
-            </div>
+        <div className="d-header" style={{ backgroundImage: img }}>
+            <div className="d-header__countdownDate">{props.dashboardHeader.arrival ?
+                // <CountDownToDate givenDate={props.dashboardHeader.arrival} />
+                <span><Moment diff={now} unit='days'>{props.dashboardHeader.arrival}</Moment> days</span>
+                : ''}</div>
+            <p className="d-header__name">{props.dashboardHeader.name}</p>
+            <p className="d-header__destination">{props.dashboardHeader.destination}</p>
         </div>
-    )
+    );
 }
