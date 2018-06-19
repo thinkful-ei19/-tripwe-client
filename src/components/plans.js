@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import PlansForm from './plans-form';
 
 export default function Plans(props) {
 
@@ -12,22 +13,28 @@ export default function Plans(props) {
                     </Moment>
                 </td>
                 <td>
-                    {obj.description}
+                    {
+                        obj.url ? <a href={obj.url} target="_blank">{obj.description} </a> : obj.description
+                    }
                 </td>
             </tr>
         );
     });
     return (
-        <table className="plans__table">
-            <thead className="plans__table--head">
-                <tr>
-                    <th>Date</th>
-                    <th>Plan</th>
-                </tr>
-            </thead>
-            <tbody>
-                {plans}
-            </tbody>
-        </table>
+        <div>
+            {/* <i className="fas fa-plus plans__add"></i> */}
+            <table className="plans__table">
+                <thead className="plans__table--head">
+                    <tr>
+                        <th>Date</th>
+                        <th>Plan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {plans}
+                </tbody>
+            </table>
+            <PlansForm tripId={props.tripId}/>
+        </div>
     );
 }

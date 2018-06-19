@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LandingPageHeader from './landing-page-header';
-import wave from '../styles/assets/wavy1.svg';
+//import wave from '../styles/assets/wavy1.svg';
 
 const LandingPageHero = () => {
     return (
