@@ -8,7 +8,7 @@ export default function Plans(props) {
         return (
             <tr className="plans__table--row" key={index}>
                 <td>
-                    <Moment format='MM/DD/YYYY'>
+                    <Moment format='MM/DD/YYYY HH:mm:ss'>
                         {obj.date}
                     </Moment>
                 </td>
