@@ -1,6 +1,7 @@
 import {
     FETCH_TRIP_DATA_SUCCESS,
     FETCH_TRIP_DATA_ERROR,
+    ADD_PLAN
 } from '../actions/trip';
 
 const initialState = {
@@ -8,7 +9,8 @@ const initialState = {
         group: [],
         trip: {
             description: ''
-        }
+        },
+        plans: []
     },
     upcomingTrips: '',
     previousTrips: '',
@@ -17,7 +19,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     if (action.type === FETCH_TRIP_DATA_SUCCESS) {
-        console.log(action.data.upcomingTrips);
+        //console.log(action.data.upcomingTrips);
         return Object.assign({}, state, {
             closestTrip: action.data.closestTrip,
             upcomingTrips: action.data.upcomingTrips,
@@ -28,6 +30,13 @@ export default function reducer(state = initialState, action) {
         console.log(action, 'ACTION ERROR');
         return Object.assign({}, state, {
             error: action.error
+        });
+    } else if (action.type === ADD_PLAN) {
+        let plans = state.closestTrip.plans;
+        return Object.assign({}, state, {
+            closestTrip: Object.assign({}, state.closestTrip, {
+                plans: [...plans, action.data]  
+            })
         });
     }
     return state;

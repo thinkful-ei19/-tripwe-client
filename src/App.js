@@ -5,7 +5,7 @@ import { Route, withRouter } from 'react-router-dom';
 import LandingPage from './components/landing-page';
 import Dashboard from './components/dashboard';
 import RegistrationPage from './components/registration-page';
-import LogOut from './components/logout';
+//import LogOut from './components/logout';
 import { refreshAuthToken } from './actions/auth';
 
 

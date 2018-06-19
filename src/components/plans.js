@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import PlansForm from './plans-form';
 
 export default function Plans(props) {
 
@@ -12,7 +13,9 @@ export default function Plans(props) {
                     </Moment>
                 </td>
                 <td>
-                    {obj.description}
+                    {
+                        obj.url ? <a href={obj.url} target="_blank">{obj.description} </a> : obj.description
+                    }
                 </td>
             </tr>
         );
@@ -32,6 +35,7 @@ export default function Plans(props) {
                 </tbody>
             </table>
             <button className="plans__add">Add plan</button>
+            <PlansForm tripId={props.tripId}/>
         </div>
     );
 }
