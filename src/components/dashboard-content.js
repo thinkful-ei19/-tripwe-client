@@ -24,11 +24,10 @@ class DashboardContent extends Component {
     }
 
     render() {
-        console.log(MAPS_API_KEY);
+        // console.log(MAPS_API_KEY);
         const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`;
         return (
             <div className="d-content">
-                {/* <DashboardHeader /> */}
                 <div className="dashboard-header">{this.props.closestTrip.trip ?
                     <DashboardHeader dashboardHeader={this.props.closestTrip.trip} />
                     : ''}

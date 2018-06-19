@@ -109,7 +109,8 @@ legend {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 10rem 0; }
+  padding: 20rem 0 30rem;
+  position: relative; }
   .lp-register__cta {
     margin: 0 10rem; }
     .lp-register__cta--text {
@@ -145,6 +146,14 @@ legend {
       .lp-register__form--button:hover {
         background-color: #9DA46E;
         color: #fff; }
+  .lp-register__wave {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+    .lp-register__wave--path {
+      fill: #fff;
+      stroke: #fff; }
 
 .lp-about__heading {
   display: flex;
@@ -205,13 +214,20 @@ legend {
     color: #fff;
     text-decoration: none; }
 
+.lp-footer {
+  height: 10rem;
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 2rem; }
+
 .dashboard {
   display: flex;
   position: relative; }
 
 .d-content {
   width: 100%;
-  margin-left: 26rem; }
+  margin-left: 26rem;
+  margin-bottom: 5rem; }
   .d-content__main {
     display: flex; }
     .d-content__main--sub {
@@ -374,11 +390,21 @@ legend {
   .g-member__info--icon {
     font-size: 3.5rem; }
 
+.d-createNew {
+  margin-left: 26rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #13262B; }
+
 .ct-card {
   margin: 2rem 5rem;
   padding-bottom: 5rem;
   width: 55rem;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  background-color: #fff; }
 
 .ct-next-skip {
   display: flex;

@@ -4,7 +4,8 @@
     flex-wrap: wrap;
     justify-content: center; 
     align-items: center;
-    padding: 10rem 0;
+    padding: 20rem 0 30rem;
+    position: relative;
 
     &__cta {
         margin: 0 10rem;
@@ -54,5 +55,19 @@
             }
         }
     }
+
+    &__wave {
+
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        &--path {
+            fill: $color-white;
+            stroke: $color-white;
+        }
+
+    } 
 
 }
