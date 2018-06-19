@@ -1,0 +1,21 @@
+.ct-main {
+    &__header {
+        background-image: linear-gradient(rgba(157, 164, 110, 0.62), rgba(20, 103, 63, 0.62)), url('../assets/tripwe-create.jpg');
+        background-size: cover;
+        height: 20rem;
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        &--text {
+            font-size: 3.5rem;
+            color: $color-white;
+        }
+    }
+    &__form {
+        padding: 0 10rem;
+    }
+    &__next {}
+}

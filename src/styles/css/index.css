@@ -43,6 +43,17 @@ th {
   border: 1px solid #ddd;
   padding: 0.75rem 0; }
 
+fieldset {
+  border: 1px solid silver;
+  margin-bottom: 3rem; }
+
+legend {
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  margin: 1rem;
+  white-space: normal; }
+
 .card {
   margin: 2rem 5rem;
   padding-bottom: 5rem;
@@ -81,7 +92,8 @@ th {
   justify-content: center;
   position: relative;
   min-height: 90vh;
-  max-height: 100vh; }
+  max-height: 100vh;
+  padding-bottom: 15rem; }
   .lp-main__wave {
     width: 100%;
     position: absolute;
@@ -150,9 +162,11 @@ th {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 5rem; }
+  padding: 0 4rem; }
   .lp-about__content--icon {
     font-size: 3rem; }
+  .lp-about__content > * {
+    margin-bottom: 1rem; }
 
 .lp-hero {
   height: 100vh;
@@ -187,14 +201,17 @@ th {
       height: 5rem;
       width: 5rem; }
   .lp-header__buttons > * {
-    margin: 0 1rem; }
+    margin-right: 2rem;
+    color: #fff;
+    text-decoration: none; }
 
 .dashboard {
   display: flex;
   position: relative; }
 
 .d-content {
-  width: 100%; }
+  width: 100%;
+  margin-left: 26rem; }
   .d-content__main {
     display: flex; }
     .d-content__main--sub {
@@ -203,8 +220,11 @@ th {
 
 .d-nav {
   background-color: #222;
-  min-width: 250px;
-  height: 100vh; }
+  width: 26rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0; }
   .d-nav__top {
     display: flex;
     align-items: center;
@@ -237,6 +257,7 @@ th {
   height: 30rem;
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
   color: #fff;
   position: relative; }
   .d-header__countdownDate {
@@ -268,6 +289,9 @@ th {
       padding: 1rem 2rem;
       font-size: 1.6rem; }
 
+.map {
+  margin: 4rem 5rem; }
+
 .accommodations {
   margin: 4rem 5rem; }
   .accommodations__table {
@@ -287,12 +311,24 @@ th {
   .plans__table {
     background-color: #efefef;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 2rem; }
     .plans__table--head {
       background-color: #9DA46E;
       color: #fff; }
     .plans__table--row {
       text-align: center; }
+  .plans__add {
+    padding: 1rem 2rem;
+    background: none;
+    border: 2px solid #9DA46E;
+    border-radius: 5px;
+    color: #9DA46E;
+    float: right; }
+    .plans__add:hover {
+      background-color: #9DA46E;
+      color: #fff;
+      cursor: pointer; }
 
 .group {
   flex: 3;
@@ -337,3 +373,146 @@ th {
     margin-left: 0.5rem; }
   .g-member__info--icon {
     font-size: 3.5rem; }
+
+.ct-card {
+  margin: 2rem 5rem;
+  padding-bottom: 5rem;
+  width: 55rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+
+.ct-next-skip {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem; }
+
+.next {
+  background-color: #fff;
+  padding: 1rem 3rem;
+  color: #9DA46E;
+  border: 2px solid #9DA46E;
+  border-radius: 0.5rem;
+  margin-top: 1rem; }
+  .next:hover {
+    background-color: #9DA46E;
+    color: #fff; }
+
+.skip {
+  background-color: #fff;
+  padding: 1rem 3rem;
+  color: #985D43;
+  border: 2px solid #985D43;
+  border-radius: 0.5rem;
+  margin-top: 1rem; }
+  .skip:hover {
+    background-color: #985D43;
+    color: #fff; }
+
+.ct-main__header {
+  background-image: linear-gradient(rgba(157, 164, 110, 0.62), rgba(20, 103, 63, 0.62)), url("../assets/tripwe-create.jpg");
+  background-size: cover;
+  height: 20rem;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .ct-main__header--text {
+    font-size: 3.5rem;
+    color: #fff; }
+
+.ct-main__form {
+  padding: 0 10rem; }
+
+.ct-buildGroup__header {
+  background-image: linear-gradient(rgba(152, 93, 67, 0.47), rgba(133, 34, 34, 0.47)), url("../assets/tripwe-build-groups.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 20rem;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .ct-buildGroup__header--text {
+    font-size: 3.5rem;
+    color: #fff; }
+
+.ct-buildGroup__form {
+  padding: 0 10rem; }
+
+.ct-buildGroup__add {
+  background-color: #fff;
+  padding: 1rem 3rem;
+  color: #CDA30A;
+  border: 2px solid #CDA30A;
+  border-radius: 0.5rem;
+  margin-top: 1rem; }
+  .ct-buildGroup__add:hover {
+    background-color: #CDA30A;
+    color: #fff; }
+
+.ct-flight__header {
+  background-image: linear-gradient(rgba(0, 81, 108, 0.5), rgba(183, 237, 255, 0.5)), url("../assets/tripwe-flight-info.jpg");
+  background-size: cover;
+  height: 20rem;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .ct-flight__header--text {
+    font-size: 3.5rem;
+    color: #fff; }
+
+.ct-flight__form {
+  padding: 0 10rem; }
+  .ct-flight__form--depart, .ct-flight__form--return {
+    display: flex;
+    flex-wrap: wrap; }
+  .ct-flight__form--unit {
+    margin: 0.5rem 1rem; }
+
+.ct-acc__header {
+  background-image: linear-gradient(rgba(156, 82, 202, 0.74), rgba(187, 183, 255, 0.74)), url("../assets/tripwe-acc.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 20rem;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .ct-acc__header--text {
+    font-size: 3.5rem;
+    color: #fff; }
+
+.ct-acc__form {
+  padding: 0 10rem; }
+
+.ct-budget__header {
+  background-image: linear-gradient(rgba(232, 184, 12, 0.46), rgba(247, 214, 124, 0.46)), url("../assets/tripwe-budget.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 20rem;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .ct-budget__header--text {
+    font-size: 3.5rem;
+    color: #fff; }
+
+.ct-budget__form {
+  padding: 0 10rem; }
+
+.ct-budget__add {
+  background-color: #fff;
+  padding: 1rem 3rem;
+  color: #CDA30A;
+  border: 2px solid #CDA30A;
+  border-radius: 0.5rem;
+  margin-top: 1rem; }
+  .ct-budget__add:hover {
+    background-color: #CDA30A;
+    color: #fff; }

@@ -1,8 +1,10 @@
 .d-nav {
     background-color: $color-grey-dark;
-    min-width: 250px;
+    width: 26rem;
     height: 100vh;
-    // position: fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
     // float: left;
     // flex-basis: 2;
     &__top {

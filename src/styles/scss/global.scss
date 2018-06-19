@@ -56,3 +56,16 @@ th {
     border: 1px solid #ddd;
     padding: 0.75rem 0;
 }  
+
+fieldset {
+    border: 1px solid silver;
+    margin-bottom: 3rem;
+    // padding: .35rem .625em .75em;
+}
+legend {
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    margin: 1rem;
+    white-space: normal;
+  }

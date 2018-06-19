@@ -10,6 +10,7 @@
 /build
 
 .eslintrc.json
+.env
 
 # misc
 .DS_Store

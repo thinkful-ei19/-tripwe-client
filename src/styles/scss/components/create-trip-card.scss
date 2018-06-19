@@ -1,0 +1,41 @@
+.ct-card {
+    margin: 2rem 5rem;
+    padding-bottom: 5rem;
+    width: 55rem;
+    // height: 48rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+}
+
+.ct-next-skip {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+.next {
+    background-color: $color-white;
+    padding: 1rem 3rem;
+    color: $color-primary-green;
+    border: 2px solid $color-primary-green;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    // float: right; 
+    &:hover {
+        background-color: $color-primary-green;
+        color: $color-white;
+    }
+}
+
+.skip {
+    background-color: $color-white;
+    padding: 1rem 3rem;
+    color: $color-primary-red;
+    border: 2px solid $color-primary-red;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    // float: right; 
+    &:hover {
+        background-color: $color-primary-red;
+        color: $color-white;
+    }
+}

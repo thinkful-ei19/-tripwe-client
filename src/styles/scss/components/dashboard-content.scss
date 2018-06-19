@@ -1,11 +1,9 @@
 .d-content {
-    // float: right;
     width: 100%;
+    margin-left: 26rem;
     &__main {
         display: flex;
-        // flex-wrap: wrap;
         &--sub {
-            // flex-basis: auto;
             flex: 2;
             justify-content: center;
         }
