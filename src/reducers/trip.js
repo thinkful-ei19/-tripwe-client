@@ -10,7 +10,7 @@ const initialState = {
         trip: {
             description: ''
         },
-        plans: []
+        plans: [],
     },
     upcomingTrips: '',
     previousTrips: '',
