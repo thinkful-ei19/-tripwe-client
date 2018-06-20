@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Accommodations(props) {
     const accommodations = props.accommodations.map((obj, index) => {
-        var users = '';
+        let users = '';
         obj.users.forEach(function (user) {
             users += user.fullname + ',';
         });
@@ -29,4 +29,4 @@ export default function Accommodations(props) {
         </table>
     );
 
-} 
+}
