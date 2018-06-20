@@ -62,7 +62,7 @@ class DashboardContent extends Component {
                         <div className="plans">
                             {
                                 this.props.closestTrip.plans ?
-                                    <Plans plans={this.props.closestTrip.plans} />
+                                    <Plans plans={this.props.closestTrip.plans} tripId={this.props.closestTrip.trip.id} />
                                     : ''
                             }
                         </div>
@@ -89,5 +89,6 @@ const mapStateToProps = state => {
         closestTrip: state.trip.closestTrip
     };
 };
+
 
 export default requiresLogin()(connect(mapStateToProps)(DashboardContent));

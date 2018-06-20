@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import moment from 'moment';
-import CountDownToDate from './countDownToDate';
+//import CountDownToDate from './countDownToDate';
 // import './dashboard-header.css';
 
 export default function DashboardHeader(props) {
@@ -11,6 +11,7 @@ export default function DashboardHeader(props) {
     if (props.dashboardHeader.destination) {
         img = `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${imgUrl})`;
     }
+
 
     let now = moment();
 

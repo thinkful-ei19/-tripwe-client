@@ -5,6 +5,7 @@ import { required, nonEmpty } from '../validators';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
+import { createNewTrip } from '../actions/create-new-trip';
 
 
 class CreateNewTripForm extends Component {
@@ -12,24 +13,32 @@ class CreateNewTripForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            arrivalDate: '',
-            departureDate: ''
+            arrivalDate: this.props.arrivalDate || moment().format(),
+            departureDate: this.props.departureDate || moment().format()
         };
-
-        // this.arrivalDateRef = React.createRef();
     }
 
     handleArrivalDateChange(date) {
-        // console.log(date.utc().format());
         this.setState({
             arrivalDate: date.utc().format()
         });
     }
 
-    handleSubmit(values) {
-        // values.preventDefault();
-        console.log('why is this firing now');
-        console.log(values, this.state.arrivalDate);
+    handleDepartureDateChange(date) {
+        this.setState({
+            departureDate: date.utc().format()
+        });
+    }
+
+    onSubmit(values) {
+        const completeValues = {
+            name: values.tripName,
+            description: values.tripDescription,
+            destination: values.destination,
+            arrival: this.state.arrivalDate,
+            departure: this.state.departureDate
+        };
+        this.props.dispatch(createNewTrip(completeValues));
     }
 
     render() {
@@ -47,8 +56,9 @@ class CreateNewTripForm extends Component {
                     <p className="ct-main__header--text">Create New Trip</p>
                 </div>
                 <form
+                    // ref={this.formRef}
                     className="ct-main__form"
-                    onSubmit={this.handleSubmit((values) =>
+                    onSubmit={this.props.handleSubmit((values) =>
                         this.onSubmit(values)
                     )}
                 >
@@ -72,30 +82,28 @@ class CreateNewTripForm extends Component {
                     <label htmlFor="arrivalDate">Arrival Date</label>
                     <DatePicker
                         name="arrivalDate"
-                        // selected={this.state.startDate}
+                        selected={moment(this.state.arrivalDate)}
                         onChange={this.handleArrivalDateChange.bind(this)}
-                        // showTimeSelect
-                        // timeFormat="HH:mm"
-                        // timeIntervals={15}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
                         dateFormat="LLL"
                         placeholderText="Click to select a date"
                     // ref={this.arrivalDateRef}
                     />
-                    {/* <Field
-                        component={Input}
-                        type="text"
-                        name="arrivalDate"
-                        id="arrivalDate"
-                        validate={[required, nonEmpty]}
-                    /> */}
                     <label htmlFor="departureDate">Departure Date</label>
-                    <Field
-                        component={Input}
-                        type="text"
+                    <DatePicker
                         name="departureDate"
-                        id="departureDate"
-                        validate={[required, nonEmpty]}
+                        selected={moment(this.state.departureDate)}
+                        onChange={this.handleDepartureDateChange.bind(this)}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        dateFormat="LLL"
+                        placeholderText="Click to select a date"
+                    // ref={this.departureDateRef}
                     />
+
                     <label htmlFor="tripDescription">Description</label>
                     <Field
                         component={Input}

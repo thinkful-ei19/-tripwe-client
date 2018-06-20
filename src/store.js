@@ -6,6 +6,7 @@ import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import tripReducer from './reducers/trip';
 import createNewTripReducer from './reducers/create-new-trip';
+import planReducer from './reducers/plans';
 import { setAuthToken, refreshAuthToken } from './actions/auth';
 
 const store = createStore(
@@ -14,7 +15,8 @@ const store = createStore(
         auth: authReducer,
         protectedData: protectedDataReducer,
         trip: tripReducer,
-        createNewTrip: createNewTripReducer
+        createNewTrip: createNewTripReducer,
+        plan: planReducer
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk)
