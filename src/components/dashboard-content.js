@@ -100,10 +100,4 @@ const mapStateToProps = state => {
         closestTrip: state.trip.closestTrip
     };
 };
-
-<<<<<<< HEAD
-
 export default requiresLogin()(connect(mapStateToProps)(DashboardContent));
-=======
-export default requiresLogin()(connect(mapStateToProps)(DashboardContent));
->>>>>>> previous-trips

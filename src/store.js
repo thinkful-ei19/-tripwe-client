@@ -7,11 +7,8 @@ import protectedDataReducer from './reducers/protected-data';
 import tripReducer from './reducers/trip';
 import createNewTripReducer from './reducers/create-new-trip';
 import planReducer from './reducers/plans';
-<<<<<<< HEAD
 import accommodationReducer from './reducers/accommodations';
-=======
 import budgetReducer from './reducers/budgets';
->>>>>>> previous-trips
 import { setAuthToken, refreshAuthToken } from './actions/auth';
 
 const store = createStore(
@@ -20,14 +17,10 @@ const store = createStore(
         auth: authReducer,
         protectedData: protectedDataReducer,
         trip: tripReducer,
-<<<<<<< HEAD
         createNewTrip: createNewTripReducer,
-        plan:planReducer,
-        accommodation:accommodationReducer
-=======
+        accommodation: accommodationReducer,
         plan: planReducer,
         budget: budgetReducer
->>>>>>> previous-trips
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk)
