@@ -4,13 +4,17 @@ import {
     ADD_PLAN
 } from '../actions/trip';
 
+import {
+    ADD_BUDGET_SUCCESS
+} from "../actions/budget";
+
 const initialState = {
     closestTrip: {
         group: [],
         trip: {
             description: ''
         },
-        plans: [],
+        plans: []
     },
     upcomingTrips: '',
     previousTrips: '',
@@ -35,8 +39,16 @@ export default function reducer(state = initialState, action) {
         let plans = state.closestTrip.plans;
         return Object.assign({}, state, {
             closestTrip: Object.assign({}, state.closestTrip, {
-                plans: [...plans, action.data]  
+                plans: [...plans, action.data]
             })
+        });
+    } else if (action.type === ADD_BUDGET_SUCCESS) {
+        return Object.assign({}, state, {
+          closestTrip: Object.assign({}, state.closestTrip, {
+              budget: Object.assign({}, state.closestTrip.budget, {
+                available: action.newBudget[0]
+              })
+          })
         });
     }
     return state;

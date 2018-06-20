@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import BudgetList from './budgetList';
-import { connect } from 'react-redux'
-import { showBudgets, hideBudgets } from '../actions/budget'
+import BudgetForm from './budget-form';
+import { connect } from 'react-redux';
+import {
+  showBudgets,
+  hideBudgets,
+  showNewBudgetForm
+} from '../actions/budget'
 
 class Budget extends Component {
 render(){
@@ -10,16 +15,24 @@ return (
         <thead>
             <tr className="">
                 <th>Trip Budget</th>
-                <th>{this.props.budgets[0].available}</th>
-                <button onClick={() => { this.props.showBudgets ?
-                  this.props.dispatch(hideBudgets())
-                  : this.props.dispatch(showBudgets()) }}>Details</button>
+                  {
+                    this.props.budgets.available ?
+                      <div>
+                        <th>{this.props.budgets.available}</th>
+                        <button onClick={() => { this.props.showBudgets ?
+                        this.props.dispatch(hideBudgets())
+                        : this.props.dispatch(showBudgets()) }}>Details</button>
+                      </div>
+                    : <button onClick={() => this.props.dispatch(showNewBudgetForm())}>Add Budget</button>
+                  }
+                {this.props.showNewBudgetForm ?
+                <BudgetForm newBudget={this.props.budgets} id={this.props.id}/> : null}
             </tr>
         </thead>
         <tbody>
         { this.props.showBudgets ?
-        <BudgetList budgets={this.props.budgets}/>
-        : null }
+          <BudgetList budgets={this.props.budgets}/>
+          : null }
         </tbody>
     </table>
   );
@@ -28,7 +41,8 @@ return (
 
 const mapStateToProps = state => {
     return {
-        showBudgets: state.budget.showBudgets
+        showBudgets: state.budget.showBudgets,
+        showNewBudgetForm: state.budget.showNewBudgetForm
     };
 };
 

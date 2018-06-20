@@ -67,7 +67,6 @@ class Accommodations extends React.Component {
   }
 }
 const mapStatetoProps = state => {
-  console.log(state);
   return {
     showAccDetails: state.accommodation.showAccDetails
   };
