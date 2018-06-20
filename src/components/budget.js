@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BudgetList from './budgetList';
 import { connect } from 'react-redux'
-import { showBudgets } from '../actions/budget'
+import { showBudgets, hideBudgets } from '../actions/budget'
 //addBudget, addExpence,
 
 class Budget extends Component {
@@ -12,7 +12,9 @@ return (
             <tr className="">
                 <th>Trip Budget</th>
                 <th>{this.props.budgets[0].available}</th>
-                <button onClick={() => this.props.dispatch(showBudgets())}>Details</button>
+                <button onClick={() => { this.props.showBudgets ?
+                  this.props.dispatch(hideBudgets())
+                  : this.props.dispatch(showBudgets()) }}>Details</button>
             </tr>
         </thead>
         <tbody>

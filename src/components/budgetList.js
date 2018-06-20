@@ -2,7 +2,6 @@ import React from 'react';
 
 
 export default function BudgetList(props) {
-console.log(props, "Budget list")
     const budgets = props.budgets.transactions.map(transaction => {
 
       return (
