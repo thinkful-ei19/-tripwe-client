@@ -7,6 +7,8 @@ import store from './store';
 // import './index.css';
 import './styles/css/index.css';
 
+// require('dotenv').config();
+
 ReactDOM.render(
     <Provider store={store}>
         <Router>

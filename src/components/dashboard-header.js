@@ -8,10 +8,10 @@ export default function DashboardHeader(props) {
 
     let img = 'none';
     const imgUrl = encodeURI(`https://source.unsplash.com/1600x900/?${props.dashboardHeader.destination}`);
-    if (props.dashboardHeader.destination) {   
+    if (props.dashboardHeader.destination) {
         img = `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(${imgUrl})`;
     }
-  
+
 
     let now = moment();
 

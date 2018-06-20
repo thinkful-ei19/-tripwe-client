@@ -18,7 +18,9 @@
 
     &__buttons {
         & > * {
-            margin: 0 1rem;
+            margin-right: 2rem;
+            color: $color-white;
+            text-decoration: none;
         }
     }
 

@@ -3,11 +3,20 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchTripData } from '../actions/trip';
 
+import { MAPS_API_KEY } from '../config';
+
 import Group from './group';
 import DashboardHeader from './dashboard-header';
+import DashboardMap from './dashboard-map';
 import Description from './description';
 import Accommodations from './accommodations';
 import Plans from './plans';
+
+// import CreateNewTripForm from './create-new-trip-form';
+// import BuildGroupForm from './build-group-form';
+// import FlightDetailsForm from './flight-details-form';
+// import CreateNewAccommodationsForm from './create-new-accommodations-form';
+// import CreateNewBudgetForm from './create-new-budget-form';
 
 class DashboardContent extends Component {
     componentDidMount() {
@@ -15,9 +24,10 @@ class DashboardContent extends Component {
     }
 
     render() {
+        // console.log(MAPS_API_KEY);
+        const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`;
         return (
             <div className="d-content">
-                {/* <DashboardHeader /> */}
                 <div className="dashboard-header">{this.props.closestTrip.trip ?
                     <DashboardHeader dashboardHeader={this.props.closestTrip.trip} />
                     : ''}
@@ -30,6 +40,16 @@ class DashboardContent extends Component {
                                     <Description description={this.props.closestTrip.trip.description} />
                                     : ''
                             }
+                        </div>
+
+                        <div className="map">
+                            <DashboardMap
+                                isMarkerShown
+                                googleMapURL={googleMapURL}
+                                loadingElement={<div style={{ height: '100%' }} />}
+                                containerElement={<div style={{ height: '300px' }} />}
+                                mapElement={<div style={{ height: '100%' }} />}
+                            />
                         </div>
 
                         <div className="accommodations">
@@ -51,7 +71,11 @@ class DashboardContent extends Component {
                         {this.props.closestTrip.group ? <Group group={this.props.closestTrip.group} /> : ''}
                     </div>
                 </div>
-
+                {/* <CreateNewTripForm />
+                <BuildGroupForm />
+                <FlightDetailsForm />
+                <CreateNewAccommodationsForm />
+                <CreateNewBudgetForm /> */}
             </div>
         );
     }

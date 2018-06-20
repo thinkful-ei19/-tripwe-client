@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import DashboardNavigation from './dashboard-navigation';
 import DashboardContent from './dashboard-content';
+import DashboardCreateNewTrip from './dashboard-create-new-trip';
 
 export class Dashboard extends React.Component {
     render() {
         return (
             <div className="dashboard">
                 <DashboardNavigation />
-                <DashboardContent />
-                {/* <div className="dashboard-username">
-                    Username: {this.props.username}
-                </div> */}
+                {
+                    this.props.isCreatingNewTrip ? <DashboardCreateNewTrip /> : <DashboardContent />
+                }
             </div>
         );
     }
@@ -23,7 +23,7 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.fullname}`,
-        // closestTrip: state.trip.closestTrip
+        isCreatingNewTrip: state.createNewTrip.isCreatingNewTrip
     };
 };
 

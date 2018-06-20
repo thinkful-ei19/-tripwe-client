@@ -5,6 +5,7 @@ import { loadAuthToken } from './local-storage';
 import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import tripReducer from './reducers/trip';
+import createNewTripReducer from './reducers/create-new-trip';
 import planReducer from './reducers/plans';
 import accommodationReducer from './reducers/accommodations';
 import { setAuthToken, refreshAuthToken } from './actions/auth';
@@ -15,6 +16,7 @@ const store = createStore(
         auth: authReducer,
         protectedData: protectedDataReducer,
         trip: tripReducer,
+        createNewTrip: createNewTripReducer,
         plan:planReducer,
         accommodation:accommodationReducer
     }),
