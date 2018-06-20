@@ -11,6 +11,7 @@ import DashboardMap from './dashboard-map';
 import Description from './description';
 import Accommodations from './accommodations';
 import Plans from './plans';
+import Budget from './budget';
 
 // import CreateNewTripForm from './create-new-trip-form';
 // import BuildGroupForm from './build-group-form';
@@ -51,7 +52,13 @@ class DashboardContent extends Component {
                                 mapElement={<div style={{ height: '100%' }} />}
                             />
                         </div>
-
+                        <div className="budget">
+                            {
+                              this.props.closestTrip.budget ?
+                              <Budget budgets={this.props.closestTrip.budget} />
+                              : ''
+                            }
+                        </div>
                         <div className="accommodations">
                             {
                                 this.props.closestTrip.accommodations ?
@@ -68,7 +75,11 @@ class DashboardContent extends Component {
                         </div>
                     </div>
                     <div className="group">
-                        {this.props.closestTrip.group ? <Group group={this.props.closestTrip.group} /> : ''}
+                        {
+                          this.props.closestTrip.group ?
+                          <Group group={this.props.closestTrip.group} />
+                          : ''
+                        }
                     </div>
                 </div>
                 {/* <CreateNewTripForm />
@@ -90,5 +101,9 @@ const mapStateToProps = state => {
     };
 };
 
+<<<<<<< HEAD
 
 export default requiresLogin()(connect(mapStateToProps)(DashboardContent));
+=======
+export default requiresLogin()(connect(mapStateToProps)(DashboardContent));
+>>>>>>> previous-trips
