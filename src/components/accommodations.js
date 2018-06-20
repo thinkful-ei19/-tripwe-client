@@ -14,43 +14,55 @@ class Accommodations extends React.Component {
       });
       users = users && users.substring(0, users.length - 1);
       return (
-        <tr className="accommodations__row" key={index}>
-          <td className="accommodations__row--acc">
-            {obj.name}
-            <i
-              onClick={() => this.props.dispatch(showDetails(id))}
-              className="fas fa-info-circle g-member__info--icon"
-            />
-          </td>
-          <td className="accommodations__row--users">{users}</td>
-          {this.props.showAccDetails === id ? (
-            <tr colspan="2">
-              <td colspan="2" className="accommodations__row--acc">
-                Address:{address}
-              </td>
-              <tr>
-                <td colspan="2" className="accommodations__row--acc">
-                  Booking Number:{reference}
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" className="accommodations__row--acc">
-                  Arrival Date:{arrival}
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" className="accommodations__row--acc">
-                  Departure Date:{departure}
-                </td>
-              </tr>
-              <tr>
-                <td colspan className="accommodations__row--acc">
-                  Contact Number:{phone}
-                </td>
-              </tr>
-            </tr>
-          ) : null}
-        </tr>
+        <tbody>
+          <tr className="accommodations__row" key={index}>
+            <td className="accommodations__row--acc">
+              {obj.name}
+              <i
+                onClick={() => this.props.dispatch(showDetails(id))}
+                className="fas fa-info-circle g-member__info--icon"
+              />
+            </td>
+            <td className="accommodations__row--users">{users}</td>
+          </tr>
+          <tr>
+            <td colSpan="2">
+              {this.props.showAccDetails === id &&
+              !this.props.isAccDetailsHidden ? (
+                <table className="accommodations__table">
+                  <tbody>
+                    <tr>
+                      <td className="accommodations__row--acc">Address</td>
+                      <td>{address}</td>
+                    </tr>
+                    <tr>
+                      <td className="accommodations__row--acc">
+                        Booking Number
+                      </td>
+                      <td>{reference}</td>
+                    </tr>
+                    <tr>
+                      <td className="accommodations__row--acc">Arrival Date</td>
+                      <td>{arrival}</td>
+                    </tr>
+                    <tr>
+                      <td className="accommodations__row--acc">
+                        Departure Date
+                      </td>
+                      <td>{departure}</td>
+                    </tr>
+                    <tr>
+                      <td className="accommodations__row--acc">
+                        Contact Number
+                      </td>
+                      <td>{phone}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              ) : null}
+            </td>
+          </tr>
+        </tbody>
       );
     });
     return (
@@ -61,15 +73,17 @@ class Accommodations extends React.Component {
             <th>People</th>
           </tr>
         </thead>
-        <tbody>{accommodations}</tbody>
+        {accommodations}
       </table>
     );
   }
 }
 const mapStatetoProps = state => {
-  console.log(state);
+  //   console.log("component: ");
+  //   console.log(state);
   return {
-    showAccDetails: state.accommodation.showAccDetails
+    showAccDetails: state.accommodation.showAccDetails,
+    isAccDetailsHidden: state.accommodation.isAccDetailsHidden
   };
 };
 
