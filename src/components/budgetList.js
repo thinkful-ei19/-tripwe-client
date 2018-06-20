@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { showBudgetsForm } from '../actions/budget'
 
-
-export default function BudgetList(props) {
-    const budgets = props.budgets.transactions.map(transaction => {
+class BudgetList extends Component {
+  render(){
+    const budgets = this.props.budgets.transactions.map(transaction => {
 
       return (
           <tr className="" key={transaction.id}>
@@ -11,9 +13,18 @@ export default function BudgetList(props) {
           </tr>
       );
     });
-return (
-        <tbody>
-            {budgets}
-        </tbody>
-  );
+  return (
+          <tbody>
+              {budgets}
+              <button onClick={() => this.props.dispatch(showBudgetsForm())}>Add Expense</button>
+          </tbody>
+    );
+  }
 }
+const mapStateToProps = state => {
+    return {
+        showBudgetsForm: state.budget.showBudgets
+    };
+};
+
+export default (connect(mapStateToProps)(BudgetList));

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import BudgetList from './budgetList';
 import { connect } from 'react-redux'
 import { showBudgets, hideBudgets } from '../actions/budget'
-//addBudget, addExpence,
 
 class Budget extends Component {
 render(){

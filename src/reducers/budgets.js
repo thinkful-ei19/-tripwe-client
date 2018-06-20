@@ -1,7 +1,8 @@
-import { SHOW_BUDGETS, HIDE_BUDGETS } from "../actions/budget";
+import { SHOW_BUDGETS, HIDE_BUDGETS, SHOW_BUDGETS_FORM } from "../actions/budget";
 
 const initialState = {
-  showBudgets: false
+  showBudgets: false,
+  showBudgetsForm: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -12,6 +13,10 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === HIDE_BUDGETS) {
     return Object.assign({}, state, {
       showBudgets: false
+    });
+  } else if (action.type === SHOW_BUDGETS_FORM) {
+    return Object.assign({}, state, {
+      showBudgetsForm: true
     });
   }
   return state;
