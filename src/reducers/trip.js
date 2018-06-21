@@ -46,7 +46,8 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state, {
           closestTrip: Object.assign({}, state.closestTrip, {
               budget: Object.assign({}, state.closestTrip.budget, {
-                available: action.newBudget[0]
+                available: action.newBudget.updatedBudget[0].available,
+                transactions: [...state.closestTrip.budget.transactions, action.newBudget.transaction[0]]
               })
           })
         });

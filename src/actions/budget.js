@@ -1,5 +1,4 @@
 import { API_BASE_URL } from '../config';
-import { normalizeResponseErrors } from './utils';
 
 export const SHOW_BUDGETS = 'SHOW_BUDGETS'
 export const showBudgets = () => ({
@@ -19,6 +18,11 @@ export const showBudgetsForm = () => ({
 export const SHOW_NEW_BUDGET_FORM = 'SHOW_NEW_BUDGET_FORM'
 export const showNewBudgetForm = () => ({
     type: SHOW_NEW_BUDGET_FORM
+});
+
+export const SHOW_EXPENCES_FORM = 'SHOW_EXPENCES_FORM'
+export const showExpencesForm = () => ({
+    type: SHOW_EXPENCES_FORM
 });
 
 export const ADD_BUDGET_SUCCESS = 'ADD_BUDGET_SUCCESS'
@@ -41,14 +45,14 @@ export const addBudgetRequest= () => ({
 
 export const addBudget = newBudget => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    fetch(`${API_BASE_URL}/trips/${newBudget.id}/budgets`, {
+    fetch(`${API_BASE_URL}/trips/${newBudget.id}/transactions`, {
       method: 'POST',
       body: JSON.stringify(newBudget),
       headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${authToken}`
-      }
-    })
+        }
+      })
       .then(res => {
         if (!res.ok) {
           if (
@@ -62,10 +66,9 @@ export const addBudget = newBudget => (dispatch, getState) => {
             message: res.statusText
           });
         }
-
         return res.json();
       })
-      .then((json) => dispatch(addBudgetSuccess(json)))
+      .then(json => dispatch(addBudgetSuccess(json)))
       .catch(err => {
         dispatch(addBudgetError(err));
       })

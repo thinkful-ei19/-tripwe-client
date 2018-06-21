@@ -5,7 +5,8 @@ import {
   SHOW_NEW_BUDGET_FORM,
   ADD_BUDGET_SUCCESS,
   ADD_BUDGET_REQUEST,
-  ADD_BUDGET_ERROR
+  ADD_BUDGET_ERROR,
+  SHOW_EXPENCES_FORM
 } from "../actions/budget";
 
 const initialState = {
@@ -34,15 +35,19 @@ export default function reducer(state = initialState, action) {
     return Object.assign({}, state, {
       showNewBudgetForm: true
     });
+  } else if (action.type ===  SHOW_EXPENCES_FORM) {
+    return Object.assign({}, state, {
+      showExpencesForm: true
+    });
   } else if (action.type === ADD_BUDGET_REQUEST) {
       return Object.assign({}, state, {
         loading: true
       });
   } else if (action.type === ADD_BUDGET_SUCCESS) {
-    console.log(action.newBudget[0], "ACTION")
       return Object.assign({}, state, {
           loading: false,
           showNewBudgetForm: false,
+          showExpencesForm: false,
           error: null
       });
   } else if (action.type === ADD_BUDGET_ERROR) {

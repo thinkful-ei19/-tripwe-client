@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, focus } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import Input from './input';
-import { required, nonEmpty } from '../validators';
-import { addBudget } from '../actions/budget'
+import { addBudget } from '../actions/budget';
 
 
 class BudgetForm extends Component {
 
     onBudgetSubmit(values) {
       const newBudget = {
-        available: values.totalBudget,
-        id: this.props.id
+        amount: values.expense1,
+        description: values.totalBudget,
+        id: this.props.id,
+        type: 0
+      };
+      this.props.dispatch(addBudget(newBudget))
+    }
+
+    onExpencesSubmit(values) {
+      const newBudget = {
+        amount: values.expense1,
+        description: values.totalBudget,
+        id: this.props.id,
+        type: 1
       };
       this.props.dispatch(addBudget(newBudget))
     }
@@ -31,24 +42,34 @@ class BudgetForm extends Component {
                 </div>
                 <form className="ct-budget__form">
                     {error}
-                    {this.props.newBudget.transactions ?
-                      <label htmlFor="totalBudget">Add Group Budget</label>
-                      : <label htmlFor="totalBudget">Total Budget</label>}
+                      <label htmlFor="totalBudget">Description</label>
+
                     <Field
                         component={Input}
                         type="text"
                         name="totalBudget"
                         id="totalBudget"
                     />
+
+                    <label htmlFor="expense1">Amount</label>
+                    <Field
+                        component={Input}
+                        type="text"
+                        name="expense1"
+                        id="expense1"
+                    />
+
                     <div className="ct-next-skip">
                         <button className="ct-budget__skip skip"
                         onClick={this.props.handleSubmit(values =>
                           this.onBudgetSubmit(values))}
-                        >Add Budget</button>
+                        >Budget Contribution
+                        </button>
 
-                        {this.props.newBudget.transactions ?
-                          null
-                        : <button className="ct-budget__next next">Add Expences</button> }
+                         <button className="ct-budget__next next"
+                         onClick={this.props.handleSubmit(values =>
+                           this.onExpencesSubmit(values))}
+                         >Add Expences</button>
                     </div>
                 </form>
 
