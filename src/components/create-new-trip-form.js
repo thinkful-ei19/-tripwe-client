@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
+import { connect } from 'react-redux';
 import Input from './input';
 import { required, nonEmpty } from '../validators';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-import { createNewTrip } from '../actions/create-new-trip';
+import { createNewTrip, nextStep } from '../actions/create-new-trip';
 
 
 class CreateNewTripForm extends Component {
@@ -19,15 +20,11 @@ class CreateNewTripForm extends Component {
     }
 
     handleArrivalDateChange(date) {
-        this.setState({
-            arrivalDate: date.utc().format()
-        });
+        this.setState({ arrivalDate: date.utc().format() });
     }
 
     handleDepartureDateChange(date) {
-        this.setState({
-            departureDate: date.utc().format()
-        });
+        this.setState({ departureDate: date.utc().format() });
     }
 
     onSubmit(values) {
@@ -39,6 +36,7 @@ class CreateNewTripForm extends Component {
             departure: this.state.departureDate
         };
         this.props.dispatch(createNewTrip(completeValues));
+        // this.props.dispatch(nextStep(this.props.step));
     }
 
     render() {
@@ -122,6 +120,12 @@ class CreateNewTripForm extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    step: state.createNewTrip.step
+});
+
+const connectedForm = connect(mapStateToProps)(CreateNewTripForm);
+
 export default reduxForm({
     form: 'createNewTrip'
-})(CreateNewTripForm);
+})(connectedForm);

@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
+import { connect } from 'react-redux';
 import Input from './input';
 import { required, nonEmpty } from '../validators';
+import { nextStep } from '../actions/create-new-trip';
 
 
 class BuildGroupForm extends Component {
 
-    handleSubmit(values) {
+    onSubmit(values) {
         console.log(values);
+    }
+
+    handleSkip() {
+        this.props.dispatch(nextStep());
     }
 
     render() {
@@ -26,7 +32,7 @@ class BuildGroupForm extends Component {
                 </div>
                 <form
                     className="ct-buildGroup__form"
-                    onSubmit={this.handleSubmit(values =>
+                    onSubmit={this.props.handleSubmit(values =>
                         this.onSubmit(values)
                     )}
                 >
@@ -48,10 +54,12 @@ class BuildGroupForm extends Component {
                         type="email"
                         name="email3"
                     />
-                    <button className="ct-buildGroup__add">Add</button>
+                    <button type="button" className="ct-buildGroup__add">Add</button>
                     <div className="ct-next-skip">
-                        <button className="ct-buildGroup__skip skip">Skip</button>
-                        <button className="ct-buildGroup__next next" disabled={this.props.pristine || this.props.submitting}>
+                        <button type="button" className="ct-buildGroup__skip skip" onClick={this.handleSkip.bind(this)}>
+                            Skip
+                        </button>
+                        <button type="submit" className="ct-buildGroup__next next" disabled={this.props.pristine || this.props.submitting}>
                             Next
                         </button>
                     </div>
@@ -62,6 +70,8 @@ class BuildGroupForm extends Component {
     }
 }
 
+const connectedForm = connect()(BuildGroupForm);
+
 export default reduxForm({
     form: 'buildGroup'
-})(BuildGroupForm);
+})(connectedForm);
