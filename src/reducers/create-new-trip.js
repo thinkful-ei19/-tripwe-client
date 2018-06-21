@@ -3,7 +3,10 @@ import {
     CANCEL_NEW_TRIP_INIT,
     CREATE_NEW_TRIP_REQUEST,
     CREATE_NEW_TRIP_SUCCESS,
-    CREATE_NEW_TRIP_ERROR
+    CREATE_NEW_TRIP_ERROR,
+    SET_NEW_TRIP_ID,
+    NEXT_STEP,
+    COMPLETE_NEW_FORM
 } from '../actions/create-new-trip';
 
 const initialState = {
@@ -11,7 +14,7 @@ const initialState = {
     step: null,
     loading: false,
     error: null,
-    trip: null
+    newTripId: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -29,6 +32,12 @@ export default function reducer(state = initialState, action) {
         });
     } else if (action.type === CREATE_NEW_TRIP_ERROR) {
         return Object.assign({}, state, { loading: false, error: action.error });
+    } else if (action.type === SET_NEW_TRIP_ID) {
+        return Object.assign({}, state, { newTripId: action.newTripId });
+    } else if (action.type === NEXT_STEP) {
+        return Object.assign({}, state, { step: state.step + 1 });
+    } else if (action.type === COMPLETE_NEW_FORM) {
+        return Object.assign({}, state, { isCreatingNewTrip: false, step: null, newTripId: null });
     }
     return state;
 }

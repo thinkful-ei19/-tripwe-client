@@ -1,5 +1,5 @@
-import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from './utils';
+import { API_BASE_URL } from '../config';
+import { normalizeResponseErrors } from './utils';
 
 export const FETCH_TRIP_DATA_SUCCESS = 'FETCH_TRIP_DATA_SUCCESS';
 export const fetchTripDataSuccess = data => ({
@@ -13,7 +13,7 @@ export const fetchTripDataError = error => ({
     error
 });
 
-export const ADD_PLAN = 'ADD_PLAN'
+export const ADD_PLAN = 'ADD_PLAN';
 export const addPlan = (data) => ({
     type: ADD_PLAN,
     data
@@ -36,7 +36,7 @@ export const fetchTripData = () => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then((data) => {
-            return dispatch(fetchTripDataSuccess(data))
+            return dispatch(fetchTripDataSuccess(data));
         })
         .catch(err => {
             dispatch(fetchTripDataError(err));
@@ -45,7 +45,7 @@ export const fetchTripData = () => (dispatch, getState) => {
 
 export const createPlan = (newPlan) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-//    dispatch(createPlanRequest());
+    //    dispatch(createPlanRequest());
 
     fetch(`${API_BASE_URL}/trips/${newPlan.tripId}/plans`, {
         method: 'POST',
@@ -58,10 +58,10 @@ export const createPlan = (newPlan) => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(res => {
-            newPlan.id = res; 
-            dispatch(addPlan(newPlan))
+            newPlan.id = res;
+            dispatch(addPlan(newPlan));
         })
         .catch(err => {
             // dispatch(createPlanError(err));
-        })
+        });
 };

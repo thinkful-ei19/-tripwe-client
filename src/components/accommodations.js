@@ -1,13 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import { SHOW_DETAILS, showDetails } from "../actions/accommodations";
+import React from 'react';
+import { connect } from 'react-redux';
+import { SHOW_DETAILS, showDetails } from '../actions/accommodations';
 
 class Accommodations extends React.Component {
-  render() {
-    const accommodations = this.props.accommodations.map((obj, index) => {
-      const { address, reference, arrival, departure, phone, id } = obj;
-      console.log(obj, "accommodation");
-
+    render() {
+        const accommodations = this.props.accommodations.map((obj, index) => {
+            const { address, reference, arrival, departure, phone, id } = obj;
       var users = "";
       obj.users.forEach(function(user) {
         users += user.fullname + ",";

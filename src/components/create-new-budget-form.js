@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import Input from './input';
 import { required, nonEmpty } from '../validators';
+import { createNewBudget } from '../actions/create-new-trip';
 
 
 class CreateNewBudgetForm extends Component {
 
-    handleSubmit(values) {
-        console.log(values);
+    onSubmit(values) {
+        const completeValues = {
+            available: values.totalBudget
+        };
+
+        this.props.dispatch(createNewBudget(completeValues));
     }
 
     render() {
@@ -26,7 +31,7 @@ class CreateNewBudgetForm extends Component {
                 </div>
                 <form
                     className="ct-budget__form"
-                    onSubmit={this.handleSubmit(values =>
+                    onSubmit={this.props.handleSubmit(values =>
                         this.onSubmit(values)
                     )}
                 >
@@ -57,7 +62,7 @@ class CreateNewBudgetForm extends Component {
                     />
                     <button className="ct-budget__add">Add</button>
                     <div className="ct-next-skip">
-                        <button className="ct-budget__skip skip">Skip</button>
+                        {/* <button className="ct-budget__skip skip">Skip</button> */}
                         <button className="ct-budget__next next" disabled={this.props.pristine || this.props.submitting}>
                             Finish
                         </button>
