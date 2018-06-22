@@ -231,7 +231,7 @@ legend {
   .d-content__main {
     display: flex; }
     .d-content__main--sub {
-      flex: 2;
+      flex: 4;
       justify-content: center; }
 
 .d-nav {
@@ -322,6 +322,26 @@ legend {
   .accommodations__row--users {
     text-align: center; }
 
+.budget {
+  margin: 4rem 5rem; }
+  .budget__table {
+    background-color: #efefef;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+    width: 100%; }
+    .budget__table--head {
+      background-color: #5D566F;
+      color: #fff; }
+    .budget__table--toggle {
+      background: none;
+      color: #fff;
+      border: none; }
+    .budget__table--add {
+      background: none;
+      border: none;
+      color: #000; }
+    .budget__table--unit {
+      text-align: center; }
+
 .plans {
   margin: 4rem 5rem; }
   .plans__table {
@@ -347,7 +367,7 @@ legend {
       cursor: pointer; }
 
 .group {
-  flex: 3;
+  flex: 4;
   margin-right: 3rem;
   margin-top: 2rem; }
   .group__list {
@@ -497,6 +517,8 @@ legend {
     flex-wrap: wrap; }
   .ct-flight__form--unit {
     margin: 0.5rem 1rem; }
+  .ct-flight__form--airportSearch {
+    width: 100%; }
 
 .ct-acc__header {
   background-image: linear-gradient(rgba(156, 82, 202, 0.74), rgba(187, 183, 255, 0.74)), url("../assets/tripwe-acc.jpg");

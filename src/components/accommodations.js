@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { SHOW_DETAILS, showDetails } from "../actions/accommodations";
+import React from 'react';
+import { connect } from 'react-redux';
+import { SHOW_DETAILS, showDetails } from '../actions/accommodations';
 
 class Accommodations extends React.Component {
   render() {
@@ -66,9 +66,12 @@ class Accommodations extends React.Component {
   }
 }
 const mapStatetoProps = state => {
-  return {
-    showAccDetails: state.accommodation.showAccDetails
-  };
+    //   console.log("component: ");
+    //   console.log(state);
+    return {
+        showAccDetails: state.accommodation.showAccDetails,
+        isAccDetailsHidden: state.accommodation.isAccDetailsHidden
+    };
 };
 
 export default connect(mapStatetoProps)(Accommodations);

@@ -2,6 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 
 const GroupMember = (props) => {
+    console.log(props);
     return (
         <div className="g-member">
             <div className="g-member__main">
@@ -15,7 +16,7 @@ const GroupMember = (props) => {
                         <span className="g-member__flight-num">Flight {props.incomingflightnum}</span>
                         <span className="g-member__arr--time">
                             arriving on &ensp;
-                            <Moment format='MM/DD/YYYY'>
+                            <Moment format='MM/DD/YYYY HH:mm'>
                                 {props.incomingarrivaltime}
                             </Moment>
                         </span>
