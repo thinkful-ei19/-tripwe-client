@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
-import BudgetList from './budget-list';
-import BudgetForm from './budget-form';
-import ReactModal from 'react-modal';
-import { connect } from 'react-redux';
-import {
-    showBudgets,
-    hideBudgets,
-    showNewBudgetForm
-} from '../actions/budget';
+import React, { Component } from "react";
+import BudgetList from "./budget-list";
+import BudgetForm from "./budget-form";
+import ReactModal from "react-modal";
+import { connect } from "react-redux";
+import { showBudgets, hideBudgets, showNewBudgetForm } from "../actions/budget";
 
-ReactModal.setAppElement('#root');
+ReactModal.setAppElement("#root");
 
 class Budget extends Component {
     render() {
@@ -19,44 +15,51 @@ class Budget extends Component {
                     <thead className="budget__table--head">
                         <tr className="budget__table--row">
                             <th>Trip Budget</th>
-                            {
-                                this.props.budgets.total ?
-                                    <th>
-                                        <span className="budget__table--total">{this.props.budgets.total}</span>
-                                        <button className="budget__table--toggle budget__table--details" onClick={() => {
-                                            this.props.showBudgets ?
-                                                this.props.dispatch(hideBudgets())
+                            {this.props.budgets.total ? (
+                                <th>
+                                    <span className="budget__table--total">
+                                        {this.props.budgets.total}
+                                    </span>
+                                    <button
+                                        className="budget__table--toggle budget__table--details"
+                                        onClick={() => {
+                                            this.props.showBudgets
+                                                ? this.props.dispatch(hideBudgets())
                                                 : this.props.dispatch(showBudgets());
-                                        }}>Details</button>
-                                    </th>
+                                        }}
+                                    >
+                                        Details
+                                    </button>
+                                </th>
+                            ) : (<th>
+                                <button
+                                    className="budget__table--toggle"
+                                    onClick={() => this.props.dispatch(showNewBudgetForm())}
+                                >
+                                    Add Budget
+                                </button>
+                            </th>
+                                )}
 
-                                    : <th><button className="budget__table--toggle" onClick={() => this.props.dispatch(showNewBudgetForm())}>Add Budget</button></th>
-                            }
-
-                            {
-                                this.props.showNewBudgetForm ?
-                                    <BudgetForm newBudget={this.props.budgets} id={this.props.id} />
-                                    : null
-                            }
-
+                            {this.props.showNewBudgetForm ? (
+                                <BudgetForm newBudget={this.props.budgets} id={this.props.id} />
+                            ) : null}
                         </tr>
                     </thead>
-                    {this.props.showBudgets ?
+                    {this.props.showBudgets ? (
                         <BudgetList budgets={this.props.budgets} id={this.props.id} />
-                        : null}
+                    ) : null}
                 </table>
 
-                {
-                    this.props.showExpencesForm ?
-                        <ReactModal
-                            isOpen={true}
-                            className="form-modal"
-                            overlayClassName="form-modal__overlay"
-                        >
-                            <BudgetForm newBudget={this.props.budgets} id={this.props.id} />
-                        </ReactModal>
-                        : null
-                }
+                {this.props.showExpencesForm ? (
+                    <ReactModal
+                        isOpen={true}
+                        className="form-modal"
+                        overlayClassName="form-modal__overlay"
+                    >
+                        <BudgetForm newBudget={this.props.budgets} id={this.props.id} />
+                    </ReactModal>
+                ) : null}
             </div>
         );
     }

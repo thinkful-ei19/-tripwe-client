@@ -10,9 +10,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { createNewTrip, nextStep } from '../actions/create-new-trip';
 
-
 class CreateNewTripForm extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -31,7 +29,9 @@ class CreateNewTripForm extends Component {
     }
 
     handleGeosuggestChange(destination) {
-        this.setState({ destination: { name: destination.label, location: destination.location } });
+        this.setState({
+            destination: { name: destination.label, location: destination.location }
+        });
     }
 
     onSubmit(values) {
@@ -61,9 +61,7 @@ class CreateNewTripForm extends Component {
                 </div>
                 <form
                     className="ct-main__form"
-                    onSubmit={this.props.handleSubmit((values) =>
-                        this.onSubmit(values)
-                    )}
+                    onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
                 >
                     {error}
                     <label htmlFor="tripName">Trip Name</label>
@@ -77,7 +75,6 @@ class CreateNewTripForm extends Component {
                     <label htmlFor="destination">Destination</label>
                     <Geosuggest
                         onSuggestSelect={this.handleGeosuggestChange.bind(this)}
-                    // style={{ width: '100%' }}
                     />
                     <label htmlFor="arrivalDate">Arrival Date</label>
                     <DatePicker
@@ -110,11 +107,13 @@ class CreateNewTripForm extends Component {
                         id="tripDescription"
                         validate={[required, nonEmpty]}
                     />
-                    <button className="ct-main__next next" disabled={this.props.pristine || this.props.submitting}>
+                    <button
+                        className="ct-main__next next"
+                        disabled={this.props.pristine || this.props.submitting}
+                    >
                         Next
                     </button>
                 </form>
-
             </div>
         );
     }
@@ -127,5 +126,5 @@ const mapStateToProps = state => ({
 const connectedForm = connect(mapStateToProps)(CreateNewTripForm);
 
 export default reduxForm({
-    form: 'createNewTrip'
+    form: "createNewTrip"
 })(connectedForm);
