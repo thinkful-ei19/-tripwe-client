@@ -48,9 +48,9 @@ class DashboardContent extends Component {
                         </div>
                         <div className="budget">
                             {
-                              this.props.closestTrip.budget ?
-                              <Budget budgets={this.props.closestTrip.budget} />
-                              : ''
+                                this.props.closestTrip.budget ?
+                                    <Budget budgets={this.props.closestTrip.budget} />
+                                    : ''
                             }
                         </div>
                         <div className="accommodations">
@@ -70,9 +70,9 @@ class DashboardContent extends Component {
                     </div>
                     <div className="group">
                         {
-                          this.props.closestTrip.group ?
-                          <Group group={this.props.closestTrip.group} />
-                          : ''
+                            this.props.closestTrip.group ?
+                                <Group group={this.props.closestTrip.group} />
+                                : ''
                         }
                     </div>
                 </div>
