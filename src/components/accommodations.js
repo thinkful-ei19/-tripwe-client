@@ -5,6 +5,7 @@ import { SHOW_DETAILS, showDetails } from '../actions/accommodations';
 class Accommodations extends React.Component {
     render() {
         const accommodations = this.props.accommodations.map((obj, index) => {
+            console.log(obj);
             const { address, reference, arrival, departure, phone, id } = obj;
             var users = '';
             obj.users.forEach(function (user) {

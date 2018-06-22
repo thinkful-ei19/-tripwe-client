@@ -4,12 +4,20 @@ import { connect } from 'react-redux';
 import Input from './input';
 import { required, nonEmpty } from '../validators';
 import { nextStep } from '../actions/create-new-trip';
-
+import { createNewGroup } from '../actions/create-new-trip';
 
 class BuildGroupForm extends Component {
 
     onSubmit(values) {
-        console.log(values);
+        let completedValues = {};
+        completedValues.email = [];
+
+        for (let email in values) {
+            completedValues.email.push(values[email]);
+        }
+        this.props.dispatch(createNewGroup(completedValues));
+        // send one object with key of email and value of array of emails.
+        // endpoint /trips/:id/group --> POST 
     }
 
     handleSkip() {
