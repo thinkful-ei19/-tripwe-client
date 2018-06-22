@@ -21,7 +21,7 @@ const store = createStore(
         trip: tripReducer,
         createNewTrip: createNewTripReducer,
         futureTrip: futureTripReducer,
-        plan: planReducer,
+        // plan: planReducer,
         accommodation: accommodationReducer,
         searchAirports: searchAirportsReducer,
         budget: budgetReducer

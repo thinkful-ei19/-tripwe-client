@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { renderTrip } from '../actions/trips-list'
+import { renderTrip } from '../actions/trips-list';
 
 class PastTripsList extends Component {
 
-  renderPastTrip(id){
-    this.props.dispatch(renderTrip(id))
-  }
+    renderPastTrip(id) {
+        this.props.dispatch(renderTrip(id));
+    }
 
-  render() {
-      const pastTrips = this.props.previousTrips.map(trip => {
-        const { id, name } = trip
+    render() {
+        const pastTrips = this.props.previousTrips.map(trip => {
+            const { id, name } = trip;
 
+            return (
+                <li key={id}>
+                    <button className="d-nav__subList--button" onClick={() => this.renderPastTrip(id)}>{name}</button>
+                </li>
+            );
+        });
         return (
-          <li>
-            <button key={id} onClick={() => this.renderPastTrip(id)}>{name}</button>
-          </li>
+            <ul className="d-nav__subList">
+                {pastTrips}
+            </ul>
         );
-      });
-  return (
-      <ul>
-        {pastTrips}
-      </ul>
-  )};
+    }
 }
 
 const mapStateToProps = state => {
     return {
-      previousTrips: state.trip.previousTrips
+        previousTrips: state.trip.previousTrips
     };
 };
 

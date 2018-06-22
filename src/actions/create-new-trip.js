@@ -61,6 +61,35 @@ export const createNewTrip = data => (dispatch, getState) => {
         .catch(err => console.error(err));
 };
 
+export const createNewGroup = data => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    const trip_id = getState().createNewTrip.newTripId;
+
+    fetch(`${API_BASE_URL}/trips/${trip_id}/group`, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${authToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(res.statusText);
+            }
+            console.log(res);
+            // return normalizeResponseErrors(res);
+        })
+        // .then(res => res.json())
+        // .then(res => {
+        //     console.log(res);
+        // })
+        .then(() => {
+            dispatch(nextStep());
+        })
+        .catch(err => console.error(err));
+};
+
 export const createNewFlight = data => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     const trip_id = getState().createNewTrip.newTripId;

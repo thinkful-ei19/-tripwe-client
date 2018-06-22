@@ -4,30 +4,31 @@ import { renderTrip } from '../actions/trips-list'
 
 class FutureTripsList extends Component {
 
-  renderFutureTrip(id){
-    this.props.dispatch(renderTrip(id))
-  }
+    renderFutureTrip(id) {
+        this.props.dispatch(renderTrip(id))
+    }
 
-  render() {
-      const futureTrips = this.props.upcomingTrips.map(trip => {
-        const { id, name } = trip
+    render() {
+        const futureTrips = this.props.upcomingTrips.map(trip => {
+            const { id, name } = trip;
 
+            return (
+                <li key={id}>
+                    <button className="d-nav__subList--button" onClick={() => this.renderFutureTrip(id)}>{name}</button>
+                </li>
+            );
+        });
         return (
-          <li>
-            <button key={id} onClick={() => this.renderFutureTrip(id)}>{name}</button>
-          </li>
+            <ul className="d-nav__subList">
+                {futureTrips}
+            </ul>
         );
-      });
-  return (
-      <ul>
-        {futureTrips}
-      </ul>
-  )};
+    }
 }
 
 const mapStateToProps = state => {
     return {
-      upcomingTrips: state.trip.upcomingTrips,
+        upcomingTrips: state.trip.upcomingTrips,
     };
 };
 

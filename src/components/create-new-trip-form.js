@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
+import Geosuggest from 'react-geosuggest';
+import 'react-geosuggest/module/geosuggest.css';
 import Input from './input';
 import { required, nonEmpty } from '../validators';
 import DatePicker from 'react-datepicker';
@@ -15,7 +17,8 @@ class CreateNewTripForm extends Component {
         super(props);
         this.state = {
             arrivalDate: this.props.arrivalDate || moment().format(),
-            departureDate: this.props.departureDate || moment().format()
+            departureDate: this.props.departureDate || moment().format(),
+            destination: ''
         };
     }
 
@@ -27,16 +30,19 @@ class CreateNewTripForm extends Component {
         this.setState({ departureDate: date.utc().format() });
     }
 
+    handleGeosuggestChange(destination) {
+        this.setState({ destination: { name: destination.label, location: destination.location } });
+    }
+
     onSubmit(values) {
         const completeValues = {
             name: values.tripName,
             description: values.tripDescription,
-            destination: values.destination,
+            destination: this.state.destination,
             arrival: this.state.arrivalDate,
             departure: this.state.departureDate
         };
         this.props.dispatch(createNewTrip(completeValues));
-        // this.props.dispatch(nextStep(this.props.step));
     }
 
     render() {
@@ -54,7 +60,6 @@ class CreateNewTripForm extends Component {
                     <p className="ct-main__header--text">Create New Trip</p>
                 </div>
                 <form
-                    // ref={this.formRef}
                     className="ct-main__form"
                     onSubmit={this.props.handleSubmit((values) =>
                         this.onSubmit(values)
@@ -70,12 +75,8 @@ class CreateNewTripForm extends Component {
                         validate={[required, nonEmpty]}
                     />
                     <label htmlFor="destination">Destination</label>
-                    <Field
-                        component={Input}
-                        type="text"
-                        name="destination"
-                        id="destination"
-                        validate={[required, nonEmpty]}
+                    <Geosuggest
+                        onSuggestSelect={this.handleGeosuggestChange.bind(this)}
                     />
                     <label htmlFor="arrivalDate">Arrival Date</label>
                     <DatePicker
@@ -87,7 +88,6 @@ class CreateNewTripForm extends Component {
                         timeIntervals={15}
                         dateFormat="LLL"
                         placeholderText="Click to select a date"
-                    // ref={this.arrivalDateRef}
                     />
                     <label htmlFor="departureDate">Departure Date</label>
                     <DatePicker
@@ -99,7 +99,6 @@ class CreateNewTripForm extends Component {
                         timeIntervals={15}
                         dateFormat="LLL"
                         placeholderText="Click to select a date"
-                    // ref={this.departureDateRef}
                     />
 
                     <label htmlFor="tripDescription">Description</label>

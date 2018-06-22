@@ -48,18 +48,18 @@ class DashboardContent extends Component {
                         </div>
                         <div className="budget">
                             {
-                              this.props.closestTrip.budget ?
-                              <Budget budgets={this.props.closestTrip.budget} id={this.props.closestTrip.trip.id}/>
-                              : ''
+                                this.props.closestTrip.budget ?
+                                    <Budget budgets={this.props.closestTrip.budget} id={this.props.closestTrip.trip.id} />
+                                    : ''
                             }
                         </div>
-                        <div className="accommodations">
+                        {/* <div className="accommodations">
                             {
                                 this.props.closestTrip.accommodations ?
                                     <Accommodations accommodations={this.props.closestTrip.accommodations} />
                                     : ''
                             }
-                        </div>
+                        </div> */}
                         <div className="plans">
                             {
                                 this.props.closestTrip.plans ?
