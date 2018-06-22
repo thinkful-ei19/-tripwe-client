@@ -1,18 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
-import { SHOW_DETAILS, showDetails } from "../actions/accommodations";
+import {
+  SHOW_DETAILS,
+  showDetails,
+  SHOW_ACCOMMODATIONS_FORM,
+  showAccommodationsForm
+} from "../actions/accommodations";
+import AccommodationForm from "./accommodation-form";
 
 class Accommodations extends React.Component {
   render() {
+    //console.log(this.props.tripId);
+
+    //console.log(this.props.isPlanFormHidden);
     const accommodations = this.props.accommodations.map((obj, index) => {
       const { address, reference, arrival, departure, phone, id } = obj;
-      console.log(obj, "accommodation");
+      console.log(obj, "object ");
 
       var users = "";
       obj.users.forEach(function(user) {
         users += user.fullname + ",";
       });
       users = users && users.substring(0, users.length - 1);
+
       return (
         <tbody>
           <tr className="accommodations__row" key={index}>
@@ -65,25 +75,40 @@ class Accommodations extends React.Component {
         </tbody>
       );
     });
+
     return (
-      <table className="accommodations__table">
-        <thead>
-          <tr className="accommodations__table--head">
-            <th>Accommodations</th>
-            <th>People</th>
-          </tr>
-        </thead>
-        {accommodations}
-      </table>
+      <div>
+        <table className="accommodations__table">
+          <thead>
+            <tr className="accommodations__table--head">
+              <th>Accommodations</th>
+              <th>People</th>
+            </tr>
+          </thead>
+          {accommodations}
+        </table>
+        <button
+          onClick={() => this.props.dispatch(showAccommodationsForm(true))}
+        >
+          Add Accommodations
+        </button>
+        {this.props.isAccFormHidden ? (
+          <AccommodationForm
+            newAccommodation={this.props.accommodations}
+            id={this.props.tripId}
+          />
+        ) : null}
+      </div>
     );
   }
 }
 const mapStatetoProps = state => {
   //   console.log("component: ");
-  //   console.log(state);
+  // console.log(state);
   return {
     showAccDetails: state.accommodation.showAccDetails,
-    isAccDetailsHidden: state.accommodation.isAccDetailsHidden
+    isAccDetailsHidden: state.accommodation.isAccDetailsHidden,
+    isAccFormHidden: state.accommodation.isAccFormHidden
   };
 };
 

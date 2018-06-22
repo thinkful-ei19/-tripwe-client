@@ -13,15 +13,17 @@ class Budget extends Component {
             {this.props.budgets[0] ? (
               <th>{this.props.budgets[0].available}</th>
             ) : null}
-            <button
-              onClick={() => {
-                this.props.showBudgets
-                  ? this.props.dispatch(hideBudgets())
-                  : this.props.dispatch(showBudgets());
-              }}
-            >
-              Details
-            </button>
+            <th>
+              <button
+                onClick={() => {
+                  this.props.showBudgets
+                    ? this.props.dispatch(hideBudgets())
+                    : this.props.dispatch(showBudgets());
+                }}
+              >
+                Details
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody>

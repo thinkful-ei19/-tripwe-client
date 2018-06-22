@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import moment from "react-moment";
+import moment from "moment";
 import DatePicker from "react-datepicker";
-import { addPlan, createPlan } from "../actions/trip";
+import { addPlan, createNewPlan } from "../actions/plans";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -10,7 +10,7 @@ export class PlansForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: this.props.startDate,
+      startDate: this.props.startDate || moment().format(),
       description: "",
       link: ""
     };
@@ -33,7 +33,8 @@ export class PlansForm extends Component {
   onSubmit(values) {
     values.date = this.state.startDate.utc().format();
     values.tripId = this.tripId;
-    this.props.dispatch(createPlan(values));
+    console.log(values.date);
+    this.props.dispatch(createNewPlan(values));
   }
 
   render() {
@@ -44,12 +45,12 @@ export class PlansForm extends Component {
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >
         <DatePicker
-          selected={this.state.startDate}
+          selected={moment(this.state.startDate)}
           onChange={this.handleChange}
           showTimeSelect
           timeFormat="HH:mm"
-          timeIntervals={15}
           dateFormat="LLL"
+          timeIntervals={15}
           placeholderText="Click to select a date"
           ref={this.dateRef}
         />
@@ -79,12 +80,12 @@ export class PlansForm extends Component {
         />
         <div>{createPlansForm}</div>
         <div className="plans_add_container">
-          <button
+          {/* <button
             className="plans__add"
             onClick={this.newPlanFormDisplayHandler}
           >
             Add plan
-          </button>
+          </button> */}
         </div>
       </React.Fragment>
     );

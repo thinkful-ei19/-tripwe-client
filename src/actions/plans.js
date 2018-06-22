@@ -1,40 +1,73 @@
 import { API_BASE_URL } from "../config";
-import moment from "moment";
 import { normalizeResponseErrors } from "./utils";
 
-export const CREATE_PLAN_REQUEST = "CREATE_PLAN_REQUEST";
-export const createPlanRequest = () => ({
-  type: CREATE_PLAN_REQUEST
+export const CREATE_NEW_PLAN_REQUEST = "CREATE_NEW_PLAN_REQUEST";
+export const createNewPlanRequest = () => ({
+  type: CREATE_NEW_PLAN_REQUEST
 });
 
-export const CREATE_PLAN_SUCCESS = "CREATE_PLAN_SUCCESS";
-export const createPlanSuccess = plan => ({
-  type: CREATE_PLAN_SUCCESS,
-  plan
+export const CREATE_NEW_PLAN_SUCCESS = "CREATE_NEW_PLAN_SUCCESS";
+export const createNewPlanSuccess = data => ({
+  type: CREATE_NEW_PLAN_SUCCESS,
+  data
 });
 
-export const CREATE_PLAN_ERROR = "CREATE_PLAN_ERROR";
-export const createPlanError = error => ({
-  type: CREATE_PLAN_ERROR,
+export const CREATE_NEW_PLAN_ERROR = "CREATE_NEW_PLAN_ERROR";
+export const createNewPlanError = error => ({
+  type: CREATE_NEW_PLAN_ERROR,
   error
 });
 
-export const SET_DATE = "SET_DATE";
-export const setDate = date => ({
-  type: SET_DATE,
-  date
+export const SHOW_PLAN_FORM = "SHOW_PLAN_FORM";
+export const showPlanForm = data => ({
+  type: SHOW_PLAN_FORM,
+  data: data
 });
 
-export const createPlan = (authToken, date, description, id) => dispatch => {
-  console.log("Dispatching");
-  dispatch(createPlanRequest());
-  const newPlan = {
-    date: moment(String(description.date + " " + description.time)).format(),
-    trip_id: id,
-    description
-  };
+export const SHOW_NEW_PLAN_FORM = "SHOW_NEW_PLAN_FORM";
+export const showNewPlanForm = () => ({
+  type: SHOW_NEW_PLAN_FORM
+});
 
-  fetch(`${API_BASE_URL}/trips/${id}/plans`, {
+export const ADD_PLAN = "ADD_PLAN";
+export const addPlan = data => ({
+  type: ADD_PLAN,
+  data
+});
+
+export const createNewPlan = newPlan => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  //   console.log(newPlan);
+  //   fetch(`${API_BASE_URL}/trips/${newPlan.tripId}/plans `, {
+  //     method: "POST",
+  //     body: JSON.stringify(newPlan),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${authToken}`
+  //     }
+  //   })
+  //     .then(res => {
+  //       if (!res.ok) {
+  //         if (
+  //           res.headers.has("content-type") &&
+  //           res.headers.get("content-type").startsWith("application/json")
+  //         ) {
+  //           return res.json().then(err => Promise.reject(err));
+  //         }
+  //         return Promise.reject({
+  //           code: res.status,
+  //           message: res.statusText
+  //         });
+  //       }
+  //       return res.json();
+  //     })
+  //     .then(json => dispatch(createNewPlanSuccess(json)))
+  //     .catch(err => {
+  //       dispatch(createNewPlanError(err));
+  //     });
+  // };
+
+  fetch(`${API_BASE_URL}/trips/${newPlan.tripId}/plans`, {
     method: "POST",
     body: JSON.stringify(newPlan),
     headers: {
@@ -44,8 +77,12 @@ export const createPlan = (authToken, date, description, id) => dispatch => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    // .then(res => dispatch(addPlan())
+    .then(res => {
+      newPlan.id = res;
+      dispatch(addPlan(newPlan));
+      dispatch(showPlanForm(false));
+    })
     .catch(err => {
-      dispatch(createPlanError(err));
+      // dispatch(createPlanError(err));
     });
 };
