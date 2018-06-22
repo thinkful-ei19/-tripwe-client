@@ -6,7 +6,6 @@ class Accommodations extends React.Component {
   render() {
     const accommodations = this.props.accommodations.map((obj, index) => {
       const { address, reference, arrival, departure, phone, id } = obj;
-      console.log(obj, "accommodation");
 
       var users = "";
       obj.users.forEach(function(user) {

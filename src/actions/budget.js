@@ -68,7 +68,7 @@ export const addBudget = newBudget => (dispatch, getState) => {
         }
         return res.json();
       })
-      .then(json => dispatch(addBudgetSuccess(json)))
+      .then(json => { dispatch(addBudgetSuccess(json))})
       .catch(err => {
         dispatch(addBudgetError(err));
       })

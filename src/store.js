@@ -6,7 +6,7 @@ import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import tripReducer from './reducers/trip';
 import createNewTripReducer from './reducers/create-new-trip';
-import planReducer from './reducers/plans';
+import futureTripReducer from './reducers/future-trips';
 import accommodationReducer from './reducers/accommodations';
 import budgetReducer from './reducers/budgets';
 import { setAuthToken, refreshAuthToken } from './actions/auth';
@@ -19,7 +19,7 @@ const store = createStore(
         trip: tripReducer,
         createNewTrip: createNewTripReducer,
         accommodation: accommodationReducer,
-        plan: planReducer,
+        futureTrip: futureTripReducer,
         budget: budgetReducer
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
