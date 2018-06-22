@@ -22,7 +22,7 @@ const store = createStore(
         createNewTrip: createNewTripReducer,
         plan: planReducer,
         accommodation: accommodationReducer,
-        searchAirports: searchAirportsReducer
+        searchAirports: searchAirportsReducer,
         budget: budgetReducer
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),

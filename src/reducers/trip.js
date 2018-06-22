@@ -35,7 +35,7 @@ export default function reducer(state = initialState, action) {
         let plans = state.closestTrip.plans;
         return Object.assign({}, state, {
             closestTrip: Object.assign({}, state.closestTrip, {
-                plans: [...plans, action.data]  
+                plans: [...plans, action.data]
             })
         });
     }

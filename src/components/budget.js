@@ -1,43 +1,46 @@
-import React, { Component } from "react";
-import BudgetList from "./budgetList";
-import { connect } from "react-redux";
-import { showBudgets, hideBudgets } from "../actions/budget";
+import React, { Component } from 'react';
+import BudgetList from './budgetList';
+import { connect } from 'react-redux';
+import { showBudgets, hideBudgets } from '../actions/budget';
 
 class Budget extends Component {
-  render() {
-    return (
-      <table className="">
-        <thead>
-          <tr className="">
-            <th>Trip Budget</th>
-            {this.props.budgets[0] ? (
-              <th>{this.props.budgets[0].available}</th>
-            ) : null}
-            <button
-              onClick={() => {
-                this.props.showBudgets
-                  ? this.props.dispatch(hideBudgets())
-                  : this.props.dispatch(showBudgets());
-              }}
-            >
-              Details
-            </button>
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.showBudgets ? (
-            <BudgetList budgets={this.props.budgets} />
-          ) : null}
-        </tbody>
-      </table>
-    );
-  }
+    render() {
+        return (
+            <table className="budget__table">
+                <thead className="budget__table--head">
+                    <tr className="budget__table--row">
+                        <th>Trip Budget</th>
+                        {this.props.budgets[0] ? (
+                            <th>{this.props.budgets[0].available}</th>
+                        ) : null}
+                        <th>
+                            <button
+                                className="budget__table--toggle"
+                                onClick={() => {
+                                    this.props.showBudgets
+                                        ? this.props.dispatch(hideBudgets())
+                                        : this.props.dispatch(showBudgets());
+                                }}
+                            >
+                                Details
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                {/* <tbody> */}
+                {this.props.showBudgets ? (
+                    <BudgetList budgets={this.props.budgets} />
+                ) : null}
+                {/* </tbody> */}
+            </table>
+        );
+    }
 }
 
 const mapStateToProps = state => {
-  return {
-    showBudgets: state.budget.showBudgets
-  };
+    return {
+        showBudgets: state.budget.showBudgets
+    };
 };
 
 export default connect(mapStateToProps)(Budget);

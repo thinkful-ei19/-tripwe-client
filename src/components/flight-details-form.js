@@ -101,7 +101,7 @@ class FlightDetailsForm extends Component {
 
         const options = this.props.list.map(airport => {
             return {
-                value: airport.airportname,
+                value: airport.airportcode,
                 label: `${airport.airportname} - ${airport.airportcode}`
             };
         });
