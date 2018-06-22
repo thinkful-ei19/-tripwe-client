@@ -77,6 +77,7 @@ class CreateNewTripForm extends Component {
                     <label htmlFor="destination">Destination</label>
                     <Geosuggest
                         onSuggestSelect={this.handleGeosuggestChange.bind(this)}
+                    // style={{ width: '100%' }}
                     />
                     <label htmlFor="arrivalDate">Arrival Date</label>
                     <DatePicker
