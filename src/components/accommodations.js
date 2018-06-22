@@ -5,63 +5,51 @@ import { SHOW_DETAILS, showDetails } from '../actions/accommodations';
 class Accommodations extends React.Component {
     render() {
         const accommodations = this.props.accommodations.map((obj, index) => {
-            console.log(obj);
             const { address, reference, arrival, departure, phone, id } = obj;
-            var users = '';
+
+            var users = "";
             obj.users.forEach(function (user) {
-                users += user.fullname + ',';
+                users += user.fullname + ",";
             });
             users = users && users.substring(0, users.length - 1);
             return (
-                <tbody key={index}>
-                    <tr className="accommodations__row">
-                        <td className="accommodations__row--acc">
-                            {obj.name}
-                            <i
-                                onClick={() => this.props.dispatch(showDetails(id))}
-                                className="fas fa-info-circle g-member__info--icon"
-                            />
-                        </td>
-                        <td className="accommodations__row--users">{users}</td>
-                    </tr>
-                    <tr>
-                        <td colSpan="2">
-                            {this.props.showAccDetails === id &&
-                                !this.props.isAccDetailsHidden ? (
-                                    <table className="accommodations__table">
-                                        <tbody>
-                                            <tr>
-                                                <td className="accommodations__row--acc">Address</td>
-                                                <td>{address}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="accommodations__row--acc">
-                                                    Booking Number
-                                                </td>
-                                                <td>{reference}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="accommodations__row--acc">Arrival Date</td>
-                                                <td>{arrival}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="accommodations__row--acc">
-                                                    Departure Date
-                                                </td>
-                                                <td>{departure}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="accommodations__row--acc">
-                                                    Contact Number
-                                                </td>
-                                                <td>{phone}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                ) : null}
-                        </td>
-                    </tr>
-                </tbody>
+                <tr className="accommodations__row" key={index}>
+                    <td className="accommodations__row--acc">
+                        {obj.name}
+                        <i
+                            onClick={() => this.props.dispatch(showDetails(id))}
+                            className="fas fa-info-circle g-member__info--icon"
+                        />
+                    </td>
+                    <td className="accommodations__row--users">{users}</td>
+                    {this.props.showAccDetails === id ? (
+                        <tr colspan="2">
+                            <td colspan="2" className="accommodations__row--acc">
+                                Address:{address}
+                            </td>
+                            <tr>
+                                <td colspan="2" className="accommodations__row--acc">
+                                    Booking Number:{reference}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" className="accommodations__row--acc">
+                                    Arrival Date:{arrival}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" className="accommodations__row--acc">
+                                    Departure Date:{departure}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan className="accommodations__row--acc">
+                                    Contact Number:{phone}
+                                </td>
+                            </tr>
+                        </tr>
+                    ) : null}
+                </tr>
             );
         });
         return (
@@ -72,7 +60,7 @@ class Accommodations extends React.Component {
                         <th>People</th>
                     </tr>
                 </thead>
-                {accommodations}
+                <tbody>{accommodations}</tbody>
             </table>
         );
     }

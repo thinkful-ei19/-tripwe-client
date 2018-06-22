@@ -12,6 +12,7 @@
     "react-dom": "^16.4.0",
     "react-geosuggest": "^2.8.0",
     "react-google-maps": "^9.4.5",
+    "react-modal": "^3.4.5",
     "react-moment": "^0.7.6",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

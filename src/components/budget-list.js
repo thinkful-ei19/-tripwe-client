@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showBudgetsForm } from '../actions/budget';
+import { showExpencesForm } from '../actions/budget';
 
 class BudgetList extends Component {
     render() {
@@ -14,20 +14,22 @@ class BudgetList extends Component {
             );
         });
         return (
+            // <div>
             <tbody>
                 {budgets}
                 <tr>
                     <td className="budget__table--unit">
-                        <button className="budget__table--add" onClick={() => this.props.dispatch(showBudgetsForm())}>Add Expense</button>
+                        <button className="budget__table--add" onClick={() => this.props.dispatch(showExpencesForm())}>Add Expense</button>
                     </td>
                 </tr>
             </tbody>
+            // </div>
         );
     }
 }
 const mapStateToProps = state => {
     return {
-        showBudgetsForm: state.budget.showBudgets
+        showExpencesForm: state.budget.showExpencesForm
     };
 };
 

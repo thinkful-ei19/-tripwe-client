@@ -54,6 +54,20 @@ legend {
   margin: 1rem;
   white-space: normal; }
 
+.form-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .form-modal__overlay {
+    background-color: rgba(19, 38, 43, 0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: none; }
+
 .card {
   margin: 2rem 5rem;
   padding-bottom: 5rem;
@@ -268,6 +282,15 @@ legend {
       background: none;
       border: none;
       font-size: 2.5rem; }
+  .d-nav__subList {
+    list-style: none;
+    margin-left: 2rem; }
+    .d-nav__subList--button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      margin: 0.5rem 0; }
 
 .d-header {
   height: 30rem;
@@ -335,6 +358,8 @@ legend {
       background: none;
       color: #fff;
       border: none; }
+    .budget__table--total, .budget__table--details {
+      margin: 0 1rem; }
     .budget__table--add {
       background: none;
       border: none;

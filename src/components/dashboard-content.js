@@ -49,7 +49,7 @@ class DashboardContent extends Component {
                         <div className="budget">
                             {
                                 this.props.closestTrip.budget ?
-                                    <Budget budgets={this.props.closestTrip.budget} />
+                                    <Budget budgets={this.props.closestTrip.budget} id={this.props.closestTrip.trip.id} />
                                     : ''
                             }
                         </div>
