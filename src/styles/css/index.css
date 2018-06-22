@@ -68,6 +68,13 @@ legend {
     bottom: 0;
     border: none; }
 
+.geosuggest {
+  font-size: 18px;
+  font-size: 1rem;
+  position: relative;
+  width: 100%;
+  text-align: left; }
+
 .card {
   margin: 2rem 5rem;
   padding-bottom: 5rem;
