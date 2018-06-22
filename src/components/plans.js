@@ -51,7 +51,6 @@ class Plans extends React.Component {
   }
 }
 const mapStatetoProps = state => {
-  console.log(state);
   return {
     isPlanFormHidden: state.plan.isPlanFormHidden
   };

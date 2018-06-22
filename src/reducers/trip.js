@@ -44,13 +44,9 @@ export default function reducer(state = initialState, action) {
       })
     });
   } else if (action.type === ADD_ACCOMMODATION_SUCCESS) {
-    // console.log(action.newAccommodation, "see action");
-    let acc = action.newAccommodation;
-    // acc.users = [
-    //   ...state.closestTrip.accommodations.users,
-    //   action.userResult[0]
-    // ];
-    console.log(acc, "acccomm");
+    let acc = action.newAccommodation.result[0];
+    let user = action.newAccommodation.userResult;
+    acc.users = user;
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         accommodations: [...state.closestTrip.accommodations, acc]
