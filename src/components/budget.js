@@ -10,16 +10,17 @@ import {
 
 class Budget extends Component {
 render(){
+  console.log(this.props, "PROPS")
 return (
     <table className="">
         <thead>
             <tr className="">
                 <th>Trip Budget</th>
                   {
-                    this.props.budgets.available ?
+                    this.props.budgets.total ?
 
                       <div>
-                        <th>{this.props.budgets.available}</th>
+                        <th>{this.props.budgets.total}</th>
                         <button onClick={() => { this.props.showBudgets ?
                         this.props.dispatch(hideBudgets())
                         : this.props.dispatch(showBudgets()) }}>Details</button>

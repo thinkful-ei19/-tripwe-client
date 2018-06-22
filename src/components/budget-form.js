@@ -10,18 +10,16 @@ class BudgetForm extends Component {
       const newBudget = {
         amount: values.expense1,
         description: values.totalBudget,
-        id: this.props.id,
-        type: 0
+        id: this.props.id
       };
       this.props.dispatch(addBudget(newBudget))
     }
 
     onExpencesSubmit(values) {
       const newBudget = {
-        amount: values.expense1,
+        amount: -values.expense1,
         description: values.totalBudget,
-        id: this.props.id,
-        type: 1
+        id: this.props.id
       };
       this.props.dispatch(addBudget(newBudget))
     }
