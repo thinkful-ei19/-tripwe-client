@@ -46,4 +46,16 @@
         }
     }
 
+    &__subList {
+        list-style: none;
+        margin-left: 2rem;
+        &--button {
+            background: none;
+            border: none;
+            color: $color-white;
+            font-size: $default-font-size;
+            margin: 0.5rem 0;
+        }
+    }
+
 } 

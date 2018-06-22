@@ -13,12 +13,6 @@ import Accommodations from "./accommodations";
 import Plans from "./plans";
 import Budget from "./budget";
 
-// import CreateNewTripForm from './create-new-trip-form';
-// import BuildGroupForm from './build-group-form';
-// import FlightDetailsForm from './flight-details-form';
-// import CreateNewAccommodationsForm from './create-new-accommodations-form';
-// import CreateNewBudgetForm from './create-new-budget-form';
-
 class DashboardContent extends Component {
   componentDidMount() {
     this.props.dispatch(fetchTripData());
@@ -59,7 +53,10 @@ class DashboardContent extends Component {
             </div>
             <div className="budget">
               {this.props.closestTrip.budget ? (
-                <Budget budgets={this.props.closestTrip.budget} />
+                <Budget
+                  budgets={this.props.closestTrip.budget}
+                  id={this.props.closestTrip.trip.id}
+                />
               ) : (
                 ""
               )}
@@ -75,6 +72,7 @@ class DashboardContent extends Component {
                 ""
               )}
             </div>
+
             <div className="plans">
               {this.props.closestTrip.plans ? (
                 <Plans
@@ -94,11 +92,6 @@ class DashboardContent extends Component {
             )}
           </div>
         </div>
-        {/* <CreateNewTripForm />
-                <BuildGroupForm />
-                <FlightDetailsForm />
-                <CreateNewAccommodationsForm />
-                <CreateNewBudgetForm /> */}
       </div>
     );
   }

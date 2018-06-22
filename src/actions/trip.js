@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { API_BASE_URL } from "../config";
 import { normalizeResponseErrors } from "./utils";
+=======
+import { API_BASE_URL } from '../config';
+import { normalizeResponseErrors } from './utils';
+>>>>>>> 1d50fa54f08bfa7d68189be14e83c8c26c64d4a8
 
 export const FETCH_TRIP_DATA_SUCCESS = "FETCH_TRIP_DATA_SUCCESS";
 export const fetchTripDataSuccess = data => ({

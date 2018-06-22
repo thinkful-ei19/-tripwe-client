@@ -5,6 +5,10 @@ import {
 import { ADD_PLAN } from "../actions/plans";
 import { ADD_ACCOMMODATION_SUCCESS } from "../actions/accommodations";
 
+import { ADD_BUDGET_SUCCESS } from "../actions/budget";
+
+import { RENDER_TRIP_SUCCESS } from "../actions/trips-list";
+
 const initialState = {
   closestTrip: {
     group: [],
@@ -52,14 +56,23 @@ export default function reducer(state = initialState, action) {
         accommodations: [...state.closestTrip.accommodations, acc]
       })
     });
+  } else if (action.type === ADD_BUDGET_SUCCESS) {
+    return Object.assign({}, state, {
+      closestTrip: Object.assign({}, state.closestTrip, {
+        budget: Object.assign({}, state.closestTrip.budget, {
+          total: action.newBudget.updatedBudget,
+          transactions: [
+            ...state.closestTrip.budget.transactions,
+            action.newBudget.transaction[0]
+          ]
+        })
+      })
+    });
+  } else if (action.type === RENDER_TRIP_SUCCESS) {
+    return Object.assign({}, state, {
+      closestTrip: action.data,
+      error: null
+    });
   }
-  // { result: Array(1), userResult: Array(1) }
-  // result
-  // :
-  // [{ … }]
-  // userResult
-  // :
-  // [{ … }]
-  // __proto__: Object
   return state;
 }

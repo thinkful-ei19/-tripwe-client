@@ -54,6 +54,20 @@ legend {
   margin: 1rem;
   white-space: normal; }
 
+.form-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .form-modal__overlay {
+    background-color: rgba(19, 38, 43, 0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: none; }
+
 .card {
   margin: 2rem 5rem;
   padding-bottom: 5rem;
@@ -231,7 +245,7 @@ legend {
   .d-content__main {
     display: flex; }
     .d-content__main--sub {
-      flex: 2;
+      flex: 4;
       justify-content: center; }
 
 .d-nav {
@@ -268,6 +282,15 @@ legend {
       background: none;
       border: none;
       font-size: 2.5rem; }
+  .d-nav__subList {
+    list-style: none;
+    margin-left: 2rem; }
+    .d-nav__subList--button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      margin: 0.5rem 0; }
 
 .d-header {
   height: 30rem;
@@ -322,6 +345,28 @@ legend {
   .accommodations__row--users {
     text-align: center; }
 
+.budget {
+  margin: 4rem 5rem; }
+  .budget__table {
+    background-color: #efefef;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+    width: 100%; }
+    .budget__table--head {
+      background-color: #5D566F;
+      color: #fff; }
+    .budget__table--toggle {
+      background: none;
+      color: #fff;
+      border: none; }
+    .budget__table--total, .budget__table--details {
+      margin: 0 1rem; }
+    .budget__table--add {
+      background: none;
+      border: none;
+      color: #000; }
+    .budget__table--unit {
+      text-align: center; }
+
 .plans {
   margin: 4rem 5rem; }
   .plans__table {
@@ -347,7 +392,7 @@ legend {
       cursor: pointer; }
 
 .group {
-  flex: 3;
+  flex: 4;
   margin-right: 3rem;
   margin-top: 2rem; }
   .group__list {
@@ -497,6 +542,8 @@ legend {
     flex-wrap: wrap; }
   .ct-flight__form--unit {
     margin: 0.5rem 1rem; }
+  .ct-flight__form--airportSearch {
+    width: 100%; }
 
 .ct-acc__header {
   background-image: linear-gradient(rgba(156, 82, 202, 0.74), rgba(187, 183, 255, 0.74)), url("../assets/tripwe-acc.jpg");
