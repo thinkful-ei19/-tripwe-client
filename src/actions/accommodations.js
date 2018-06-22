@@ -36,7 +36,6 @@ export const addAccommodationError = error => ({
 
 export const addAccommodation = newAccommodation => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  console.log(newAccommodation);
   fetch(`${API_BASE_URL}/trips/${newAccommodation.id}/accommodations `, {
     method: "POST",
     body: JSON.stringify(newAccommodation),
@@ -46,7 +45,6 @@ export const addAccommodation = newAccommodation => (dispatch, getState) => {
     }
   })
     .then(res => {
-      //console.log(res, "resres");
       if (!res.ok) {
         if (
           res.headers.has("content-type") &&

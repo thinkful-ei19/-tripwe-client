@@ -15,7 +15,6 @@ class Accommodations extends React.Component {
     //console.log(this.props.isPlanFormHidden);
     const accommodations = this.props.accommodations.map((obj, index) => {
       const { address, reference, arrival, departure, phone, id } = obj;
-      console.log(obj, "object ");
 
       var users = "";
       obj.users.forEach(function(user) {
