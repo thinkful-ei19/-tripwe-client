@@ -3,7 +3,7 @@ import BudgetList from "./budget-list";
 import BudgetForm from "./budget-form";
 import ReactModal from "react-modal";
 import { connect } from "react-redux";
-import { showBudgets, hideBudgets, showNewBudgetForm } from "../actions/budget";
+import { showBudgets, hideBudgets, showExpencesForm } from "../actions/budget";
 
 ReactModal.setAppElement("#root");
 
@@ -35,16 +35,13 @@ class Budget extends Component {
                 <th>
                   <button
                     className="budget__table--toggle"
-                    onClick={() => this.props.dispatch(showNewBudgetForm())}
+                    onClick={() => this.props.dispatch(showExpencesForm())}
                   >
                     Add Budget
                   </button>
                 </th>
               )}
 
-              {this.props.showNewBudgetForm ? (
-                <BudgetForm newBudget={this.props.budgets} id={this.props.id} />
-              ) : null}
             </tr>
           </thead>
           {this.props.showBudgets ? (

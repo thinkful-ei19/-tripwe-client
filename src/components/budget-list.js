@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showExpencesForm } from '../actions/budget';
+import BudgetForm from './budget-form';
+import { showExpencesForm, deleteBudgetById } from '../actions/budget';
 
 class BudgetList extends Component {
-    render() {
-        const budgets = this.props.budgets.transactions.map(transaction => {
+  render(){
+    const budgets = this.props.budgets.transactions.map(transaction => {
 
-            return (
-                <tr className="budget__table--row" key={transaction.id}>
-                    <td className="budget__table--unit">{transaction.amount}</td>
-                    <td className="budget__table--unit">{transaction.description}</td>
-                </tr>
-            );
-        });
-        return (
-            // <div>
-            <tbody>
-                {budgets}
-                <tr>
-                    <td className="budget__table--unit">
-                        <button className="budget__table--add" onClick={() => this.props.dispatch(showExpencesForm())}>Add Expense</button>
-                    </td>
-                </tr>
-            </tbody>
-            // </div>
-        );
-    }
+      return (
+          <tr className="" key={transaction.id}>
+              <td className="">{transaction.amount}</td>
+              <td className="">{transaction.description}</td>
+              <button onClick={() => this.props.dispatch(deleteBudgetById(transaction.id))}>X</button>
+          </tr>
+      );
+    });
+  return (
+        <div>
+          <tbody>
+              {budgets}
+              <button onClick={() => this.props.dispatch(showExpencesForm())}>Add Expense</button>
+          </tbody>
+          {
+            this.props.showExpencesForm ?
+          <BudgetForm newBudget={this.props.budgets} id={this.props.id}/>
+          : null
+          }
+        </div>
+    );
+  }
 }
 const mapStateToProps = state => {
     return {

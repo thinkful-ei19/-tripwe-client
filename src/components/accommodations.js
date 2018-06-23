@@ -4,7 +4,8 @@ import {
   SHOW_DETAILS,
   showDetails,
   SHOW_ACCOMMODATIONS_FORM,
-  showAccommodationsForm
+  showAccommodationsForm,
+  deleteAccommodationById
 } from "../actions/accommodations";
 import AccommodationForm from "./accommodation-form";
 
@@ -31,6 +32,7 @@ class Accommodations extends React.Component {
                 onClick={() => this.props.dispatch(showDetails(id))}
                 className="fas fa-info-circle g-member__info--icon"
               />
+              <button onClick={() => this.props.dispatch(deleteAccommodationById(id))}>X</button>
             </td>
             <td className="accommodations__row--users">{users}</td>
           </tr>

@@ -42,6 +42,11 @@ export const addBudgetRequest= () => ({
     type: ADD_BUDGET_REQUEST
 });
 
+export const DELETE_BUDGET = 'DELETE_BUDGET';
+export const deleteBudget = (id) => ({
+    type: DELETE_BUDGET,
+    id
+});
 
 export const addBudget = newBudget => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
@@ -72,4 +77,21 @@ export const addBudget = newBudget => (dispatch, getState) => {
       .catch(err => {
         dispatch(addBudgetError(err));
       })
+};
+
+export const deleteBudgetById = (id) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/transactions/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return dispatch(deleteBudget(id));
+  });
 };
