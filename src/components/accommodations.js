@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 import {
-    SHOW_DETAILS,
-    showDetails,
-    SHOW_ACCOMMODATIONS_FORM,
-    showAccommodationsForm
-} from '../actions/accommodations';
-import AccommodationForm from './accommodation-form';
+  SHOW_DETAILS,
+  showDetails,
+  SHOW_ACCOMMODATIONS_FORM,
+  showAccommodationsForm,
+  deleteAccommodationById
+} from "../actions/accommodations";
+import AccommodationForm from "./accommodation-form";
 
 class Accommodations extends React.Component {
     render() {
@@ -23,17 +24,38 @@ class Accommodations extends React.Component {
             });
             users = users && users.substring(0, users.length - 1);
 
-            return (
-                <tbody key={index}>
-                    <tr className="accommodations__row">
-                        <td className="accommodations__row--acc">
-                            {obj.name}
-                            <i
-                                onClick={() => this.props.dispatch(showDetails(id))}
-                                className="fas fa-info-circle g-member__info--icon"
-                            />
-                        </td>
-                        <td className="accommodations__row--users">{users}</td>
+      return (
+        <tbody>
+          <tr className="accommodations__row" key={index}>
+            <td className="accommodations__row--acc">
+              {obj.name}
+              <i
+                onClick={() => this.props.dispatch(showDetails(id))}
+                className="fas fa-info-circle g-member__info--icon"
+              />
+              <button onClick={() => this.props.dispatch(deleteAccommodationById(id))}>X</button>
+            </td>
+            <td className="accommodations__row--users">{users}</td>
+          </tr>
+          <tr>
+            <td colSpan="2">
+              {this.props.showAccDetails === id &&
+              !this.props.isAccDetailsHidden ? (
+                <table className="accommodations__table">
+                  <tbody>
+                    <tr>
+                      <td className="accommodations__row--acc">Address</td>
+                      <td>{address}</td>
+                    </tr>
+                    <tr>
+                      <td className="accommodations__row--acc">
+                        Booking Number
+                      </td>
+                      <td>{reference}</td>
+                    </tr>
+                    <tr>
+                      <td className="accommodations__row--acc">Arrival Date</td>
+                      <td>{arrival}</td>
                     </tr>
                     <tr>
                         <td colSpan="2">

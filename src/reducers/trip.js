@@ -2,10 +2,10 @@ import {
   FETCH_TRIP_DATA_SUCCESS,
   FETCH_TRIP_DATA_ERROR
 } from "../actions/trip";
-import { ADD_PLAN } from "../actions/plans";
-import { ADD_ACCOMMODATION_SUCCESS } from "../actions/accommodations";
+import { ADD_PLAN, DELETE_PLAN } from "../actions/plans";
+import { ADD_ACCOMMODATION_SUCCESS, DELETE_ACCOMMODATION } from "../actions/accommodations";
 
-import { ADD_BUDGET_SUCCESS } from "../actions/budget";
+import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
 
 import { RENDER_TRIP_SUCCESS } from "../actions/trips-list";
 
@@ -31,18 +31,24 @@ export default function reducer(state = initialState, action) {
       error: null
     });
   } else if (action.type === FETCH_TRIP_DATA_ERROR) {
-    // console.log(action, "ACTION ERROR");
     return Object.assign({}, state, {
       error: action.error
     });
   } else if (action.type === ADD_PLAN) {
-    // console.log(action.data, "data");
     let plans = state.closestTrip.plans;
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         plans: [...plans, action.data]
       })
     });
+  } else if (action.type === DELETE_PLAN) {
+    return Object.assign({}, state, {
+      closestTrip: Object.assign({}, state.closestTrip, {
+        plans: state.closestTrip.plans.filter(
+          plan => plan.id !== action.id
+        )
+      })
+    })
   } else if (action.type === ADD_ACCOMMODATION_SUCCESS) {
     let acc = action.newAccommodation.result[0];
     let user = action.newAccommodation.userResult;
@@ -52,6 +58,14 @@ export default function reducer(state = initialState, action) {
         accommodations: [...state.closestTrip.accommodations, acc]
       })
     });
+  } else if (action.type === DELETE_ACCOMMODATION) {
+    return Object.assign({}, state, {
+      closestTrip: Object.assign({}, state.closestTrip, {
+        accommodations: state.closestTrip.accommodations.filter(
+          accommodation => accommodation.id !== action.id
+        )
+      })
+    })
   } else if (action.type === ADD_BUDGET_SUCCESS) {
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
@@ -69,6 +83,13 @@ export default function reducer(state = initialState, action) {
       closestTrip: action.data,
       error: null
     });
-  }
+  } else if (action.type === DELETE_BUDGET) {
+    console.log(action, "ACTION")
+    return Object.assign({}, state, {
+      closestTrip: Object.assign({}, state.closestTrip, {
+        budget: state.closestTrip.budget.filter(budget => budget.id !== action.id)
+      })
+    })
+  };
   return state;
 }

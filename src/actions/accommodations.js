@@ -34,6 +34,12 @@ export const addAccommodationError = error => ({
   error
 });
 
+export const DELETE_ACCOMMODATION = 'DELETE_ACCOMMODATION';
+export const deleteAccommodation = (id) => ({
+    type: DELETE_ACCOMMODATION,
+    id
+});
+
 export const addAccommodation = newAccommodation => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/trips/${newAccommodation.id}/accommodations `, {
@@ -67,4 +73,21 @@ export const addAccommodation = newAccommodation => (dispatch, getState) => {
       dispatch(addAccommodationError(err));
       dispatch(showAccommodationsForm(false));
     });
+};
+
+export const deleteAccommodationById = (id) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/accommodations/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return dispatch(deleteAccommodation(id));
+  });
 };

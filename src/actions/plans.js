@@ -35,38 +35,14 @@ export const addPlan = data => ({
   data
 });
 
+export const DELETE_PLAN = 'DELETE_PLAN';
+export const deletePlan = (id) => ({
+    type: DELETE_PLAN,
+    id
+});
+
 export const createNewPlan = newPlan => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  //   console.log(newPlan);
-  //   fetch(`${API_BASE_URL}/trips/${newPlan.tripId}/plans `, {
-  //     method: "POST",
-  //     body: JSON.stringify(newPlan),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${authToken}`
-  //     }
-  //   })
-  //     .then(res => {
-  //       if (!res.ok) {
-  //         if (
-  //           res.headers.has("content-type") &&
-  //           res.headers.get("content-type").startsWith("application/json")
-  //         ) {
-  //           return res.json().then(err => Promise.reject(err));
-  //         }
-  //         return Promise.reject({
-  //           code: res.status,
-  //           message: res.statusText
-  //         });
-  //       }
-  //       return res.json();
-  //     })
-  //     .then(json => dispatch(createNewPlanSuccess(json)))
-  //     .catch(err => {
-  //       dispatch(createNewPlanError(err));
-  //     });
-  // };
-
   fetch(`${API_BASE_URL}/trips/${newPlan.tripId}/plans`, {
     method: "POST",
     body: JSON.stringify(newPlan),
@@ -85,4 +61,21 @@ export const createNewPlan = newPlan => (dispatch, getState) => {
     .catch(err => {
       // dispatch(createPlanError(err));
     });
+};
+
+export const deletePlansById = (id) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/plans/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return dispatch(deletePlan(id));
+  });
 };
