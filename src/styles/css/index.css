@@ -410,7 +410,8 @@ legend {
     border: 2px solid #9DA46E;
     border-radius: 5px;
     color: #9DA46E;
-    float: right; }
+    float: right;
+    margin: 2rem 0; }
     .group__button:hover {
       background-color: #9DA46E;
       color: #fff;
@@ -596,3 +597,35 @@ legend {
   .ct-budget__add:hover {
     background-color: #CDA30A;
     color: #fff; }
+
+.ct-plans__header {
+  background-image: linear-gradient(rgba(10, 103, 73, 0.5), rgba(72, 179, 144, 0.5)), url("../assets/tripwe-plans.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 20rem;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .ct-plans__header--text {
+    font-size: 3.5rem;
+    color: #fff; }
+
+.ct-plans__form {
+  padding: 0 10rem; }
+  .ct-plans__form--unit {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0; }
+  .ct-plans__form--button {
+    padding: 1rem 2rem;
+    background: none;
+    border: 2px solid #9DA46E;
+    border-radius: 5px;
+    color: #9DA46E;
+    margin: 1rem 0; }
+    .ct-plans__form--button:hover {
+      background-color: #9DA46E;
+      color: #fff;
+      cursor: pointer; }

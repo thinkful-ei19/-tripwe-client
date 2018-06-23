@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ReactModal from 'react-modal';
 import {
     SHOW_DETAILS,
     showDetails,
@@ -23,8 +24,8 @@ class Accommodations extends React.Component {
             users = users && users.substring(0, users.length - 1);
 
             return (
-                <tbody>
-                    <tr className="accommodations__row" key={index}>
+                <tbody key={index}>
+                    <tr className="accommodations__row">
                         <td className="accommodations__row--acc">
                             {obj.name}
                             <i
@@ -88,14 +89,21 @@ class Accommodations extends React.Component {
                 </table>
                 <button
                     onClick={() => this.props.dispatch(showAccommodationsForm(true))}
+                    className="group__button"
                 >
                     Add Accommodations
                 </button>
                 {this.props.isAccFormHidden ? (
-                    <AccommodationForm
-                        newAccommodation={this.props.accommodations}
-                        id={this.props.tripId}
-                    />
+                    <ReactModal
+                        isOpen={true}
+                        className="form-modal"
+                        overlayClassName="form-modal__overlay"
+                    >
+                        <AccommodationForm
+                            newAccommodation={this.props.accommodations}
+                            id={this.props.tripId}
+                        />
+                    </ReactModal>
                 ) : null}
             </div>
         );
