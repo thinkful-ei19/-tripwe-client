@@ -36,26 +36,6 @@ class Accommodations extends React.Component {
               <button onClick={() => this.props.dispatch(deleteAccommodationById(id))}>X</button>
             </td>
             <td className="accommodations__row--users">{users}</td>
-          </tr>
-          <tr>
-            <td colSpan="2">
-              {this.props.showAccDetails === id &&
-              !this.props.isAccDetailsHidden ? (
-                <table className="accommodations__table">
-                  <tbody>
-                    <tr>
-                      <td className="accommodations__row--acc">Address</td>
-                      <td>{address}</td>
-                    </tr>
-                    <tr>
-                      <td className="accommodations__row--acc">
-                        Booking Number
-                      </td>
-                      <td>{reference}</td>
-                    </tr>
-                    <tr>
-                      <td className="accommodations__row--acc">Arrival Date</td>
-                      <td>{arrival}</td>
                     </tr>
                     <tr>
                         <td colSpan="2">
