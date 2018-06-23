@@ -31,14 +31,15 @@ class Budget extends Component {
                                         Details
                                     </button>
                                 </th>
-                            ) : (<th>
-                                <button
-                                    className="budget__table--toggle"
-                                    onClick={() => this.props.dispatch(showNewBudgetForm())}
-                                >
-                                    Add Budget
-                                </button>
-                            </th>
+                            ) :
+                                (<th>
+                                    <button
+                                        className="budget__table--toggle"
+                                        onClick={() => this.props.dispatch(showNewBudgetForm())}
+                                    >
+                                        Add Budget
+                                    </button>
+                                </th>
                                 )}
 
                             {this.props.showNewBudgetForm ? (
