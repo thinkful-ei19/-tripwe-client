@@ -1,0 +1,42 @@
+.ct-plans {
+    &__header {
+        background-image: linear-gradient(rgba(10, 103, 73, 0.5), rgba(72, 179, 144, 0.5)), url('../assets/tripwe-plans.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 20rem;
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        &--text {
+            font-size: 3.5rem;
+            color: $color-white;
+        }
+    }
+    &__form {
+        padding: 0 10rem;
+
+        &--unit {
+            display: flex;
+            flex-direction: column;
+            margin: 1rem 0;
+        }
+
+        &--button {
+            padding: 1rem 2rem;
+            background: none;
+            border: 2px solid $color-primary-green;
+            border-radius: 5px;
+            color: $color-primary-green;
+            // float: right;
+            margin: 1rem 0;
+            &:hover {
+                background-color: $color-primary-green;
+                color: $color-white;
+                cursor: pointer;
+            }
+        }
+    }
+}

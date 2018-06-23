@@ -49,26 +49,26 @@ class Budget extends Component {
           ) : null}
         </table>
 
-        {this.props.showExpencesForm ? (
-          <ReactModal
-            isOpen={true}
-            className="form-modal"
-            overlayClassName="form-modal__overlay"
-          >
-            <BudgetForm newBudget={this.props.budgets} id={this.props.id} />
-          </ReactModal>
-        ) : null}
-      </div>
-    );
-  }
+                {this.props.showExpencesForm ? (
+                    <ReactModal
+                        isOpen={true}
+                        className="form-modal"
+                        overlayClassName="form-modal__overlay"
+                    >
+                        <BudgetForm newBudget={this.props.budgets} id={this.props.id} />
+                    </ReactModal>
+                ) : null}
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => {
-  return {
-    showBudgets: state.budget.showBudgets,
-    showNewBudgetForm: state.budget.showNewBudgetForm,
-    showExpencesForm: state.budget.showExpencesForm
-  };
+    return {
+        showBudgets: state.budget.showBudgets,
+        showNewBudgetForm: state.budget.showNewBudgetForm,
+        showExpencesForm: state.budget.showExpencesForm
+    };
 };
 
 export default connect(mapStateToProps)(Budget);

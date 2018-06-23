@@ -39,20 +39,26 @@ class Plans extends React.Component {
         </table>
         {/* <button className="plans__add">Add plan</button>
       <PlansForm tripId={props.tripId} /> */}
-        <button onClick={() => this.props.dispatch(showPlanForm(true))}>
-          Add Plan
-        </button>
-        {this.props.isPlanFormHidden ? (
-          <PlansForm newPlan={this.props.plans} tripId={this.props.tripId} />
-        ) : null}
-      </div>
-    );
-  }
+                <button className="group__button" onClick={() => this.props.dispatch(showPlanForm(true))}>
+                    Add Plan
+                </button>
+                {this.props.isPlanFormHidden ? (
+                    <ReactModal
+                        isOpen={true}
+                        className="form-modal"
+                        overlayClassName="form-modal__overlay"
+                    >
+                        <PlansForm newPlan={this.props.plans} tripId={this.props.tripId} />
+                    </ReactModal>
+                ) : null}
+            </div>
+        );
+    }
 }
 const mapStatetoProps = state => {
-  return {
-    isPlanFormHidden: state.plan.isPlanFormHidden
-  };
+    return {
+        isPlanFormHidden: state.plan.isPlanFormHidden
+    };
 };
 
 export default connect(mapStatetoProps)(Plans);
