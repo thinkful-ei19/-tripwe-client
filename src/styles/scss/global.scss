@@ -84,6 +84,9 @@ legend {
         bottom: 0;
         border: none;
     }
+    &:focus {
+        outline:0;
+    }
 }
 
 .geosuggest {

@@ -67,6 +67,8 @@ legend {
     right: 0;
     bottom: 0;
     border: none; }
+  .form-modal:focus {
+    outline: 0; }
 
 .geosuggest {
   font-size: 18px;

@@ -30,7 +30,8 @@ class CreateNewTripForm extends Component {
 
     handleGeosuggestChange(destination) {
         this.setState({
-            destination: { name: destination.label, location: destination.location }
+            // destination: { name: destination.label, location: destination.location }
+            destination: destination.label
         });
     }
 
