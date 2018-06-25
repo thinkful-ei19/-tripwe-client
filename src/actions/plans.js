@@ -52,7 +52,6 @@ export const createNewPlan = newPlan => (dispatch, getState) => {
     }
   })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
     .then(res => {
       newPlan.id = res;
       dispatch(addPlan(newPlan));
