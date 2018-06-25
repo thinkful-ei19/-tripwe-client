@@ -16,12 +16,12 @@ class DashboardNavigation extends Component {
         this.props.dispatch(cancelNewTripInit());
     }
 
-    handleFutureList(){
-      this.props.dispatch(showFutureTrips())
+    handleFutureList() {
+        this.props.dispatch(showFutureTrips());
     }
 
-    handlePastList(){
-      this.props.dispatch(showPastTrips())
+    handlePastList() {
+        this.props.dispatch(showPastTrips());
     }
 
     render() {
@@ -39,14 +39,14 @@ class DashboardNavigation extends Component {
                         <li className="d-nav__list--item">
                             <button className="d-nav__list--button" onClick={() => this.handleFutureList()}>Future Trips</button>
                             {this.props.futureTripsList ?
-                            <FutureTripsList/>
-                            : null }
+                                <FutureTripsList />
+                                : null}
                         </li>
                         <li className="d-nav__list--item">
                             <button className="d-nav__list--button" onClick={() => this.handlePastList()}>Previous Trips</button>
                             {this.props.pastTripsList ?
-                            <PastTripsList/>
-                            : null }
+                                <PastTripsList />
+                                : null}
                         </li>
                         <li className="d-nav__list--item">
                             <button className="d-nav__list--button" onClick={this.handleAddNew.bind(this)}>Add New</button>
@@ -60,10 +60,10 @@ class DashboardNavigation extends Component {
 
 const mapStateToProps = state => {
     return {
-      upcomingTrips: state.trip.upcomingTrips,
-      previousTrips: state.trip.previousTrips,
-      futureTripsList: state.futureTrip.futureTripsList,
-      pastTripsList: state.futureTrip.pastTripsList
+        upcomingTrips: state.trip.upcomingTrips,
+        previousTrips: state.trip.previousTrips,
+        futureTripsList: state.futureTrip.futureTripsList,
+        pastTripsList: state.futureTrip.pastTripsList
     };
 };
 export default (connect(mapStateToProps)(DashboardNavigation));
