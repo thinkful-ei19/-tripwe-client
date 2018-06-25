@@ -35,10 +35,10 @@ export const addPlan = data => ({
   data
 });
 
-export const DELETE_PLAN = 'DELETE_PLAN';
-export const deletePlan = (id) => ({
-    type: DELETE_PLAN,
-    id
+export const DELETE_PLAN = "DELETE_PLAN";
+export const deletePlan = id => ({
+  type: DELETE_PLAN,
+  id
 });
 
 export const createNewPlan = newPlan => (dispatch, getState) => {
@@ -63,16 +63,15 @@ export const createNewPlan = newPlan => (dispatch, getState) => {
     });
 };
 
-export const deletePlansById = (id) => (dispatch, getState) => {
+export const deletePlansById = id => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/plans/${id}`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: `Bearer ${authToken}`
     }
-  })
-  .then(res => {
+  }).then(res => {
     if (!res.ok) {
       return Promise.reject(res.statusText);
     }

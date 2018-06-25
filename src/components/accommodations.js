@@ -1,28 +1,27 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import ReactModal from 'react-modal';
+import React from "react";
+import { connect } from "react-redux";
 import {
-  SHOW_DETAILS,
   showDetails,
-  SHOW_ACCOMMODATIONS_FORM,
   showAccommodationsForm,
-  deleteAccommodationById
+  showAddUserMenu
 } from "../actions/accommodations";
 import AccommodationForm from "./accommodation-form";
+import AddUserToAccommodation from "./add-user-to-acc";
 
 class Accommodations extends React.Component {
-    render() {
-        //console.log(this.props.tripId);
+  render() {
+    //console.log(this.props.tripId);
 
-        //console.log(this.props.isPlanFormHidden);
-        const accommodations = this.props.accommodations.map((obj, index) => {
-            const { address, reference, arrival, departure, phone, id } = obj;
+    //console.log(this.props.isPlanFormHidden);
+    const accommodations = this.props.accommodations.map((obj, index) => {
+      const { address, reference, arrival, departure, phone, id } = obj;
+      console.log(obj, "object ");
 
-            var users = '';
-            obj.users.forEach(function (user) {
-                users += user.fullname + ',';
-            });
-            users = users && users.substring(0, users.length - 1);
+      var users = "";
+      obj.users.forEach(function(user) {
+        users += user.fullname + ",";
+      });
+      users = users && users.substring(0, users.length - 1);
 
       return (
         <tbody>
@@ -33,92 +32,91 @@ class Accommodations extends React.Component {
                 onClick={() => this.props.dispatch(showDetails(id))}
                 className="fas fa-info-circle g-member__info--icon"
               />
-              <button onClick={() => this.props.dispatch(deleteAccommodationById(id))}>X</button>
             </td>
-            <td className="accommodations__row--users">{users}</td>
+            <td className="accommodations__row--users">
+              {users}
+              <button onClick={() => this.props.dispatch(showAddUserMenu(id))}>
+                +
+              </button>
+              {this.props.showAccUsers === id}
+            </td>
+          </tr>
+          <tr>
+            <td colSpan="2">
+              {this.props.showAccDetails === id &&
+              !this.props.isAccDetailsHidden ? (
+                <table className="accommodations__table">
+                  <tbody>
+                    <tr>
+                      <td className="accommodations__row--acc">Address</td>
+                      <td>{address}</td>
                     </tr>
                     <tr>
-                        <td colSpan="2">
-                            {this.props.showAccDetails === id &&
-                                !this.props.isAccDetailsHidden ? (
-                                    <table className="accommodations__table">
-                                        <tbody>
-                                            <tr>
-                                                <td className="accommodations__row--acc">Address</td>
-                                                <td>{address}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="accommodations__row--acc">
-                                                    Booking Number
-                                                </td>
-                                                <td>{reference}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="accommodations__row--acc">Arrival Date</td>
-                                                <td>{arrival}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="accommodations__row--acc">
-                                                    Departure Date
-                                                </td>
-                                                <td>{departure}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="accommodations__row--acc">
-                                                    Contact Number
-                                                </td>
-                                                <td>{phone}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                ) : null}
-                        </td>
+                      <td className="accommodations__row--acc">
+                        Booking Number
+                      </td>
+                      <td>{reference}</td>
                     </tr>
-                </tbody>
-            );
-        });
-
-        return (
-            <div>
-                <table className="accommodations__table">
-                    <thead>
-                        <tr className="accommodations__table--head">
-                            <th>Accommodations</th>
-                            <th>People</th>
-                        </tr>
-                    </thead>
-                    {accommodations}
+                    <tr>
+                      <td className="accommodations__row--acc">Arrival Date</td>
+                      <td>{arrival}</td>
+                    </tr>
+                    <tr>
+                      <td className="accommodations__row--acc">
+                        Departure Date
+                      </td>
+                      <td>{departure}</td>
+                    </tr>
+                    <tr>
+                      <td className="accommodations__row--acc">
+                        Contact Number
+                      </td>
+                      <td>{phone}</td>
+                    </tr>
+                  </tbody>
                 </table>
-                <button
-                    onClick={() => this.props.dispatch(showAccommodationsForm(true))}
-                    className="group__button"
-                >
-                    Add Accommodations
-                </button>
-                {this.props.isAccFormHidden ? (
-                    <ReactModal
-                        isOpen={true}
-                        className="form-modal"
-                        overlayClassName="form-modal__overlay"
-                    >
-                        <AccommodationForm
-                            newAccommodation={this.props.accommodations}
-                            id={this.props.tripId}
-                        />
-                    </ReactModal>
-                ) : null}
-            </div>
-        );
-    }
+              ) : null}
+            </td>
+          </tr>
+        </tbody>
+      );
+    });
+
+    return (
+      <div>
+        <table className="accommodations__table">
+          <thead>
+            <tr className="accommodations__table--head">
+              <th>Accommodations</th>
+              <th>People</th>
+            </tr>
+          </thead>
+          {accommodations}
+        </table>
+        <button
+          onClick={() => this.props.dispatch(showAccommodationsForm(true))}
+        >
+          Add Accommodations
+        </button>
+        {this.props.isAccFormHidden ? (
+          <AccommodationForm
+            newAccommodation={this.props.accommodations}
+            id={this.props.tripId}
+          />
+        ) : null}
+      </div>
+    );
+  }
 }
 const mapStatetoProps = state => {
-    //   console.log("component: ");
-    // console.log(state);
-    return {
-        showAccDetails: state.accommodation.showAccDetails,
-        isAccDetailsHidden: state.accommodation.isAccDetailsHidden,
-        isAccFormHidden: state.accommodation.isAccFormHidden
-    };
+  //   console.log("component: ");
+  console.log(state);
+  return {
+    showAccDetails: state.accommodation.showAccDetails,
+    isAccDetailsHidden: state.accommodation.isAccDetailsHidden,
+    isAccFormHidden: state.accommodation.isAccFormHidden,
+    isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu
+  };
 };
 
 export default connect(mapStatetoProps)(Accommodations);

@@ -1,17 +1,22 @@
 import {
   SHOW_DETAILS,
   SHOW_ACCOMMODATIONS_FORM,
+  SHOW_ADD_USER_MENU,
   SHOW_NEW_ACCOMMODATIONS_FORM,
   ADD_ACCOMMODATION_REQUEST,
   ADD_ACCOMMODATION_SUCCESS,
   ADD_ACCOMMODATION_ERROR
+  // ADD_USER_TO_ACCOMMODATION_REQUEST,
+  // ADD_USER_TO_ACCOMMODATION_SUCCESS,
+  // ADD_USER_TO_ACCOMMODATION_ERROR
 } from "../actions/accommodations";
 
 const initialState = {
   showAccDetails: null,
+  showAccUsers: null,
   isAccDetailsHidden: true,
   isAccFormHidden: false,
-  // showAccommodationsForm: false,
+  isUserAddToAccMenu: false,
   showNewAccommodationsForm: false,
   loading: false,
   error: null,
@@ -46,6 +51,23 @@ export default function reducer(state = initialState, action) {
     return Object.assign({}, state, {
       loading: false,
       error: action.error
+    });
+    // } else if (action.type === ADD_USER_TO_ACCOMMODATION_REQUEST) {
+    //   return Object.assign({}, state, { loading: true });
+    // } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
+    //   return Object.assign({}, state, {
+    //     loading: false,
+    //     isUserAddToAccFormHidden: false,
+    //     error: null
+    //   });
+    // } else if (action.type === ADD_USER_TO_ACCOMMODATION_ERROR) {
+    //   return Object.assign({}, state, {
+    //     loading: false,
+    //     error: action.error
+    //   });
+  } else if (action.type === SHOW_ADD_USER_MENU) {
+    return Object.assign({}, state, {
+      isUserAddToAccMenu: action.data
     });
   }
 
