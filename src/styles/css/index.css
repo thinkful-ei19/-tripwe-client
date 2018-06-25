@@ -236,6 +236,8 @@ legend {
     margin-right: 2rem;
     color: #fff;
     text-decoration: none; }
+    .lp-header__buttons > *:hover {
+      cursor: pointer; }
 
 .lp-footer {
   height: 10rem;

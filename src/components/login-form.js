@@ -19,7 +19,7 @@ export class LoginForm extends React.Component {
             );
         }
         return (
-            <div className="lp-login card">
+            <div className="lp-login card" id="lp-login">
                 <div className="lp-login__heading">
                     <h1 className="lp-login__heading--text">Log in</h1>
                 </div>
