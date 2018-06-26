@@ -7,6 +7,11 @@
         width: 100%;
         margin-bottom: 2rem;
 
+        &--plan {
+            display: flex;
+            justify-content: space-around;
+        }
+
         &--head {
             background-color: $color-primary-green;
             color: $color-white;
@@ -14,6 +19,13 @@
 
         &--row {
             text-align: center;
+        }
+
+        &--delete {
+            background: none;
+            border: none;
+            color: $color-primary-red;
+            font-size: 2rem;
         }
     }
 
