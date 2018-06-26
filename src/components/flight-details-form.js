@@ -80,13 +80,13 @@ class FlightDetailsForm extends Component {
             incomingArrivalAirport: this.state.selectedDepartToOption.value,
             incomingArrivalLatitude: this.state.selectedDepartToOption.latitude,
             incomingArrivalLongitude: this.state.selectedDepartToOption.longitude,
+            incomingDepartureLatitude: this.state.selectedDepartFromOption.latitude,
+            incomingDepartureLongitude: this.state.selectedDepartFromOption.longitude,
             incomingFlightNum: values.departFlightNumber,
             outgoingDepartureTime: this.state.returnDepartureDate,
             outgoingArrivalTime: this.state.returnArrivalDate,
             outgoingDepartureAirport: this.state.selectedReturnFromOption.value,
             outgoingArrivalAirport: this.state.selectedReturnToOption.value,
-            outgoingDepartureLatitude: this.state.selectedReturnFromOption.latitude,
-            outgoingArrivalLongitude: this.state.selectedReturnToOption.longitude,
             outgoingFlightNum: values.returnFlightNumber
         };
 

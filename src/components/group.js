@@ -12,6 +12,10 @@ const Group = (props) => {
                 incomingarrivalairport={member.incomingarrivalairport}
                 incomingarrivaltime={member.incomingarrivaltime}
                 incomingflightnum={member.incomingflightnum}
+            // incomingdeparturelatitude={member.incomingdeparturelatitude}
+            // incomingdeparturelongitude={member.incomingdeparturelongitude}
+            // incomingarrivallatitude={member.incomingarrivallatitude}
+            // incomingarrivallongitude={member.incomingarrivallongitude}
             />
         </li>);
     });
