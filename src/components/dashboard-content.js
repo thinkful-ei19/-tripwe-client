@@ -65,7 +65,7 @@ class DashboardContent extends Component {
                 )}
             </div>
 
-            {/* <div className="accommodations">
+            <div className="accommodations">
               {this.props.closestTrip.accommodations ? (
                 <Accommodations
                   accommodations={this.props.closestTrip.accommodations}
@@ -75,7 +75,7 @@ class DashboardContent extends Component {
               ) : (
                   ""
                 )}
-            </div> */}
+            </div>
 
             <div className="plans">
               {this.props.closestTrip.plans ? (

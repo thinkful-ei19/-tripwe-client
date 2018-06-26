@@ -23,6 +23,10 @@ class CreateNewAccommodationsFrom extends Component {
         this.setState({ departureDate: date.utc().format() });
     }
 
+    handleSkip() {
+        this.props.dispatch(nextStep());
+    }
+
     onSubmit(values) {
         const completeValues = {
             hotel: values.hotel,
@@ -87,7 +91,7 @@ class CreateNewAccommodationsFrom extends Component {
                         id="phoneNumber"
                     />
                     <div className="ct-next-skip">
-                        <button type="button" className="ct-buildGroup__skip skip">Skip</button>
+                        <button type="button" className="ct-buildGroup__skip skip" onClick={this.handleSkip.bind(this)}>Skip</button>
                         <button
                             type="submit"
                             className="ct-buildGroup__next next"
