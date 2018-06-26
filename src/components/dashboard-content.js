@@ -27,8 +27,8 @@ class DashboardContent extends Component {
           {this.props.closestTrip.trip ? (
             <DashboardHeader dashboardHeader={this.props.closestTrip.trip} />
           ) : (
-            ""
-          )}
+              ""
+            )}
         </div>
         <div className="d-content__main">
           <div className="d-content__main--sub">
@@ -38,14 +38,15 @@ class DashboardContent extends Component {
                   description={this.props.closestTrip.trip.description}
                 />
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </div>
 
             <div className="map">
               <DashboardMap
                 isMarkerShown
                 googleMapURL={googleMapURL}
+                group={this.props.closestTrip.group}
                 loadingElement={<div style={{ height: "100%" }} />}
                 containerElement={<div style={{ height: "300px" }} />}
                 mapElement={<div style={{ height: "100%" }} />}
@@ -58,8 +59,8 @@ class DashboardContent extends Component {
                   id={this.props.closestTrip.trip.id}
                 />
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </div>
 
             <div className="accommodations">
@@ -70,8 +71,8 @@ class DashboardContent extends Component {
                   group={this.props.closestTrip.group}
                 />
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </div>
 
             <div className="plans">
@@ -81,16 +82,16 @@ class DashboardContent extends Component {
                   tripId={this.props.closestTrip.trip.id}
                 />
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </div>
           </div>
           <div className="group">
             {this.props.closestTrip.group ? (
               <Group group={this.props.closestTrip.group} />
             ) : (
-              ""
-            )}
+                ""
+              )}
           </div>
         </div>
       </div>
