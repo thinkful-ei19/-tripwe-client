@@ -96,12 +96,12 @@ export default function reducer(state = initialState, action) {
       error: null
     });
   } else if (action.type === DELETE_BUDGET) {
-    console.log(action, "ACTION");
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
-        budget: state.closestTrip.budget.filter(
-          budget => budget.id !== action.id
-        )
+        budget: Object.assign({}, state.closestTrip.budget, {
+          total: state.closestTrip.budget.total,
+          transactions: state.closestTrip.budget.transactions.filter(budget => budget.id !== action.id)
+        })
       })
     });
   }

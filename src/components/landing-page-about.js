@@ -2,7 +2,7 @@ import React from 'react';
 
 const LandingPageAbout = () => {
     return (
-        <div className="lp-about card">
+        <div className="lp-about card" id="lp-about">
             <div className="lp-about__heading">
                 <h1 className="lp-about__heading--text">About tripWe</h1>
             </div>
