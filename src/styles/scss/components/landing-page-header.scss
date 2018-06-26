@@ -21,6 +21,9 @@
             margin-right: 2rem;
             color: $color-white;
             text-decoration: none;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 

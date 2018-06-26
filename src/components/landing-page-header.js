@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-scroll';
 
 import logo from '../styles/assets/tripwe-logo.svg';
 
@@ -9,8 +10,8 @@ const LandingPageHeader = () => {
                 <img className="lp-header__logo--image" src={logo} alt="tripWe logo" />
             </div>
             <div className="lp-header__buttons">
-                <a href="#">About</a>
-                <a href="#">Log in</a>
+                <Link to="lp-about" smooth={true}>About</Link>
+                <Link to="lp-login" smooth={true}>Log in</Link>
             </div>
         </div>
     );

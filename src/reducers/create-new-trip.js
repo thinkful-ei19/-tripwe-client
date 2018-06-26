@@ -37,6 +37,7 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === NEXT_STEP) {
     return Object.assign({}, state, { step: state.step + 1 });
   } else if (action.type === COMPLETE_NEW_FORM) {
+    console.log('hello from this reducer');
     return Object.assign({}, state, {
       isCreatingNewTrip: false,
       step: null,
