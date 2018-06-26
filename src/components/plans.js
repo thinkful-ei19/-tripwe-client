@@ -16,22 +16,29 @@ class Plans extends React.Component {
             <Moment format="MM/DD/YYYY HH:mm:ss">{obj.date}</Moment>
           </td>
 
-          <td>
+          <td className="plans__table--plan">
             {obj.link ? (
               <a href={obj.link} target="_blank">
                 {obj.description}{" "}
               </a>
             ) : (
-              obj.description
-            )}
-          </td>
-          <td>
+                obj.description
+              )}
             <button
+              className="delete-item plans__table--delete"
               onClick={() => this.props.dispatch(deletePlansById(obj.id))}
             >
               X
             </button>
           </td>
+          {/* <td>
+            <button
+              className="delete-item plans__table--delete"
+              onClick={() => this.props.dispatch(deletePlansById(obj.id))}
+            >
+              X
+            </button>
+          </td> */}
         </tr>
       );
     });
@@ -43,7 +50,7 @@ class Plans extends React.Component {
             <tr>
               <th>Date</th>
               <th>Plan</th>
-              <th />
+              {/* <th /> */}
             </tr>
           </thead>
           <tbody>{plans}</tbody>
