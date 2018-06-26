@@ -10,7 +10,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 //import Group from './group';
 
 class AddUserToAccommodation extends Component {

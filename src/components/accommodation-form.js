@@ -23,13 +23,13 @@ class AccommodationsFrom extends Component {
     this.setState({ departureDate: date.utc().format() });
   }
   onSubmit(values) {
-    // console.log(values);
+    console.log(values);
     const newAccommodation = {
       name: values.hotel,
       address: values.address,
       reference: values.reference,
-      arrival: values.accArrivalDate,
-      departure: values.accDepartureDate,
+      arrival: this.state.arrivalDate,
+      departure: this.state.departureDate,
       phone: values.phoneNumber,
       id: this.props.id
     };
