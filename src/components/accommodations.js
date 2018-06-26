@@ -18,9 +18,10 @@ class Accommodations extends React.Component {
       //console.log(obj, "object ");
 
       var users = "";
-      obj.users.forEach(function(user) {
-        users += user.fullname + ",";
-      });
+      obj.users &&
+        obj.users.forEach(function(user) {
+          users += user.fullname + ",";
+        });
       users = users && users.substring(0, users.length - 1);
 
       return (
@@ -35,7 +36,10 @@ class Accommodations extends React.Component {
             </td>
             <td className="accommodations__row--users">
               {users}
-              <AddUserToAccommodation accommodationUsers={this.props.group} />
+              <AddUserToAccommodation
+                accId={id}
+                accommodationUsers={this.props.group}
+              />
             </td>
           </tr>
           <tr>

@@ -61,8 +61,14 @@ export default function reducer(state = initialState, action) {
       })
     });
   } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
+    let acc = action.newUser.result[0];
+    let users = action.newUser.userResult;
+    let accommodations = [...state.closestTrip.accommodations];
+
     return Object.assign({}, state, {
-      closestTrip: Object.assign({}, state.closestTrip, {})
+      closestTrip: Object.assign({}, state.closestTrip, {
+        accommodations: accommodations
+      })
     });
   } else if (action.type === DELETE_ACCOMMODATION) {
     return Object.assign({}, state, {

@@ -101,17 +101,19 @@ export const addAccommodation = newAccommodation => (dispatch, getState) => {
     });
 };
 
-export const addUserToAccommodation = newUser => (dispatch, getState) => {
-  console.log(newUser);
+export const addUserToAccommodation = user => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/trips/:tripId/accommodations/:accId`, {
-    method: "PUT",
-    body: JSON.stringify(newUser),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${authToken}`
+  return fetch(
+    `${API_BASE_URL}/trips/${user.tripId}/accommodations/${user.accId}`,
+    {
+      method: "PUT",
+      body: JSON.stringify({ userId: user.userId }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`
+      }
     }
-  })
+  )
     .then(res => {
       if (!res.ok) {
         if (
@@ -120,10 +122,7 @@ export const addUserToAccommodation = newUser => (dispatch, getState) => {
         ) {
           return res.json().then(err => Promise.reject(err));
         }
-        return Promise.reject({
-          code: res.status,
-          message: res.statusText
-        });
+        return Promise.reject({ code: res.status, message: res.statusText });
       }
       return res.json();
     })
