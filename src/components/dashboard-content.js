@@ -67,6 +67,7 @@ class DashboardContent extends Component {
                 <Accommodations
                   accommodations={this.props.closestTrip.accommodations}
                   tripId={this.props.closestTrip.trip.id}
+                  group={this.props.closestTrip.group}
                 />
               ) : (
                 ""
@@ -98,7 +99,7 @@ class DashboardContent extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state.trip.closestTrip.plans, "state");
+  console.log(state.trip.closestTrip.group, "group");
   const { currentUser } = state.auth;
   return {
     currentUser,
