@@ -27,8 +27,8 @@ class DashboardContent extends Component {
           {this.props.closestTrip.trip ? (
             <DashboardHeader dashboardHeader={this.props.closestTrip.trip} />
           ) : (
-            ""
-          )}
+              ""
+            )}
         </div>
         <div className="d-content__main">
           <div className="d-content__main--sub">
@@ -38,19 +38,22 @@ class DashboardContent extends Component {
                   description={this.props.closestTrip.trip.description}
                 />
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </div>
-
-            <div className="map">
-              <DashboardMap
-                isMarkerShown
-                googleMapURL={googleMapURL}
-                loadingElement={<div style={{ height: "100%" }} />}
-                containerElement={<div style={{ height: "300px" }} />}
-                mapElement={<div style={{ height: "100%" }} />}
-              />
-            </div>
+            {this.props.closestTrip ?
+              <div className="map">
+                <DashboardMap
+                  isMarkerShown
+                  googleMapURL={googleMapURL}
+                  group={this.props.closestTrip.group}
+                  loadingElement={<div style={{ height: "100%" }} />}
+                  containerElement={<div style={{ height: "300px" }} />}
+                  mapElement={<div style={{ height: "100%" }} />}
+                />
+              </div>
+              : ''
+            }
             <div className="budget">
               {this.props.closestTrip.budget ? (
                 <Budget
@@ -58,11 +61,11 @@ class DashboardContent extends Component {
                   id={this.props.closestTrip.trip.id}
                 />
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </div>
 
-            <div className="accommodations">
+            {/* <div className="accommodations">
               {this.props.closestTrip.accommodations ? (
                 <Accommodations
                   accommodations={this.props.closestTrip.accommodations}
@@ -70,9 +73,9 @@ class DashboardContent extends Component {
                   group={this.props.closestTrip.group}
                 />
               ) : (
-                ""
-              )}
-            </div>
+                  ""
+                )}
+            </div> */}
 
             <div className="plans">
               {this.props.closestTrip.plans ? (
@@ -81,16 +84,16 @@ class DashboardContent extends Component {
                   tripId={this.props.closestTrip.trip.id}
                 />
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </div>
           </div>
           <div className="group">
             {this.props.closestTrip.group ? (
               <Group group={this.props.closestTrip.group} />
             ) : (
-              ""
-            )}
+                ""
+              )}
           </div>
         </div>
       </div>
