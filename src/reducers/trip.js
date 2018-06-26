@@ -3,7 +3,11 @@ import {
   FETCH_TRIP_DATA_ERROR
 } from "../actions/trip";
 import { ADD_PLAN, DELETE_PLAN } from "../actions/plans";
-import { ADD_ACCOMMODATION_SUCCESS, DELETE_ACCOMMODATION } from "../actions/accommodations";
+import {
+  ADD_ACCOMMODATION_SUCCESS,
+  ADD_USER_TO_ACCOMMODATION_SUCCESS,
+  DELETE_ACCOMMODATION
+} from "../actions/accommodations";
 
 import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
 
@@ -44,11 +48,9 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === DELETE_PLAN) {
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
-        plans: state.closestTrip.plans.filter(
-          plan => plan.id !== action.id
-        )
+        plans: state.closestTrip.plans.filter(plan => plan.id !== action.id)
       })
-    })
+    });
   } else if (action.type === ADD_ACCOMMODATION_SUCCESS) {
     let acc = action.newAccommodation.result[0];
     let user = action.newAccommodation.userResult;
@@ -58,6 +60,10 @@ export default function reducer(state = initialState, action) {
         accommodations: [...state.closestTrip.accommodations, acc]
       })
     });
+  } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
+    return Object.assign({}, state, {
+      closestTrip: Object.assign({}, state.closestTrip, {})
+    });
   } else if (action.type === DELETE_ACCOMMODATION) {
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
@@ -65,7 +71,7 @@ export default function reducer(state = initialState, action) {
           accommodation => accommodation.id !== action.id
         )
       })
-    })
+    });
   } else if (action.type === ADD_BUDGET_SUCCESS) {
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
@@ -92,6 +98,6 @@ export default function reducer(state = initialState, action) {
         })
       })
     });
-  };
+  }
   return state;
 }
