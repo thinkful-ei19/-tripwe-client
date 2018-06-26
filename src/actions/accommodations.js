@@ -101,14 +101,12 @@ export const addAccommodation = newAccommodation => (dispatch, getState) => {
     });
 };
 
-export const addUserToAccommodation = newAccommodation => (
-  dispatch,
-  getState
-) => {
+export const addUserToAccommodation = newUser => (dispatch, getState) => {
+  console.log(newUser);
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/trips/${newAccommodation.id}/accommodations`, {
+  return fetch(`${API_BASE_URL}/trips/:tripId/accommodations/:accId`, {
     method: "PUT",
-    body: JSON.stringify(newAccommodation),
+    body: JSON.stringify(newUser),
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${authToken}`
@@ -130,11 +128,12 @@ export const addUserToAccommodation = newAccommodation => (
       return res.json();
     })
     .then(json => {
-      //console.log(json, "see json");
+      console.log(json, "see json");
       dispatch(addUserToAccommodationSuccess(json));
     })
     .catch(err => {
       dispatch(addUserToAccommodatioError(err));
+      dispatch(showAddUserMenu(false));
     });
 };
 

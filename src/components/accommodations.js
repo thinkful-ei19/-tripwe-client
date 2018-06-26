@@ -12,10 +12,10 @@ class Accommodations extends React.Component {
   render() {
     //console.log(this.props.tripId);
 
-    //console.log(this.props.isPlanFormHidden);
+    console.log(this.props.group);
     const accommodations = this.props.accommodations.map((obj, index) => {
       const { address, reference, arrival, departure, phone, id } = obj;
-      console.log(obj, "object ");
+      //console.log(obj, "object ");
 
       var users = "";
       obj.users.forEach(function(user) {
@@ -24,7 +24,7 @@ class Accommodations extends React.Component {
       users = users && users.substring(0, users.length - 1);
 
       return (
-        <tbody>
+        <tbody key={id}>
           <tr className="accommodations__row" key={index}>
             <td className="accommodations__row--acc">
               {obj.name}
@@ -35,10 +35,7 @@ class Accommodations extends React.Component {
             </td>
             <td className="accommodations__row--users">
               {users}
-              <button onClick={() => this.props.dispatch(showAddUserMenu(id))}>
-                +
-              </button>
-              {this.props.showAccUsers === id}
+              <AddUserToAccommodation accommodationUsers={this.props.group} />
             </td>
           </tr>
           <tr>
@@ -115,7 +112,8 @@ const mapStatetoProps = state => {
     showAccDetails: state.accommodation.showAccDetails,
     isAccDetailsHidden: state.accommodation.isAccDetailsHidden,
     isAccFormHidden: state.accommodation.isAccFormHidden,
-    isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu
+    isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu,
+    showAccUsers: state.accommodation.showAccUsers
   };
 };
 

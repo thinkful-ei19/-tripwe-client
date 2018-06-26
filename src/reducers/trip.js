@@ -5,7 +5,7 @@ import {
 import { ADD_PLAN, DELETE_PLAN } from "../actions/plans";
 import {
   ADD_ACCOMMODATION_SUCCESS,
-  // ADD_USER_TO_ACCOMMODATION_SUCCESS,
+  ADD_USER_TO_ACCOMMODATION_SUCCESS,
   DELETE_ACCOMMODATION
 } from "../actions/accommodations";
 
@@ -60,8 +60,10 @@ export default function reducer(state = initialState, action) {
         accommodations: [...state.closestTrip.accommodations, acc]
       })
     });
-    // }
-    // else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
+  } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
+    return Object.assign({}, state, {
+      closestTrip: Object.assign({}, state.closestTrip, {})
+    });
   } else if (action.type === DELETE_ACCOMMODATION) {
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {

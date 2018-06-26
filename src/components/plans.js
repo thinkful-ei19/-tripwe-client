@@ -25,9 +25,13 @@ class Plans extends React.Component {
               obj.description
             )}
           </td>
-          <button onClick={() => this.props.dispatch(deletePlansById(obj.id))}>
-            X
-          </button>
+          <td>
+            <button
+              onClick={() => this.props.dispatch(deletePlansById(obj.id))}
+            >
+              X
+            </button>
+          </td>
         </tr>
       );
     });
@@ -39,6 +43,7 @@ class Plans extends React.Component {
             <tr>
               <th>Date</th>
               <th>Plan</th>
+              <th />
             </tr>
           </thead>
           <tbody>{plans}</tbody>
