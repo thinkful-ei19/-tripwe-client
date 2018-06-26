@@ -52,19 +52,6 @@ export default function reducer(state = initialState, action) {
       loading: false,
       error: action.error
     });
-  } else if (action.type === ADD_USER_TO_ACCOMMODATION_REQUEST) {
-    return Object.assign({}, state, { loading: true });
-  } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
-    return Object.assign({}, state, {
-      loading: false,
-      isUserAddToAccFormHidden: false,
-      error: null
-    });
-  } else if (action.type === ADD_USER_TO_ACCOMMODATION_ERROR) {
-    return Object.assign({}, state, {
-      loading: false,
-      error: action.error
-    });
   } else if (action.type === SHOW_ADD_USER_MENU) {
     return Object.assign({}, state, {
       showAccUsers: action.data

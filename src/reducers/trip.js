@@ -61,8 +61,19 @@ export default function reducer(state = initialState, action) {
       })
     });
   } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
+    let acc = action.newUser.result[0];
+    let users = action.newUser.userResult;
+    let accommodations = [...state.closestTrip.accommodations];
+
+    for (var i = 0; i < accommodations.length; i++) {
+      if (accommodations[i].id === acc.id) {
+        accommodations[i].users = users;
+      }
+    }
     return Object.assign({}, state, {
-      closestTrip: Object.assign({}, state.closestTrip, {})
+      closestTrip: Object.assign({}, state.closestTrip, {
+        accommodations: accommodations
+      })
     });
   } else if (action.type === DELETE_ACCOMMODATION) {
     return Object.assign({}, state, {
@@ -90,12 +101,12 @@ export default function reducer(state = initialState, action) {
       error: null
     });
   } else if (action.type === DELETE_BUDGET) {
+    console.log(action, "ACTION");
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
-        budget: Object.assign({}, state.closestTrip.budget, {
-          total: state.closestTrip.budget.total,
-          transactions: state.closestTrip.budget.transactions.filter(budget => budget.id !== action.id)
-        })
+        budget: state.closestTrip.budget.filter(
+          budget => budget.id !== action.id
+        )
       })
     });
   }

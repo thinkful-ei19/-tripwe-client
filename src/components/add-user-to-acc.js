@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   showAddUserMenu,
   addUserToAccommodation
@@ -9,13 +10,12 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import { renderTrip } from "../actions/trips-list";
-import Group from "./group";
+import "bootstrap/dist/css/bootstrap.min.css";
+//import Group from './group';
 
 class AddUserToAccommodation extends Component {
   constructor(props) {
     super(props);
-    this.addUserToAccommodation = this.addUserToAccommodation.bind(this);
     this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false
@@ -28,16 +28,20 @@ class AddUserToAccommodation extends Component {
     }));
   }
 
-  addUserToAccommodation(id) {
-    //  console.log("this user is added " + id);
-  }
-
   render() {
     const accommodationUsers = this.props.accommodationUsers.map(
       (member, index) => {
         return (
           <DropdownItem
-            onClick={() => this.addUserToAccommodation(member.userId)}
+            onClick={() =>
+              this.props.dispatch(
+                addUserToAccommodation({
+                  tripId: this.props.tripId,
+                  accId: this.props.accId,
+                  userId: member.userId
+                })
+              )
+            }
             key={index}
           >
             {member.fullname}
@@ -56,4 +60,11 @@ class AddUserToAccommodation extends Component {
   }
 }
 
-export default AddUserToAccommodation;
+const mapStatetoProps = state => {
+  console.log("tripId" + state.trip.closestTrip.trip.id);
+  return {
+    tripId: state.trip.closestTrip.trip.id
+  };
+};
+
+export default connect(mapStatetoProps)(AddUserToAccommodation);
