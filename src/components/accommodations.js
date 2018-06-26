@@ -3,16 +3,14 @@ import { connect } from "react-redux";
 import {
   showDetails,
   showAccommodationsForm,
-  showAddUserMenu
+  showAddUserMenu,
+  deleteAccommodationById
 } from "../actions/accommodations";
 import AccommodationForm from "./accommodation-form";
 import AddUserToAccommodation from "./add-user-to-acc";
 
 class Accommodations extends React.Component {
   render() {
-    //console.log(this.props.tripId);
-
-    console.log(this.props.group);
     const accommodations = this.props.accommodations.map((obj, index) => {
       const { address, reference, arrival, departure, phone, id } = obj;
       //console.log(obj, "object ");
@@ -32,6 +30,7 @@ class Accommodations extends React.Component {
                 onClick={() => this.props.dispatch(showDetails(id))}
                 className="fas fa-info-circle g-member__info--icon"
               />
+             <button onClick={() => this.props.dispatch(deleteAccommodationById(id))}>X</button>
             </td>
             <td className="accommodations__row--users">
               {users}
