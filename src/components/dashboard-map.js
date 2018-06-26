@@ -8,6 +8,7 @@ const flightPlanCoordinates = [
 ];
 
 const DashboardMap = withScriptjs(withGoogleMap((props) => {
+    console.log(props);
     return (
         <GoogleMap
             defaultZoom={4}
