@@ -71,11 +71,17 @@ class FlightDetailsForm extends Component {
 
     onSubmit(values) {
 
+        console.log(this.state.selectedDepartFromOption);
+
         const completeValues = {
             incomingDepartureTime: this.state.departDepartureDate,
             incomingArrivalTime: this.state.departArrivalDate,
             incomingDepartureAirport: this.state.selectedDepartFromOption.value,
             incomingArrivalAirport: this.state.selectedDepartToOption.value,
+            incomingArrivalLatitude: this.state.selectedDepartToOption.latitude,
+            incomingArrivalLongitude: this.state.selectedDepartToOption.longitude,
+            incomingDepartureLatitude: this.state.selectedDepartFromOption.latitude,
+            incomingDepartureLongitude: this.state.selectedDepartFromOption.longitude,
             incomingFlightNum: values.departFlightNumber,
             outgoingDepartureTime: this.state.returnDepartureDate,
             outgoingArrivalTime: this.state.returnArrivalDate,
@@ -102,7 +108,9 @@ class FlightDetailsForm extends Component {
         const options = this.props.list.map(airport => {
             return {
                 value: airport.airportcode,
-                label: `${airport.airportname} - ${airport.airportcode}`
+                label: `${airport.airportname} - ${airport.airportcode}`,
+                latitude: airport.latitude,
+                longitude: airport.longitude
             };
         });
 
