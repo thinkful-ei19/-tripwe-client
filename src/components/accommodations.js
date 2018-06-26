@@ -68,7 +68,7 @@ class Accommodations extends React.Component {
                     <tr>
                       <td className="accommodations__row--acc">Arrival Date</td>
                       <td>
-                        <Moment format="MM/DD/YYYY">{arrival}</Moment>
+                        <Moment format="MM/DD/YYYY HH:mm:ss">{arrival}</Moment>
                       </td>
                     </tr>
                     <tr>
@@ -76,7 +76,9 @@ class Accommodations extends React.Component {
                         Departure Date
                       </td>
                       <td>
-                        <Moment format="MM/DD/YYYY">{departure}</Moment>
+                        <Moment format="MM/DD/YYYY HH:mm:ss">
+                          {departure}
+                        </Moment>
                       </td>
                     </tr>
                     <tr>
