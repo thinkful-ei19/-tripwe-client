@@ -4,7 +4,6 @@ import Moment from "react-moment";
 import {
   showDetails,
   showAccommodationsForm,
-  showAddUserMenu,
   deleteAccommodationById
 } from "../actions/accommodations";
 import AccommodationForm from "./accommodation-form";
@@ -17,7 +16,7 @@ class Accommodations extends React.Component {
     //console.log(this.props.group);
     const accommodations = this.props.accommodations.map((obj, index) => {
       const { address, reference, arrival, departure, phone, id } = obj;
-      console.log(arrival, "arrival ");
+      //console.log(arrival, "arrival ");
 
       var users = "";
       obj.users &&
@@ -124,13 +123,13 @@ class Accommodations extends React.Component {
 }
 const mapStatetoProps = state => {
   //   console.log("component: ");
-  console.log(state);
+  //console.log(state);
   return {
     showAccDetails: state.accommodation.showAccDetails,
     isAccDetailsHidden: state.accommodation.isAccDetailsHidden,
-    isAccFormHidden: state.accommodation.isAccFormHidden,
-    isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu,
-    showAccUsers: state.accommodation.showAccUsers
+    isAccFormHidden: state.accommodation.isAccFormHidden
+    // isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu,
+    //showAccUsers: state.accommodation.showAccUsers
   };
 };
 

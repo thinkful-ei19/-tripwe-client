@@ -4,66 +4,44 @@ import {
   showAddUserMenu,
   addUserToAccommodation
 } from "../actions/accommodations";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
-// import "bootstrap/dist/css/bootstrap.min.css";
-//import Group from './group';
 
 class AddUserToAccommodation extends Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: false
-    };
-  }
-
-  toggle() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
-  }
-
   render() {
+    let internalMap = {};
     const accommodationUsers = this.props.accommodationUsers.map(
       (member, index) => {
-        return (
-          <DropdownItem
-            onClick={() =>
-              this.props.dispatch(
-                addUserToAccommodation({
-                  tripId: this.props.tripId,
-                  accId: this.props.accId,
-                  userId: member.userId
-                })
-              )
-            }
-            key={index}
-          >
-            {member.fullname}
-          </DropdownItem>
-        );
+        internalMap[index] = {
+          tripId: this.props.tripId,
+          accId: this.props.accId,
+          userId: member.userId
+        };
+        return <option key={index}>{member.fullname}</option>;
       }
     );
     return (
       <div className="accommodationUsers">
-        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <DropdownToggle>+</DropdownToggle>
-          <DropdownMenu>{accommodationUsers}</DropdownMenu>
-        </Dropdown>
+        <select
+          onChange={e =>
+            this.props.dispatch(
+              addUserToAccommodation(internalMap[e.currentTarget.selectedIndex])
+            )
+          }
+          id="accommodationUsers"
+        >
+          {accommodationUsers}
+        </select>
       </div>
     );
   }
 }
 
 const mapStatetoProps = state => {
-  console.log("tripId" + state.trip.closestTrip.trip.id);
+  //console.log("tripId" + state.trip.closestTrip.trip.id);
+  console.log(state);
   return {
-    tripId: state.trip.closestTrip.trip.id
+    tripId: state.trip.closestTrip.trip.id,
+    isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu,
+    showAccUsers: state.accommodation.showAccUsers
   };
 };
 

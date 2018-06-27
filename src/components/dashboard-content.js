@@ -103,7 +103,7 @@ class DashboardContent extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.trip.closestTrip.group, "group");
+  //console.log(state.trip.closestTrip.group, "group");
   const { currentUser } = state.auth;
   return {
     currentUser,
