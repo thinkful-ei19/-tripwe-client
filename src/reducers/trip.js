@@ -127,7 +127,8 @@ export default function reducer(state = initialState, action) {
       closestTrip: Object.assign({}, state.closestTrip, {
         trip: Object.assign({}, state.closestTrip.trip, {
           name: action.data.name || state.closestTrip.trip.name,
-          description: action.data.description || state.closestTrip.trip.description
+          description: action.data.description || state.closestTrip.trip.description,
+          destination: action.data.destination || state.closestTrip.trip.destination
         })
       })
     })

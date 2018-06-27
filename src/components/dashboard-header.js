@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Moment from "react-moment";
 import moment from "moment";
 import EditTripForm from './edit-trip-form';
-import { editTripName } from '../actions/edit-trip';
 
 export default class DashboardHeader extends Component {
   render(){
@@ -34,11 +33,15 @@ export default class DashboardHeader extends Component {
         ) : (
         <p className="d-header__name" onDoubleClick={() => this.props.isNameActive()}>{this.props.dashboardHeader.name}</p>
         )}
-        {this.props.dashboardHeader.destination ? (
-          <p className="d-header__destination">
-            {this.props.dashboardHeader.destination}
-          </p>
-        ) : (
+        {this.props.dashboardHeader.destination ?
+          (this.props.editTripDestination ?
+            (
+              <EditTripForm destination={this.props.dashboardHeader.destination}/>
+            ) : (
+            <p className="d-header__destination" onDoubleClick={() => this.props.isDestinationActive()}>
+              {this.props.dashboardHeader.destination}
+            </p>
+        )) : (
           ""
         )}
       </div>
