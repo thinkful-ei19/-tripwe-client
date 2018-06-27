@@ -6,9 +6,9 @@ import {
   ADD_ACCOMMODATION_REQUEST,
   ADD_ACCOMMODATION_SUCCESS,
   ADD_ACCOMMODATION_ERROR,
-  ADD_USER_TO_ACCOMMODATION_REQUEST,
-  ADD_USER_TO_ACCOMMODATION_SUCCESS,
-  ADD_USER_TO_ACCOMMODATION_ERROR
+  UPDATE_ACCOMMODATION_REQUEST,
+  UPDATE_ACCOMMODATION_SUCCESS,
+  UPDATE_ACCOMMODATION_ERROR
 } from "../actions/accommodations";
 
 const initialState = {
@@ -55,6 +55,18 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === SHOW_ADD_USER_MENU) {
     return Object.assign({}, state, {
       showAccUsers: action.data
+    });
+  } else if (action.type === UPDATE_ACCOMMODATION_REQUEST) {
+    return Object.assign({}, state, { loading: true });
+  } else if (action.type === UPDATE_ACCOMMODATION_SUCCESS) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: null
+    });
+  } else if (action.type === UPDATE_ACCOMMODATION_ERROR) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error
     });
   }
 

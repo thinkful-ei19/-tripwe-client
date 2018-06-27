@@ -11,12 +11,8 @@ import AddUserToAccommodation from "./add-user-to-acc";
 
 class Accommodations extends React.Component {
   render() {
-    //console.log(this.props.accommodationUsers);
-
-    //console.log(this.props.group);
     const accommodations = this.props.accommodations.map((obj, index) => {
       const { address, reference, arrival, departure, phone, id } = obj;
-      //console.log(arrival, "arrival ");
 
       var users = "";
       obj.users &&
@@ -128,8 +124,6 @@ const mapStatetoProps = state => {
     showAccDetails: state.accommodation.showAccDetails,
     isAccDetailsHidden: state.accommodation.isAccDetailsHidden,
     isAccFormHidden: state.accommodation.isAccFormHidden
-    // isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu,
-    //showAccUsers: state.accommodation.showAccUsers
   };
 };
 
