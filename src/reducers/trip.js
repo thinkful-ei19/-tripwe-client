@@ -115,10 +115,8 @@ export default function reducer(state = initialState, action) {
       })
     });
   }
-  // else if (action.type === EDIT_TRIP_SUCCESS) {
-  //     return Object.assign({}, state, {
-  //       closestTrip: action.data.closestTrip
-  //     });
-  // }
+  else if (action.type === EDIT_TRIP_SUCCESS) {
+      console.log(action, "EDIT_TRIP_SUCCESS Action")
+  }
   return state;
 }

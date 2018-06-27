@@ -1,1 +1,36 @@
+import {
+  EDIT_TRIP_DESCRIPTION,
+  EDIT_TRIP_SUCCESS,
+  EDIT_TRIP_ERROR,
+  EDIT_NAME_REQUEST
+} from "../actions/edit-trip";
 
+const initialState = {
+  editDescriptionInput: false,
+  editTripName: false,
+  loading: false,
+};
+
+export default function reducer(state = initialState, action) {
+  if (action.type === EDIT_TRIP_DESCRIPTION) {
+    return Object.assign({}, state, {
+      editDescriptionInput: true
+    });
+  } else if (action.type === EDIT_TRIP_SUCCESS) {
+      return Object.assign({}, state, {
+        editDescriptionInput: false,
+        editTripName: false,
+        loading: false,
+      });
+  } else if (action.type === EDIT_TRIP_ERROR) {
+      return Object.assign({}, state, {
+        error: action.error,
+        loading: false,
+      });
+  } else if (action.type === EDIT_NAME_REQUEST) {
+      return Object.assign({}, state, {
+        editTripName: true
+      });
+  }
+  return state;
+}
