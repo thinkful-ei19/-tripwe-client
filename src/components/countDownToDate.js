@@ -1,11 +1,9 @@
 import React from "react";
 
 export default function CountDownToDate(props) {
-  console.log(props);
 
   function parseDate(d) {
     const mdy = d.split("T");
-    console.log(mdy);
     return new Date(mdy[0]);
   }
   const today = new Date();

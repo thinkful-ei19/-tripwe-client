@@ -8,6 +8,9 @@ import {
   ADD_USER_TO_ACCOMMODATION_SUCCESS,
   DELETE_ACCOMMODATION
 } from "../actions/accommodations";
+import {
+  EDIT_TRIP_SUCCESS
+} from "../actions/edit-trip";
 
 import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
 
@@ -101,14 +104,21 @@ export default function reducer(state = initialState, action) {
       error: null
     });
   } else if (action.type === DELETE_BUDGET) {
-    console.log(action, "ACTION");
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
-        budget: state.closestTrip.budget.filter(
-          budget => budget.id !== action.id
-        )
+        budget: Object.assign({}, state.closestTrip.budget, {
+          total: state.closestTrip.budget.total,
+          transactions: state.closestTrip.budget.transactions.filter(
+            budget => budget.id !== action.id
+          )
+        })
       })
     });
   }
+  // else if (action.type === EDIT_TRIP_SUCCESS) {
+  //     return Object.assign({}, state, {
+  //       closestTrip: action.data.closestTrip
+  //     });
+  // }
   return state;
 }

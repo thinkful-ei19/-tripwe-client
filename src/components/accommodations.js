@@ -4,6 +4,7 @@ import Moment from "react-moment";
 import {
   showDetails,
   showAccommodationsForm,
+  showAddUserMenu,
   deleteAccommodationById
 } from "../actions/accommodations";
 import AccommodationForm from "./accommodation-form";
@@ -11,12 +12,8 @@ import AddUserToAccommodation from "./add-user-to-acc";
 
 class Accommodations extends React.Component {
   render() {
-    //console.log(this.props.accommodationUsers);
-
-    //console.log(this.props.group);
     const accommodations = this.props.accommodations.map((obj, index) => {
       const { address, reference, arrival, departure, phone, id } = obj;
-      //console.log(arrival, "arrival ");
 
       var users = "";
       obj.users &&
@@ -34,11 +31,7 @@ class Accommodations extends React.Component {
                 onClick={() => this.props.dispatch(showDetails(id))}
                 className="fas fa-info-circle g-member__info--icon"
               />
-              <button
-                onClick={() => this.props.dispatch(deleteAccommodationById(id))}
-              >
-                X
-              </button>
+             <button onClick={() => this.props.dispatch(deleteAccommodationById(id))}>X</button>
             </td>
             <td className="accommodations__row--users">
               {users}
@@ -122,14 +115,10 @@ class Accommodations extends React.Component {
   }
 }
 const mapStatetoProps = state => {
-  //   console.log("component: ");
-  //console.log(state);
   return {
     showAccDetails: state.accommodation.showAccDetails,
     isAccDetailsHidden: state.accommodation.isAccDetailsHidden,
     isAccFormHidden: state.accommodation.isAccFormHidden
-    // isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu,
-    //showAccUsers: state.accommodation.showAccUsers
   };
 };
 
