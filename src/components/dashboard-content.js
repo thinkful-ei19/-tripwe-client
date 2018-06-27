@@ -12,6 +12,7 @@ import Description from "./description";
 import Accommodations from "./accommodations";
 import Plans from "./plans";
 import Budget from "./budget";
+import { editTripName, editTripDescription, editTripDestination } from '../actions/edit-trip';
 
 class DashboardContent extends Component {
   componentDidMount() {
@@ -25,7 +26,13 @@ class DashboardContent extends Component {
       <div className="d-content">
         <div className="dashboard-header">
           {this.props.closestTrip.trip ? (
-            <DashboardHeader dashboardHeader={this.props.closestTrip.trip} />
+            <DashboardHeader
+            dashboardHeader={this.props.closestTrip.trip}
+            editTripName={this.props.editTripName}
+            isNameActive={() => this.props.dispatch(editTripName())}
+            editTripDestination={this.props.editTripDestination}
+            isDestinationActive={() => this.props.dispatch(editTripDestination())}
+            />
           ) : (
             ""
           )}
@@ -34,8 +41,12 @@ class DashboardContent extends Component {
           <div className="d-content__main--sub">
             <div className="description">
               {this.props.closestTrip.trip.description ? (
-                  <Description />
-                ) : (
+                <Description
+                  description={this.props.closestTrip.trip.description}
+                  editTripInput={this.props.editTripInput}
+                  isDescriptionActive={() => this.props.dispatch(editTripDescription())}
+                  />
+              ) : (
                   ""
                 )}
             </div>
@@ -105,7 +116,10 @@ const mapStateToProps = state => {
   return {
     currentUser,
     authToken: state.auth.authToken,
-    closestTrip: state.trip.closestTrip
+    closestTrip: state.trip.closestTrip,
+    editTripInput: state.editTrip.editDescriptionInput,
+    editTripName: state.editTrip.editTripName,
+    editTripDestination: state.editTrip.editTripDestination
   };
 };
 export default requiresLogin()(connect(mapStateToProps)(DashboardContent));
