@@ -8,46 +8,49 @@ import { showBudgets, hideBudgets, showExpencesForm } from "../actions/budget";
 ReactModal.setAppElement("#root");
 
 class Budget extends Component {
-  render() {
-    return (
-      <div>
-        <table className="budget__table">
-          <thead className="budget__table--head">
-            <tr className="budget__table--row">
-              <th>Trip Budget</th>
-              {this.props.budgets.total ? (
-                <th>
-                  <span className="budget__table--total">
-                    {this.props.budgets.total}
-                  </span>
-                  <button
-                    className="budget__table--toggle budget__table--details"
-                    onClick={() => {
-                      this.props.showBudgets
-                        ? this.props.dispatch(hideBudgets())
-                        : this.props.dispatch(showBudgets());
-                    }}
-                  >
-                    Details
-                  </button>
-                </th>
-              ) : (
-                <th>
-                  <button
-                    className="budget__table--toggle"
-                    onClick={() => this.props.dispatch(showExpencesForm())}
-                  >
-                    Add Budget
-                  </button>
-                </th>
-              )}
+    render() {
+        return (
+            <div>
+                <table className="budget__table">
+                    <thead className="budget__table--head">
+                        <tr className="budget__table--row">
+                            <th>Trip Budget</th>
+                            {this.props.budgets.total ? (
+                                <th>
+                                    <span className="budget__table--total">
+                                        {this.props.budgets.total}
+                                    </span>
+                                    <button
+                                        className="budget__table--toggle budget__table--details"
+                                        onClick={() => {
+                                            this.props.showBudgets
+                                                ? this.props.dispatch(hideBudgets())
+                                                : this.props.dispatch(showBudgets());
+                                        }}
+                                    >
+                                        Details
+                                    </button>
+                                </th>
+                            ) : (<th>
+                                <button
+                                    className="budget__table--toggle"
+                                    onClick={() => this.props.dispatch(showExpencesForm())}
+                                >
+                                    Add Budget
+                                </button>
+                            </th>)}
 
-            </tr>
-          </thead>
-          {this.props.showBudgets ? (
-            <BudgetList budgets={this.props.budgets} id={this.props.id} />
-          ) : null}
-        </table>
+                        </tr>
+                    </thead>
+                    {this.props.showBudgets ? (
+                        <BudgetList budgets={this.props.budgets} id={this.props.id} />
+                    ) : null}
+                </table>
+
+                <button
+                    className="group__button"
+                    onClick={() => this.props.dispatch(showExpencesForm())}>Add Expense
+                </button>
 
                 {this.props.showExpencesForm ? (
                     <ReactModal

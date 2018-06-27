@@ -8,8 +8,13 @@
         margin-bottom: 2rem;
 
         &--plan {
-            display: flex;
-            justify-content: space-around;
+            // display: flex;
+            // justify-content: space-around;
+            text-align: center;
+            & > * {
+                margin: 0 1rem;
+                vertical-align: middle;
+            }
         }
 
         &--head {
