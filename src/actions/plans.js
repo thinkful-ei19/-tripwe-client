@@ -57,9 +57,7 @@ export const createNewPlan = newPlan => (dispatch, getState) => {
       dispatch(addPlan(newPlan));
       dispatch(showPlanForm(false));
     })
-    .catch(err => {
-      // dispatch(createPlanError(err));
-    });
+    .catch(err => {});
 };
 
 export const deletePlansById = id => (dispatch, getState) => {

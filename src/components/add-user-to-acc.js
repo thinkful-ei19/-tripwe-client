@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  showAddUserMenu,
-  addUserToAccommodation
-} from "../actions/accommodations";
+import { addUserToAccommodation } from "../actions/accommodations";
 
 class AddUserToAccommodation extends Component {
   render() {
