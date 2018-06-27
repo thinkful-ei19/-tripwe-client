@@ -34,10 +34,8 @@ class DashboardContent extends Component {
           <div className="d-content__main--sub">
             <div className="description">
               {this.props.closestTrip.trip.description ? (
-                <Description
-                  description={this.props.closestTrip.trip.description}
-                />
-              ) : (
+                  <Description />
+                ) : (
                   ""
                 )}
             </div>
@@ -102,7 +100,6 @@ class DashboardContent extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.trip.closestTrip.group, "group");
   const { currentUser } = state.auth;
   return {
     currentUser,

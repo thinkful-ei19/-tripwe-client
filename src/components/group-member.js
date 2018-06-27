@@ -2,7 +2,6 @@ import React from "react";
 import Moment from "react-moment";
 
 const GroupMember = props => {
-  console.log(props);
   return (
     <div className="g-member">
       <div className="g-member__main">

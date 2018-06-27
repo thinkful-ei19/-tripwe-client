@@ -8,6 +8,9 @@ import {
   ADD_USER_TO_ACCOMMODATION_SUCCESS,
   DELETE_ACCOMMODATION
 } from "../actions/accommodations";
+import {
+  EDIT_TRIP_SUCCESS
+} from "../actions/edit-trip";
 
 import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
 
@@ -99,5 +102,10 @@ export default function reducer(state = initialState, action) {
       })
     });
   }
+  // else if (action.type === EDIT_TRIP_SUCCESS) {
+  //     return Object.assign({}, state, {
+  //       closestTrip: action.data.closestTrip
+  //     });
+  // }
   return state;
 }
