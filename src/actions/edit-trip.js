@@ -1,5 +1,10 @@
 import { API_BASE_URL } from "../config";
 
+export const EDIT_TRIP_DESCRIPTION = "EDIT_TRIP_DESCRIPTION";
+export const editTripDescription = () => ({
+  type: EDIT_TRIP_DESCRIPTION
+});
+
 export const EDIT_TRIP_SUCCESS = 'EDIT_TRIP_SUCCESS'
 export const editTripSuccess = data => ({
     type: EDIT_TRIP_SUCCESS,
@@ -11,6 +16,11 @@ export const editTripError = error => ({
     type: EDIT_TRIP_ERROR,
     error
 });
+
+export const EDIT_NAME_REQUEST = 'EDIT_NAME_REQUEST'
+export const editTripName = () => ({
+  type: EDIT_NAME_REQUEST
+})
 
 export const editTripById = (data, id) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
@@ -37,11 +47,6 @@ export const editTripById = (data, id) => (dispatch, getState) => {
     }
     return res.json();
   })
-  .then(json => {
-    console.log(json, "see json");
-    dispatch(editTripSuccess(json));
-  })
-  .catch(err => {
-    dispatch(editTripError(err));
-  });
+  .then(json => dispatch(editTripSuccess(json)))
+  .catch(err => dispatch(editTripError(err)));
 };
