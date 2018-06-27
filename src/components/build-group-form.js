@@ -10,10 +10,10 @@ class BuildGroupForm extends Component {
 
     onSubmit(values) {
         let completedValues = {};
-        completedValues.email = [];
+        completedValues.emails = [];
 
         for (let email in values) {
-            completedValues.email.push(values[email]);
+            completedValues.emails.push(values[email]);
         }
         this.props.dispatch(createNewGroup(completedValues));
         // send one object with key of email and value of array of emails.
