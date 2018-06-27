@@ -6,12 +6,11 @@ import { ADD_PLAN, DELETE_PLAN } from "../actions/plans";
 import {
   ADD_ACCOMMODATION_SUCCESS,
   ADD_USER_TO_ACCOMMODATION_SUCCESS,
-  UPDATE_ACCOMMODATION_SUCCESS,
   DELETE_ACCOMMODATION
 } from "../actions/accommodations";
-import {
-  EDIT_TRIP_SUCCESS
-} from "../actions/edit-trip";
+import { UPDATE_ACCOMMODATION_SUCCESS } from "../actions/edit-accommodation";
+
+import { EDIT_TRIP_SUCCESS } from "../actions/edit-trip";
 
 import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
 
@@ -65,11 +64,28 @@ export default function reducer(state = initialState, action) {
       })
     });
   } else if (action.type === UPDATE_ACCOMMODATION_SUCCESS) {
-    return Object.assign({}, state, {
-      closestTrip: Object.assign({}, state.closestTrip, {
-        accommodations: [...state.closestTrip.accommodations]
-      })
-    });
+    // console.log(action, "actionnnn");
+    // return Object.assign({}, state, {
+    //   closestTrip: Object.assign({}, state.closestTrip, {
+    //     accommodations: Object.assign(
+    //       {},
+    //       state.closestTrip.accommodations.map(accommodation => {
+    //         if (accommodation.id === action.newAccommodation.accommodationId) {
+    //           accommodation = {
+    //             name: action.newAccommodation.updatedAccommodation.name,
+    //             address: action.newAccommodation.updatedAccommodation.address,
+    //             reference:
+    //               action.newAccommodation.updatedAccommodation.reference,
+    //             arrival: action.newAccommodation.updatedAccommodation.arrival,
+    //             departure:
+    //               action.newAccommodation.updatedAccommodation.departure,
+    //             phone: action.newAccommodation.updatedAccommodation.phone
+    //           };
+    //         }
+    //       })
+    //     )
+    //   })
+    // });
   } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
     let acc = action.newUser.result[0];
     let users = action.newUser.userResult;
