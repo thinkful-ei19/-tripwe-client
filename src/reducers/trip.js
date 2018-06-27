@@ -6,6 +6,7 @@ import { ADD_PLAN, DELETE_PLAN } from "../actions/plans";
 import {
   ADD_ACCOMMODATION_SUCCESS,
   ADD_USER_TO_ACCOMMODATION_SUCCESS,
+  UPDATE_ACCOMMODATION_SUCCESS,
   DELETE_ACCOMMODATION
 } from "../actions/accommodations";
 import {
@@ -61,6 +62,12 @@ export default function reducer(state = initialState, action) {
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         accommodations: [...state.closestTrip.accommodations, acc]
+      })
+    });
+  } else if (action.type === UPDATE_ACCOMMODATION_SUCCESS) {
+    return Object.assign({}, state, {
+      closestTrip: Object.assign({}, state.closestTrip, {
+        accommodations: [...state.closestTrip.accommodations]
       })
     });
   } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
