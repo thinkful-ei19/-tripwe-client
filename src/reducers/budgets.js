@@ -44,7 +44,6 @@ export default function reducer(state = initialState, action) {
         loading: true
       });
   } else if (action.type === ADD_BUDGET_SUCCESS) {
-    console.log(action)
       return Object.assign({}, state, {
           loading: false,
           showNewBudgetForm: false,
