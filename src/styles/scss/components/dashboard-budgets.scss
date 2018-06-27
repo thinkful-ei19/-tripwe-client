@@ -28,8 +28,20 @@
             color: $color-black;
         }
 
+        &--delete {
+            background: none;
+            border: none;
+            color: $color-primary-red;
+            font-size: 2rem;
+        }
+
         &--unit {
             text-align: center;
+            // padding: 1rem 0;
+            & > * {
+                margin: 0 1rem;
+                vertical-align: middle;
+            }
         }
     }
 }

@@ -353,8 +353,16 @@ legend {
       color: #fff; }
   .accommodations__row--acc {
     text-align: center; }
+    .accommodations__row--acc > * {
+      vertical-align: middle;
+      margin: 0 1rem; }
   .accommodations__row--users {
     text-align: center; }
+  .accommodations__row--delete {
+    background: none;
+    border: none;
+    color: #985D43;
+    font-size: 2rem; }
 
 .budget {
   margin: 4rem 5rem; }
@@ -375,8 +383,16 @@ legend {
       background: none;
       border: none;
       color: #000; }
+    .budget__table--delete {
+      background: none;
+      border: none;
+      color: #985D43;
+      font-size: 2rem; }
     .budget__table--unit {
       text-align: center; }
+      .budget__table--unit > * {
+        margin: 0 1rem;
+        vertical-align: middle; }
 
 .plans {
   margin: 4rem 5rem; }
@@ -386,8 +402,10 @@ legend {
     width: 100%;
     margin-bottom: 2rem; }
     .plans__table--plan {
-      display: flex;
-      justify-content: space-around; }
+      text-align: center; }
+      .plans__table--plan > * {
+        margin: 0 1rem;
+        vertical-align: middle; }
     .plans__table--head {
       background-color: #9DA46E;
       color: #fff; }
