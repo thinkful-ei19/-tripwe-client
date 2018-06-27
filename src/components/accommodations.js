@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Moment from "react-moment";
+import ReactModal from "react-modal";
 import {
   showDetails,
   showAccommodationsForm,
@@ -31,6 +32,7 @@ class Accommodations extends React.Component {
                 className="fas fa-info-circle g-member__info--icon"
               />
               <button
+                className="accommodations__row--delete"
                 onClick={() => this.props.dispatch(deleteAccommodationById(id))}
               >
                 X
@@ -103,23 +105,28 @@ class Accommodations extends React.Component {
           {accommodations}
         </table>
         <button
+          className="group__button"
           onClick={() => this.props.dispatch(showAccommodationsForm(true))}
         >
           Add Accommodations
         </button>
         {this.props.isAccFormHidden ? (
-          <AccommodationForm
-            newAccommodation={this.props.accommodations}
-            id={this.props.tripId}
-          />
+          <ReactModal
+            isOpen={true}
+            className="form-modal"
+            overlayClassName="form-modal__overlay"
+          >
+            <AccommodationForm
+              newAccommodation={this.props.accommodations}
+              id={this.props.tripId}
+            />
+          </ReactModal>
         ) : null}
       </div>
     );
   }
 }
 const mapStatetoProps = state => {
-  //   console.log("component: ");
-  //console.log(state);
   return {
     showAccDetails: state.accommodation.showAccDetails,
     isAccDetailsHidden: state.accommodation.isAccDetailsHidden,

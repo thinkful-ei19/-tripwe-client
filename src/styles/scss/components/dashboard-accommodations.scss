@@ -13,9 +13,20 @@
     &__row {
         &--acc {
             text-align: center;
+            & > * {
+                vertical-align: middle;
+                margin: 0 1rem;
+            }
         }
         &--users {
             text-align: center;
+        }
+
+        &--delete {
+            background: none;
+            border: none;
+            color: $color-primary-red;
+            font-size: 2rem;
         }
     }
 }
