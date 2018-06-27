@@ -17,6 +17,13 @@ class EditTripForm extends Component {
     this.props.dispatch(editTripById(newObj, this.props.id))
   }
 
+  handleDestinationSubmit(e){
+    const newObj = {
+      destination: e.target.destinationInput.value
+    }
+    this.props.dispatch(editTripById(newObj, this.props.id))
+  }
+
     render() {
     return (
       <div>
@@ -50,6 +57,21 @@ class EditTripForm extends Component {
        <button type="submit">Save</button>
        </form>
         : null }
+      {this.props.editTrip.editTripDestination ?
+        <form className="d-header__destination"
+              onSubmit={(e)=>{
+              e.preventDefault();
+              this.handleDestinationSubmit(e)}}>
+            <input
+              type="text"
+              defaultValue={this.props.destination}
+              name="destinationInput"
+              ref={input => (this.input = input)}
+              required
+            />
+        <button type="submit">Save</button>
+        </form>
+         : null }
       </div>
     );
   }

@@ -22,6 +22,11 @@ export const editTripName = () => ({
   type: EDIT_NAME_REQUEST
 })
 
+export const EDIT_TRIP_DESTINATION = "EDIT_TRIP_DESTINATION";
+export const editTripDestination = () => ({
+  type: EDIT_TRIP_DESTINATION
+});
+
 export const editTripById = (data, id) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/trips/${id}`, {
