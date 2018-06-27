@@ -1,25 +1,41 @@
 import React, { Component } from "react";
 import { Field, reduxForm, focus } from "redux-form";
 import Input from "./input";
+import moment from "moment";
+import DatePicker from "react-datepicker";
 import { required, nonEmpty } from "../validators";
 import { addAccommodation } from "../actions/accommodations";
 
 class AccommodationsFrom extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      arrivalDate: this.props.arrivalDate || moment().format(),
+      departureDate: this.props.departureDate || moment().format()
+    };
+  }
+
+  handleArrivalDateChange(date) {
+    this.setState({ arrivalDate: date.utc().format() });
+  }
+
+  handleDepartureDateChange(date) {
+    this.setState({ departureDate: date.utc().format() });
+  }
   onSubmit(values) {
-    // console.log(values);
+    console.log(values);
     const newAccommodation = {
       name: values.hotel,
       address: values.address,
       reference: values.reference,
-      arrival: values.accArrivalDate,
-      departure: values.accDepartureDate,
+      arrival: this.state.arrivalDate,
+      departure: this.state.departureDate,
       phone: values.phoneNumber,
       id: this.props.id
     };
     this.props.dispatch(addAccommodation(newAccommodation));
     //console.log(this.props);
   }
-  // onSubmit(values) {}
 
   render() {
     // console.log(this.props);
@@ -50,19 +66,39 @@ class AccommodationsFrom extends Component {
             id="reference"
           />
           <label htmlFor="accArrivalDate">Arrival Date</label>
-          <Field
+          <DatePicker
+            name="accArrivalDate"
+            selected={moment(this.state.arrivalDate)}
+            onChange={this.handleArrivalDateChange.bind(this)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            dateFormat="LLL"
+            placeholderText="Click to select a date"
+          />
+          {/* <Field
             component={Input}
             type="text"
             name="accArrivalDate"
             id="accArrivalDate"
-          />
+          /> */}
           <label htmlFor="accDepartureDate">Departure Date</label>
-          <Field
+          <DatePicker
+            name="accDepartureDate"
+            selected={moment(this.state.departureDate)}
+            onChange={this.handleDepartureDateChange.bind(this)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            dateFormat="LLL"
+            placeholderText="Click to select a date"
+          />
+          {/* <Field
             component={Input}
             type="text"
             name="accDepartureDate"
             id="accDepartureDate"
-          />
+          /> */}
           <label htmlFor="phoneNumber">Phone Number</label>
           <Field
             component={Input}

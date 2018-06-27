@@ -10,11 +10,11 @@ const GroupMember = props => {
           <p className="g-member__name">{props.fullname}</p>
           <p className="g-member__flight-info">
             <span className="g-member__dep--airport">
-              {props.incomingdepartureairport ? props.incomingdepartureairport.value : ''}
+              {props.incomingdepartureairport}
             </span>
             <i className="fas fa-arrow-right g-member__dep--icon" />
             <span className="g-member__arr--airport">
-              {props.incomingarrivalairport ? props.incomingarrivalairport.value : ''}
+              {props.incomingarrivalairport}
             </span>
             <span className="g-member__flight-num">
               Flight {props.incomingflightnum}

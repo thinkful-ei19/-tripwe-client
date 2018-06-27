@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from "react-redux";
 import Input from './input';
-import { editDescriptionRequest, editTripById } from "../actions/edit-trip";
+import { editTripById } from "../actions/edit-trip";
 
 class Description extends Component {
   constructor(props) {

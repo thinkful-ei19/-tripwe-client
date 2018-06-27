@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Moment from "react-moment";
 import {
   showDetails,
   showAccommodationsForm,
@@ -13,12 +14,12 @@ class Accommodations extends React.Component {
   render() {
     const accommodations = this.props.accommodations.map((obj, index) => {
       const { address, reference, arrival, departure, phone, id } = obj;
-      //console.log(obj, "object ");
 
       var users = "";
-      obj.users.forEach(function(user) {
-        users += user.fullname + ",";
-      });
+      obj.users &&
+        obj.users.forEach(function(user) {
+          users += user.fullname + ",";
+        });
       users = users && users.substring(0, users.length - 1);
 
       return (
@@ -34,7 +35,10 @@ class Accommodations extends React.Component {
             </td>
             <td className="accommodations__row--users">
               {users}
-              <AddUserToAccommodation accommodationUsers={this.props.group} />
+              <AddUserToAccommodation
+                accId={id}
+                accommodationUsers={this.props.group}
+              />
             </td>
           </tr>
           <tr>
@@ -55,13 +59,19 @@ class Accommodations extends React.Component {
                     </tr>
                     <tr>
                       <td className="accommodations__row--acc">Arrival Date</td>
-                      <td>{arrival}</td>
+                      <td>
+                        <Moment format="MM/DD/YYYY HH:mm:ss">{arrival}</Moment>
+                      </td>
                     </tr>
                     <tr>
                       <td className="accommodations__row--acc">
                         Departure Date
                       </td>
-                      <td>{departure}</td>
+                      <td>
+                        <Moment format="MM/DD/YYYY HH:mm:ss">
+                          {departure}
+                        </Moment>
+                      </td>
                     </tr>
                     <tr>
                       <td className="accommodations__row--acc">
@@ -105,14 +115,10 @@ class Accommodations extends React.Component {
   }
 }
 const mapStatetoProps = state => {
-  //   console.log("component: ");
-  console.log(state);
   return {
     showAccDetails: state.accommodation.showAccDetails,
     isAccDetailsHidden: state.accommodation.isAccDetailsHidden,
-    isAccFormHidden: state.accommodation.isAccFormHidden,
-    isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu,
-    showAccUsers: state.accommodation.showAccUsers
+    isAccFormHidden: state.accommodation.isAccFormHidden
   };
 };
 
