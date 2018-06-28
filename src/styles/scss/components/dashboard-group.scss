@@ -1,7 +1,12 @@
 .group {
-    flex: 4;
+    flex: 1;
     margin-right: 3rem;
     margin-top: 2rem;
+    @include respond(tab-land) {
+        margin: 2rem 2.5rem;
+        order: 1;
+
+    }
     &__list {
         list-style: none;
         &--item {

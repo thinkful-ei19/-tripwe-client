@@ -259,16 +259,28 @@ legend {
 .dashboard {
   display: flex;
   position: relative; }
+  @media (max-width: 60em) {
+    .dashboard {
+      flex-direction: column; } }
 
 .d-content {
   width: 100%;
   margin-left: 26rem;
   margin-bottom: 5rem; }
+  @media (max-width: 60em) {
+    .d-content {
+      margin: 0; } }
   .d-content__main {
     display: flex; }
+    @media (max-width: 85.375em) {
+      .d-content__main {
+        flex-direction: column; } }
     .d-content__main--sub {
-      flex: 4;
+      flex: 1;
       justify-content: center; }
+      @media (max-width: 85.375em) {
+        .d-content__main--sub {
+          order: 2; } }
 
 .d-nav {
   background-color: #222;
@@ -277,6 +289,15 @@ legend {
   position: fixed;
   top: 0;
   left: 0; }
+  @media (max-width: 60em) {
+    .d-nav {
+      width: 100%;
+      display: flex;
+      height: 100%;
+      position: relative;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 1rem; } }
   .d-nav__top {
     display: flex;
     align-items: center;
@@ -285,6 +306,9 @@ legend {
     margin-left: 2.5rem;
     height: 5rem;
     width: 5rem; }
+    @media (max-width: 60em) {
+      .d-nav__logo {
+        margin-right: 2rem; } }
   .d-nav__logout--button {
     margin-right: 2.5rem;
     color: #efefef;
@@ -297,6 +321,12 @@ legend {
     flex-direction: column;
     justify-content: center;
     list-style: none; }
+    @media (max-width: 60em) {
+      .d-nav__list {
+        flex-direction: row;
+        margin: 0; }
+        .d-nav__list > * {
+          margin: 0 1rem; } }
     .d-nav__list--item {
       margin-bottom: 1rem; }
     .d-nav__list--button {
@@ -318,7 +348,6 @@ legend {
   height: 30rem;
   background-size: cover;
   background-position: center center;
-  background-attachment: fixed;
   color: #fff;
   position: relative; }
   .d-header__countdownDate {
@@ -440,9 +469,13 @@ legend {
       cursor: pointer; }
 
 .group {
-  flex: 4;
+  flex: 1;
   margin-right: 3rem;
   margin-top: 2rem; }
+  @media (max-width: 85.375em) {
+    .group {
+      margin: 2rem 2.5rem;
+      order: 1; } }
   .group__list {
     list-style: none; }
   .group__button {
