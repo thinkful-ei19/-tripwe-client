@@ -103,9 +103,7 @@ class Accommodations extends React.Component {
                             this.props.dispatch(updateAccommodationRequest())
                           }
                         >
-                          <Moment format="MM/DD/YYYY HH:mm:ss">
-                            {arrival}
-                          </Moment>
+                          <Moment format="MM/DD/YYYY HH:mm">{arrival}</Moment>
                         </td>
                       </tr>
                       <tr>
@@ -117,9 +115,7 @@ class Accommodations extends React.Component {
                             this.props.dispatch(updateAccommodationRequest())
                           }
                         >
-                          <Moment format="MM/DD/YYYY HH:mm:ss">
-                            {departure}
-                          </Moment>
+                          <Moment format="MM/DD/YYYY HH:mm">{departure}</Moment>
                         </td>
                       </tr>
                       <tr>
