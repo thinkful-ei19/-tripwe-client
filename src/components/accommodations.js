@@ -9,6 +9,8 @@ import {
 } from "../actions/accommodations";
 import AccommodationForm from "./accommodation-form";
 import AddUserToAccommodation from "./add-user-to-acc";
+import EditAccommodation from "./edit-accommodation-form";
+import { updateAccommodationRequest } from "../actions/edit-accommodation";
 
 class Accommodations extends React.Component {
   render() {
@@ -25,8 +27,14 @@ class Accommodations extends React.Component {
       return (
         <tbody key={id}>
           <tr className="accommodations__row" key={index}>
-            <td className="accommodations__row--acc">
+            <td
+              onDoubleClick={() =>
+                this.props.dispatch(updateAccommodationRequest())
+              }
+              className="accommodations__row--acc"
+            >
               {obj.name}
+
               <i
                 onClick={() => this.props.dispatch(showDetails(id))}
                 className="fas fa-info-circle g-member__info--icon"
@@ -38,6 +46,7 @@ class Accommodations extends React.Component {
                 X
               </button>
             </td>
+
             <td className="accommodations__row--users">
               {users}
               <AddUserToAccommodation
@@ -50,42 +59,80 @@ class Accommodations extends React.Component {
             <td colSpan="2">
               {this.props.showAccDetails === id &&
               !this.props.isAccDetailsHidden ? (
-                <table className="accommodations__table">
-                  <tbody>
-                    <tr>
-                      <td className="accommodations__row--acc">Address</td>
-                      <td>{address}</td>
-                    </tr>
-                    <tr>
-                      <td className="accommodations__row--acc">
-                        Booking Number
-                      </td>
-                      <td>{reference}</td>
-                    </tr>
-                    <tr>
-                      <td className="accommodations__row--acc">Arrival Date</td>
-                      <td>
-                        <Moment format="MM/DD/YYYY HH:mm:ss">{arrival}</Moment>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="accommodations__row--acc">
-                        Departure Date
-                      </td>
-                      <td>
-                        <Moment format="MM/DD/YYYY HH:mm:ss">
-                          {departure}
-                        </Moment>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="accommodations__row--acc">
-                        Contact Number
-                      </td>
-                      <td>{phone}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                this.props.editAccommodationForm ? (
+                  <EditAccommodation
+                    name={obj.name}
+                    address={address}
+                    reference={reference}
+                    arrival={arrival}
+                    departure={departure}
+                    phone={phone}
+                    id={id}
+                  />
+                ) : (
+                  <table className="accommodations__table">
+                    <tbody>
+                      <tr>
+                        <td className="accommodations__row--acc">Address</td>
+                        <td
+                          onDoubleClick={() =>
+                            this.props.dispatch(updateAccommodationRequest())
+                          }
+                        >
+                          {address}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="accommodations__row--acc">
+                          Booking Number
+                        </td>
+                        <td
+                          onDoubleClick={() =>
+                            this.props.dispatch(updateAccommodationRequest())
+                          }
+                        >
+                          {reference}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="accommodations__row--acc">
+                          Arrival Date
+                        </td>
+                        <td
+                          onDoubleClick={() =>
+                            this.props.dispatch(updateAccommodationRequest())
+                          }
+                        >
+                          <Moment format="MM/DD/YYYY HH:mm">{arrival}</Moment>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="accommodations__row--acc">
+                          Departure Date
+                        </td>
+                        <td
+                          onDoubleClick={() =>
+                            this.props.dispatch(updateAccommodationRequest())
+                          }
+                        >
+                          <Moment format="MM/DD/YYYY HH:mm">{departure}</Moment>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="accommodations__row--acc">
+                          Contact Number
+                        </td>
+                        <td
+                          onDoubleClick={() =>
+                            this.props.dispatch(updateAccommodationRequest())
+                          }
+                        >
+                          {phone}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                )
               ) : null}
             </td>
           </tr>
@@ -127,11 +174,13 @@ class Accommodations extends React.Component {
   }
 }
 const mapStatetoProps = state => {
+  //console.log(state);
   return {
     showAccDetails: state.accommodation.showAccDetails,
     isAccDetailsHidden: state.accommodation.isAccDetailsHidden,
-    isAccFormHidden: state.accommodation.isAccFormHidden
+    isAccFormHidden: state.accommodation.isAccFormHidden,
+    editAccommodationForm: state.editAccommodation.editAccommodationForm,
+    editAccommodationName: state.editAccommodation.editAccommodationName
   };
 };
-
 export default connect(mapStatetoProps)(Accommodations);

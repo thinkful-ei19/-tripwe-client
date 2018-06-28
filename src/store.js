@@ -12,7 +12,7 @@ import searchAirportsReducer from "./reducers/searchAirports";
 import budgetReducer from "./reducers/budgets";
 import planReducer from "./reducers/plans";
 import editTripReducer from "./reducers/edit-trip";
-
+import editAccommodationReducer from "./reducers/edit-accommodation";
 import { setAuthToken, refreshAuthToken } from "./actions/auth";
 
 const store = createStore(
@@ -27,7 +27,8 @@ const store = createStore(
     accommodation: accommodationReducer,
     searchAirports: searchAirportsReducer,
     budget: budgetReducer,
-    editTrip: editTripReducer
+    editTrip: editTripReducer,
+    editAccommodation: editAccommodationReducer
   }),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
