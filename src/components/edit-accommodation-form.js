@@ -38,7 +38,7 @@ class EditAccommodation extends React.Component {
 
     return (
       <form
-        className="accommodations__table"
+        className="accommodations__table edit-acc"
         onSubmit={e => {
           e.preventDefault();
           this.handleSubmitVal(e);
@@ -103,7 +103,7 @@ class EditAccommodation extends React.Component {
           }}
           required
         />
-        <button type="submit">Save</button>
+        <button className="edit-button" type="submit">Save</button>
       </form>
     );
   }

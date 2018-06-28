@@ -404,6 +404,13 @@ legend {
     color: #985D43;
     font-size: 2rem; }
 
+.edit-acc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1rem; }
+
 .budget {
   margin: 4rem 5rem; }
   .budget__table {
@@ -509,6 +516,8 @@ legend {
       display: flex;
       flex-direction: column;
       margin-left: 1rem; }
+      .g-member__main--sub-details {
+        margin-top: 3rem; }
   .g-member__flight-info > * {
     margin: 0 0.5rem; }
   .g-member__name {
