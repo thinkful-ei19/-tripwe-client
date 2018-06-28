@@ -114,7 +114,6 @@ class DashboardContent extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log()
   const { currentUser } = state.auth;
   return {
     currentUser,

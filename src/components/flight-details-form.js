@@ -67,7 +67,6 @@ class FlightDetailsForm extends Component {
   }
 
   onSubmit(values) {
-    console.log(this.state.selectedDepartFromOption);
 
     const completeValues = {
       incomingDepartureTime: this.state.departDepartureDate,

@@ -17,7 +17,12 @@ import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
 import { RENDER_TRIP_SUCCESS } from "../actions/trips-list";
 
 const initialState = {
-  closestTrip: null,
+  closestTrip: {
+    group: [],
+    trip: {
+      description: ""
+    }
+  },
   upcomingTrips: "",
   previousTrips: "",
   error: null
@@ -118,10 +123,11 @@ export default function reducer(state = initialState, action) {
       error: null
     });
   } else if (action.type === DELETE_BUDGET) {
+    const total = state.closestTrip.budget.total - (action.amount)
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         budget: Object.assign({}, state.closestTrip.budget, {
-          total: state.closestTrip.budget.total,
+          total,
           transactions: state.closestTrip.budget.transactions.filter(
             budget => budget.id !== action.id
           )
