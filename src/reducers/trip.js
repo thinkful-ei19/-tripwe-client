@@ -6,12 +6,11 @@ import { ADD_PLAN, DELETE_PLAN } from "../actions/plans";
 import {
   ADD_ACCOMMODATION_SUCCESS,
   ADD_USER_TO_ACCOMMODATION_SUCCESS,
-  UPDATE_ACCOMMODATION_SUCCESS,
   DELETE_ACCOMMODATION
 } from "../actions/accommodations";
-import {
-  EDIT_TRIP_SUCCESS
-} from "../actions/edit-trip";
+import { UPDATE_ACCOMMODATION_SUCCESS } from "../actions/edit-accommodation";
+
+import { EDIT_TRIP_SUCCESS } from "../actions/edit-trip";
 
 import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
 
@@ -55,8 +54,8 @@ export default function reducer(state = initialState, action) {
       })
     });
   } else if (action.type === ADD_ACCOMMODATION_SUCCESS) {
-    let acc = action.newAccommodation.result[0];
-    let user = action.newAccommodation.userResult;
+    var acc = action.newAccommodation.result[0];
+    var user = action.newAccommodation.userResult;
     acc.users = user;
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
@@ -64,15 +63,32 @@ export default function reducer(state = initialState, action) {
       })
     });
   } else if (action.type === UPDATE_ACCOMMODATION_SUCCESS) {
+    console.log(action, "actionnnn");
+    var acc = action.newAccommodation;
+    var accommodations = [...state.closestTrip.accommodations];
+
+    for (var i = 0; i < accommodations.length; i++) {
+      if (accommodations[i].id == acc.accommodationId) {
+        var users = [...accommodations[i].users];
+        var id = accommodations[i].id;
+        var tripId = accommodations[i].trip_id;
+        accommodations[i] = acc.updatedAccommodation;
+        accommodations[i].users = users;
+        accommodations[i].id = id;
+        accommodations[i].trip_id = tripId;
+        //
+      }
+    }
+
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
-        accommodations: [...state.closestTrip.accommodations]
+        accommodations: accommodations
       })
     });
   } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
-    let acc = action.newUser.result[0];
-    let users = action.newUser.userResult;
-    let accommodations = [...state.closestTrip.accommodations];
+    var acc = action.newUser.result[0];
+    var users = action.newUser.userResult;
+    var accommodations = [...state.closestTrip.accommodations];
 
     for (var i = 0; i < accommodations.length; i++) {
       if (accommodations[i].id === acc.id) {
@@ -120,18 +136,19 @@ export default function reducer(state = initialState, action) {
         })
       })
     });
-  }
-  else if (action.type === EDIT_TRIP_SUCCESS) {
-    console.log(action, "ACTIOON")
+  } else if (action.type === EDIT_TRIP_SUCCESS) {
+    console.log(action, "ACTIOON");
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         trip: Object.assign({}, state.closestTrip.trip, {
           name: action.data.name || state.closestTrip.trip.name,
-          description: action.data.description || state.closestTrip.trip.description,
-          destination: action.data.destination || state.closestTrip.trip.destination
+          description:
+            action.data.description || state.closestTrip.trip.description,
+          destination:
+            action.data.destination || state.closestTrip.trip.destination
         })
       })
-    })
+    });
   }
   return state;
 }

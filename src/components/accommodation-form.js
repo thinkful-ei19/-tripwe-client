@@ -33,7 +33,7 @@ class AccommodationsFrom extends Component {
       id: this.props.id
     };
     this.props.dispatch(addAccommodation(newAccommodation));
-    //console.log(this.props);
+    console.log(this.props.arrivalDate);
   }
 
   render() {
@@ -75,12 +75,7 @@ class AccommodationsFrom extends Component {
             dateFormat="LLL"
             placeholderText="Click to select a date"
           />
-          {/* <Field
-            component={Input}
-            type="text"
-            name="accArrivalDate"
-            id="accArrivalDate"
-          /> */}
+
           <label htmlFor="accDepartureDate">Departure Date</label>
           <DatePicker
             name="accDepartureDate"
@@ -92,12 +87,7 @@ class AccommodationsFrom extends Component {
             dateFormat="LLL"
             placeholderText="Click to select a date"
           />
-          {/* <Field
-            component={Input}
-            type="text"
-            name="accDepartureDate"
-            id="accDepartureDate"
-          /> */}
+
           <label htmlFor="phoneNumber">Phone Number</label>
           <Field
             component={Input}
