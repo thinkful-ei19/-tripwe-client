@@ -19,7 +19,6 @@ class BudgetList extends Component {
         <div>
           <tbody>
               {budgets}
-              <button onClick={() => this.props.dispatch(showExpencesForm())}>Add Expense</button>
           </tbody>
           {
             this.props.showExpencesForm ?

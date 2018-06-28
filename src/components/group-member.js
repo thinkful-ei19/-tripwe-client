@@ -41,12 +41,15 @@ class GroupMember extends Component {
                 </Moment>
               </span>
               ) : null }
+            {this.props.incomingarrivaltime ?
+            (
             <span className="g-member__arr--time">
               arriving on &ensp;
               <Moment format="MM/DD/YYYY HH:mm">
                 {this.props.incomingarrivaltime}
               </Moment>
             </span>
+          ): null }
           </p>
         </div>
       </div>
