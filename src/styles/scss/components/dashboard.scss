@@ -1,4 +1,7 @@
 .dashboard {
     display: flex;
     position: relative;
+    @include respond(tab-port) {
+        flex-direction: column;
+    }
 }

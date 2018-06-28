@@ -2,11 +2,20 @@
     width: 100%;
     margin-left: 26rem;
     margin-bottom: 5rem;
+    @include respond(tab-port) {
+        margin: 0;
+    }
     &__main {
         display: flex;
+        @include respond(tab-land) {
+            flex-direction: column;
+        }
         &--sub {
-            flex: 4;
+            flex: 1;
             justify-content: center;
+            @include respond(tab-land) {
+                order: 2;
+            }
         }
     }
 }
