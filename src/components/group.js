@@ -5,17 +5,20 @@ import GroupMember from './group-member';
 const Group = (props) => {
 
     const groupMemberList = props.group.map((member, index) => {
+      console.log(member, "member")
         return (<li className="group__list--item" key={index}>
             <GroupMember
                 fullname={member.fullname}
                 incomingdepartureairport={member.incomingdepartureairport}
                 incomingarrivalairport={member.incomingarrivalairport}
                 incomingarrivaltime={member.incomingarrivaltime}
+                incomingdeparturetime={member.incomingdeparturetime}
                 incomingflightnum={member.incomingflightnum}
-            // incomingdeparturelatitude={member.incomingdeparturelatitude}
-            // incomingdeparturelongitude={member.incomingdeparturelongitude}
-            // incomingarrivallatitude={member.incomingarrivallatitude}
-            // incomingarrivallongitude={member.incomingarrivallongitude}
+                outgoingdeparturetime={member.outgoingdeparturetime}
+                outgoingarrivaltime={member.outgoingarrivaltime}
+                outgoingdepartureairport={member.outgoingdepartureairport}
+                outgoingarrivalairport={member.outgoingarrivalairport}
+                outgoingflightnum={member.outgoingflightnum}
             />
         </li>);
     });

@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, focus } from 'redux-form';
-import { connect } from "react-redux";
-import Input from './input';
-import { editTripDescription } from '../actions/edit-trip';
 import EditTripForm from './edit-trip-form'
 
 export default class Description extends Component {

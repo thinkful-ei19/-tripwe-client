@@ -63,7 +63,6 @@ export default function reducer(state = initialState, action) {
       })
     });
   } else if (action.type === UPDATE_ACCOMMODATION_SUCCESS) {
-    console.log(action, "actionnnn");
     var acc = action.newAccommodation;
     var accommodations = [...state.closestTrip.accommodations];
 
@@ -76,10 +75,8 @@ export default function reducer(state = initialState, action) {
         accommodations[i].users = users;
         accommodations[i].id = id;
         accommodations[i].trip_id = tripId;
-        //
       }
     }
-
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         accommodations: accommodations
@@ -126,10 +123,11 @@ export default function reducer(state = initialState, action) {
       error: null
     });
   } else if (action.type === DELETE_BUDGET) {
+    const total = state.closestTrip.budget.total - (action.amount)
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         budget: Object.assign({}, state.closestTrip.budget, {
-          total: state.closestTrip.budget.total,
+          total,
           transactions: state.closestTrip.budget.transactions.filter(
             budget => budget.id !== action.id
           )
@@ -137,15 +135,13 @@ export default function reducer(state = initialState, action) {
       })
     });
   } else if (action.type === EDIT_TRIP_SUCCESS) {
-    console.log(action, "ACTIOON");
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         trip: Object.assign({}, state.closestTrip.trip, {
           name: action.data.name || state.closestTrip.trip.name,
-          description:
-            action.data.description || state.closestTrip.trip.description,
-          destination:
-            action.data.destination || state.closestTrip.trip.destination
+          description: action.data.description || state.closestTrip.trip.description,
+          destination: action.data.destination || state.closestTrip.trip.destination,
+          arrival: action.data.arrival || state.closestTrip.trip.arrival
         })
       })
     });

@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { editTripById } from '../actions/edit-trip';
+import moment from "moment";
+import DatePicker from "react-datepicker";
 
 class EditTripForm extends Component {
-  handleDescriptionSubmit(e) {
+  constructor(props) {
+    super(props);
+    this.state = {
+    arrivalTime: this.props.time || moment().format()
+    };
+  }
+
+  handleArrivalTimeChange(date){
+    this.setState({ arrivalTime: date.utc().format() })
+    this.handleArrivalSubmit(date)
+  }
+
+  handleDescriptionSubmit(e){
     const newObj = {
       description: e.target.descriptionInput.value
     }
@@ -24,7 +38,14 @@ class EditTripForm extends Component {
     this.props.dispatch(editTripById(newObj, this.props.id))
   }
 
-  render() {
+  handleArrivalSubmit(date){
+    const newObj = {
+      arrival: date
+    }
+    this.props.dispatch(editTripById(newObj, this.props.id))
+  }
+
+    render() {
     return (
       <div>
         {this.props.editTrip.editDescriptionInput ?
@@ -72,9 +93,18 @@ class EditTripForm extends Component {
               ref={input => (this.input = input)}
               required
             />
-            <button className="edit-button" type="submit">Save</button>
-          </form>
-          : null}
+        <button type="submit">Save</button>
+        </form>
+         : null }
+       {this.props.editTrip.editTripArrival ?
+         <DatePicker
+          name="arrivalInput"
+          selected={moment(this.state.arrivalTime)}
+          onChange={this.handleArrivalTimeChange.bind(this)}
+          dateFormat="LLL"
+          placeholderText="Click to change a date"
+        />
+          : null }
       </div>
     );
   }
