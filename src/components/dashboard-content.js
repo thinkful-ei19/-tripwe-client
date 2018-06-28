@@ -12,7 +12,7 @@ import Description from "./description";
 import Accommodations from "./accommodations";
 import Plans from "./plans";
 import Budget from "./budget";
-import { editTripName, editTripDescription, editTripDestination } from '../actions/edit-trip';
+import { editTripName, editTripDescription, editTripDestination, editTripArrival } from '../actions/edit-trip';
 
 class DashboardContent extends Component {
   componentDidMount() {
@@ -32,6 +32,8 @@ class DashboardContent extends Component {
             isNameActive={() => this.props.dispatch(editTripName())}
             editTripDestination={this.props.editTripDestination}
             isDestinationActive={() => this.props.dispatch(editTripDestination())}
+            editTripArrival={this.props.editTripArrival}
+            isArrivalAcctive={() => this.props.dispatch(editTripArrival())}
             />
           ) : (
             ""
@@ -112,6 +114,7 @@ class DashboardContent extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log()
   const { currentUser } = state.auth;
   return {
     currentUser,
@@ -119,7 +122,8 @@ const mapStateToProps = state => {
     closestTrip: state.trip.closestTrip,
     editTripInput: state.editTrip.editDescriptionInput,
     editTripName: state.editTrip.editTripName,
-    editTripDestination: state.editTrip.editTripDestination
+    editTripDestination: state.editTrip.editTripDestination,
+    editTripArrival: state.editTrip.editTripArrival
   };
 };
 export default requiresLogin()(connect(mapStateToProps)(DashboardContent));
