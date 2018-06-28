@@ -46,6 +46,7 @@ class Accommodations extends React.Component {
                 X
               </button>
             </td>
+
             <td className="accommodations__row--users">
               {users}
               <AddUserToAccommodation
