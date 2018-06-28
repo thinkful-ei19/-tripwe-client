@@ -96,6 +96,23 @@ legend {
     width: 100%;
     // margin: 1em auto;
     text-align: left;
-  }
+}
 
+.edit-button {
+    background-color: $color-white;
+    padding: .25rem 0.75rem;
+    color: $color-primary-green;
+    border: 2px solid $color-primary-green;
+    border-radius: 0.5rem;
+    // margin-top: 1rem;
+    margin: 0 1rem;
+
+    &:hover {
+        background-color: $color-primary-green;
+        color: $color-white;
+    }
+}
+
+
+  
   
