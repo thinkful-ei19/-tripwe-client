@@ -66,7 +66,7 @@ class EditPlan extends React.Component {
             this.input = input;
           }}
         />
-        <button type="submit">Save</button>
+        <button className="edit-button" type="submit">Save</button>
       </form>
     );
   }

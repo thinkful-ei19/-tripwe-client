@@ -19,7 +19,7 @@ class Accommodations extends React.Component {
 
       var users = "";
       obj.users &&
-        obj.users.forEach(function(user) {
+        obj.users.forEach(function (user) {
           users += user.fullname + ",";
         });
       users = users && users.substring(0, users.length - 1);
@@ -58,82 +58,87 @@ class Accommodations extends React.Component {
           <tr>
             <td colSpan="2">
               {this.props.showAccDetails === id &&
-              !this.props.isAccDetailsHidden ? (
-                this.props.editAccommodationForm ? (
-                  <EditAccommodation
-                    name={obj.name}
-                    address={address}
-                    reference={reference}
-                    arrival={arrival}
-                    departure={departure}
-                    phone={phone}
-                    id={id}
-                  />
-                ) : (
-                  <table className="accommodations__table">
-                    <tbody>
-                      <tr>
-                        <td className="accommodations__row--acc">Address</td>
-                        <td
-                          onDoubleClick={() =>
-                            this.props.dispatch(updateAccommodationRequest())
-                          }
-                        >
-                          {address}
+                !this.props.isAccDetailsHidden ? (
+                  this.props.editAccommodationForm ? (
+                    <EditAccommodation
+                      name={obj.name}
+                      address={address}
+                      reference={reference}
+                      arrival={arrival}
+                      departure={departure}
+                      phone={phone}
+                      id={id}
+                    />
+                  ) : (
+                      <table className="accommodations__table">
+                        <tbody>
+                          <tr>
+                            <td className="accommodations__row--acc">Address</td>
+                            <td
+                              onDoubleClick={() =>
+                                this.props.dispatch(updateAccommodationRequest())
+                              }
+                              className="accommodations__row--acc"
+                            >
+                              {address}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="accommodations__row--acc">
+                              Booking Number
                         </td>
-                      </tr>
-                      <tr>
-                        <td className="accommodations__row--acc">
-                          Booking Number
+                            <td
+                              onDoubleClick={() =>
+                                this.props.dispatch(updateAccommodationRequest())
+                              }
+                              className="accommodations__row--acc"
+                            >
+                              {reference}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="accommodations__row--acc">
+                              Arrival Date
                         </td>
-                        <td
-                          onDoubleClick={() =>
-                            this.props.dispatch(updateAccommodationRequest())
-                          }
-                        >
-                          {reference}
+                            <td
+                              onDoubleClick={() =>
+                                this.props.dispatch(updateAccommodationRequest())
+                              }
+                              className="accommodations__row--acc"
+                            >
+                              <Moment format="MM/DD/YYYY HH:mm">{arrival}</Moment>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="accommodations__row--acc">
+                              Departure Date
                         </td>
-                      </tr>
-                      <tr>
-                        <td className="accommodations__row--acc">
-                          Arrival Date
+                            <td
+                              onDoubleClick={() =>
+                                this.props.dispatch(updateAccommodationRequest())
+                              }
+                              className="accommodations__row--acc"
+                            >
+                              <Moment format="MM/DD/YYYY HH:mm">{departure}</Moment>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="accommodations__row--acc">
+                              Contact Number
                         </td>
-                        <td
-                          onDoubleClick={() =>
-                            this.props.dispatch(updateAccommodationRequest())
-                          }
-                        >
-                          <Moment format="MM/DD/YYYY HH:mm">{arrival}</Moment>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="accommodations__row--acc">
-                          Departure Date
-                        </td>
-                        <td
-                          onDoubleClick={() =>
-                            this.props.dispatch(updateAccommodationRequest())
-                          }
-                        >
-                          <Moment format="MM/DD/YYYY HH:mm">{departure}</Moment>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="accommodations__row--acc">
-                          Contact Number
-                        </td>
-                        <td
-                          onDoubleClick={() =>
-                            this.props.dispatch(updateAccommodationRequest())
-                          }
-                        >
-                          {phone}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                )
-              ) : null}
+                            <td
+                              onDoubleClick={() =>
+                                this.props.dispatch(updateAccommodationRequest())
+                              }
+                              className="accommodations__row--acc"
+                            >
+                              {phone}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    )
+                ) : null}
             </td>
           </tr>
         </tbody>

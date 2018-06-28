@@ -29,11 +29,11 @@ class CreateNewAccommodationsForm extends Component {
 
   onSubmit(values) {
     const completeValues = {
-      hotel: values.hotel,
+      name: values.hotel,
       address: values.address,
-      arrivalDate: this.state.arrivalDate,
-      departureDate: this.state.departureDate,
-      phoneNumber: values.phoneNumber
+      arrival: this.state.arrivalDate,
+      departure: this.state.departureDate,
+      phone: values.phoneNumber
     };
     this.props.dispatch(createNewAccommodation(completeValues));
   }

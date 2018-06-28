@@ -404,6 +404,13 @@ legend {
     color: #985D43;
     font-size: 2rem; }
 
+.edit-acc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1rem; }
+
 .budget {
   margin: 4rem 5rem; }
   .budget__table {
