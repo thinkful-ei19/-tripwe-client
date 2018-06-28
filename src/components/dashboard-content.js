@@ -102,7 +102,7 @@ class DashboardContent extends Component {
           </div>
           <div className="group">
             {this.props.closestTrip.group ? (
-              <Group group={this.props.closestTrip.group} />
+              <Group group={this.props.closestTrip.group} id={this.props.closestTrip.trip.id}/>
             ) : (
               ""
             )}
