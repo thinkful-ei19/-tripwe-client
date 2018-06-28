@@ -11,7 +11,7 @@ class BudgetList extends Component {
           <tr className="" key={transaction.id}>
               <td className="">{transaction.amount}</td>
               <td className="">{transaction.description}</td>
-              <button onClick={() => this.props.dispatch(deleteBudgetById(transaction.id, this.props.id, transaction.amount))}>X</button>
+              <button onClick={() => this.props.dispatch(deleteBudgetById(transaction.id, transaction.amount))}>X</button>
           </tr>
       );
     });
