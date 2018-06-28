@@ -3,14 +3,16 @@ import {
   EDIT_TRIP_SUCCESS,
   EDIT_TRIP_ERROR,
   EDIT_NAME_REQUEST,
-  EDIT_TRIP_DESTINATION
+  EDIT_TRIP_DESTINATION,
+  EDIT_TRIP_ARRIVAL
 } from "../actions/edit-trip";
 
 const initialState = {
   editDescriptionInput: false,
   editTripName: false,
   editTripDestination: false,
-  loading: false,
+  editTripArrival: false,
+  loading: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -23,6 +25,7 @@ export default function reducer(state = initialState, action) {
         editDescriptionInput: false,
         editTripName: false,
         editTripDestination: false,
+        editTripArrival: false,
         loading: false
       });
   } else if (action.type === EDIT_TRIP_ERROR) {
@@ -37,6 +40,10 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === EDIT_TRIP_DESTINATION) {
       return Object.assign({}, state, {
         editTripDestination: true
+      });
+  } else if (action.type === EDIT_TRIP_ARRIVAL) {
+      return Object.assign({}, state, {
+        editTripArrival: true
       });
   }
   return state;

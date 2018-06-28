@@ -8,23 +8,19 @@ class BudgetList extends Component {
         const budgets = this.props.budgets.transactions.map(transaction => {
 
             return (
-                <tr key={transaction.id}>
+                <tr className="" key={transaction.id}>
                     <td className="budget__table--unit">{transaction.amount}</td>
                     <td className="budget__table--unit">
                         {transaction.description}
-                        <button className="budget__table--delete" onClick={() => this.props.dispatch(deleteBudgetById(transaction.id))}>X</button>
+                        <button className="budget__table--delete" onClick={() => this.props.dispatch(deleteBudgetById(transaction.id, this.props.id, transaction.amount))}>X</button>
                     </td>
+
                 </tr>
             );
         });
         return (
             <tbody>
                 {budgets}
-                {
-                    this.props.showExpencesForm ?
-                        <BudgetForm newBudget={this.props.budgets} id={this.props.id} />
-                        : null
-                }
             </tbody>
         );
     }

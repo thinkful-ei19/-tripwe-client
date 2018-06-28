@@ -2,8 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // background-color: $color-secondary-blue;
-    // background-color: #7D5A63;
     background: linear-gradient(to left,#7D5A63, #8C6670);
     color: $color-white-2;
     margin: 1.5rem 0;
@@ -22,6 +20,9 @@
             display: flex;
             flex-direction: column;
             margin-left: 1rem;
+            &-details {
+                margin-top: 3rem;
+            }
         }
     }
 

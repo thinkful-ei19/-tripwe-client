@@ -12,7 +12,8 @@ import Description from "./description";
 import Accommodations from "./accommodations";
 import Plans from "./plans";
 import Budget from "./budget";
-import { editTripName, editTripDescription, editTripDestination } from '../actions/edit-trip';
+import { createNewTripInit } from '../actions/create-new-trip';
+import { editTripName, editTripDescription, editTripDestination, editTripArrival } from '../actions/edit-trip';
 
 class DashboardContent extends Component {
   componentDidMount() {
@@ -20,7 +21,6 @@ class DashboardContent extends Component {
   }
 
   render() {
-    // console.log(MAPS_API_KEY);
     const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`;
     return (
       <div className="d-content">
@@ -32,6 +32,8 @@ class DashboardContent extends Component {
             isNameActive={() => this.props.dispatch(editTripName())}
             editTripDestination={this.props.editTripDestination}
             isDestinationActive={() => this.props.dispatch(editTripDestination())}
+            editTripArrival={this.props.editTripArrival}
+            isArrivalAcctive={() => this.props.dispatch(editTripArrival())}
             />
           ) : (
             ""
@@ -119,7 +121,8 @@ const mapStateToProps = state => {
     closestTrip: state.trip.closestTrip,
     editTripInput: state.editTrip.editDescriptionInput,
     editTripName: state.editTrip.editTripName,
-    editTripDestination: state.editTrip.editTripDestination
+    editTripDestination: state.editTrip.editTripDestination,
+    editTripArrival: state.editTrip.editTripArrival
   };
 };
 export default requiresLogin()(connect(mapStateToProps)(DashboardContent));

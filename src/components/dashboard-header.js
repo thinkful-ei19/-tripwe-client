@@ -16,15 +16,19 @@ export default class DashboardHeader extends Component {
     let now = moment();
     return (
       <div className="d-header" style={{ backgroundImage: img }}>
-        <div className="d-header__countdownDate">
-          {this.props.dashboardHeader.arrival ? (
-            <span>
-              <Moment diff={now} unit="days">
-                {this.props.dashboardHeader.arrival}
-              </Moment>{" "}
-              days
-            </span>
-          ) : (
+        <div className="d-header__countdownDate" onDoubleClick={() => this.props.isArrivalAcctive()}>
+          {this.props.dashboardHeader.arrival ?
+            (this.props.editTripArrival ?
+              (
+                <EditTripForm time={this.props.dashboardHeader.arrival} />
+            ) : (
+              <span>
+                <Moment diff={now} unit="days">
+                  {this.props.dashboardHeader.arrival}
+                </Moment>{" "}
+                days
+              </span>
+          )) : (
             ""
           )}
         </div>
