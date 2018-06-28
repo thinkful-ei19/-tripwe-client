@@ -71,12 +71,12 @@ export class PlansForm extends Component {
           />
         </div>
         <div className="ct-plans__form--unit">
-          <label htmlFor="message">Enter Tripadvisor link</label>
+          <label htmlFor="message">Enter link</label>
           <Field
             name="link"
             id="link"
             component={Input}
-            placeholder="Enter TripAdvisor Link"
+            placeholder="Enter Link"
           />
         </div>
         <button className="ct-plans__form--button" type="submit">

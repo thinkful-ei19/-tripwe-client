@@ -10,6 +10,8 @@ import {
 } from "../actions/accommodations";
 import { UPDATE_ACCOMMODATION_SUCCESS } from "../actions/edit-accommodation";
 
+import { UPDATE_PLAN_SUCCESS } from "../actions/edit-plan";
+
 import { EDIT_TRIP_SUCCESS } from "../actions/edit-trip";
 
 import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
@@ -76,13 +78,31 @@ export default function reducer(state = initialState, action) {
         accommodations[i].users = users;
         accommodations[i].id = id;
         accommodations[i].trip_id = tripId;
-        //
       }
     }
-
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         accommodations: accommodations
+      })
+    });
+  } else if (action.type === UPDATE_PLAN_SUCCESS) {
+    console.log(action, "ACTIOON");
+
+    var plan = action.newPlan;
+    //var plans = [...state.closestTrip.plans];
+    var plans = state.closestTrip.plans;
+    for (var i = 0; i < plans.length; i++) {
+      if (plans[i].id == plan.planId) {
+        var date = plans[i].date;
+        var id = plans[i].id;
+        plans[i].date = date;
+        plans[i] = plan.updatedPlan;
+        plans[i].id = plan.planId;
+      }
+    }
+    return Object.assign({}, state, {
+      closestTrip: Object.assign({}, state.closestTrip, {
+        plans: plans
       })
     });
   } else if (action.type === ADD_USER_TO_ACCOMMODATION_SUCCESS) {
