@@ -12,6 +12,7 @@ import Description from "./description";
 import Accommodations from "./accommodations";
 import Plans from "./plans";
 import Budget from "./budget";
+import { createNewTripInit } from '../actions/create-new-trip';
 import { editTripName, editTripDescription, editTripDestination, editTripArrival } from '../actions/edit-trip';
 
 class DashboardContent extends Component {
@@ -20,7 +21,6 @@ class DashboardContent extends Component {
   }
 
   render() {
-    // console.log(MAPS_API_KEY);
     const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`;
     return (
       <div className="d-content">

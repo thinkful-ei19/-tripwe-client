@@ -24,14 +24,14 @@ class EditTripForm extends Component {
     this.props.dispatch(editTripById(newObj, this.props.id))
   }
 
-  handleNameSubmit(e){
+  handleNameSubmit(e) {
     const newObj = {
       name: e.target.nameInput.value
     }
     this.props.dispatch(editTripById(newObj, this.props.id))
   }
 
-  handleDestinationSubmit(e){
+  handleDestinationSubmit(e) {
     const newObj = {
       destination: e.target.destinationInput.value
     }
@@ -48,11 +48,12 @@ class EditTripForm extends Component {
     render() {
     return (
       <div>
-      {this.props.editTrip.editDescriptionInput ?
-        <form className="description__card--text"
-              onSubmit={(e)=>{
+        {this.props.editTrip.editDescriptionInput ?
+          <form className="description__card--text"
+            onSubmit={(e) => {
               e.preventDefault();
-              this.handleDescriptionSubmit(e)}}>
+              this.handleDescriptionSubmit(e)
+            }}>
             <input
               type="text"
               defaultValue={this.props.description}
@@ -60,29 +61,31 @@ class EditTripForm extends Component {
               ref={input => (this.input = input)}
               required
             />
-        <button type="submit">Save</button>
-        </form>
-         : null }
-     {this.props.editTrip.editTripName ?
-       <form className="d-header__name"
-             onSubmit={(e)=>{
-             e.preventDefault();
-             this.handleNameSubmit(e)}}>
-           <input
-             type="text"
-             defaultValue={this.props.name}
-             name="nameInput"
-             ref={input => (this.input = input)}
-             required
-           />
-       <button type="submit">Save</button>
-       </form>
-        : null }
-      {this.props.editTrip.editTripDestination ?
-        <form className="d-header__destination"
-              onSubmit={(e)=>{
+            <button className="edit-button" type="submit">Save</button>
+          </form>
+          : null}
+        {this.props.editTrip.editTripName ?
+          <form className="d-header__name"
+            onSubmit={(e) => {
               e.preventDefault();
-              this.handleDestinationSubmit(e)}}>
+              this.handleNameSubmit(e)
+            }}>
+            <input
+              type="text"
+              defaultValue={this.props.name}
+              name="nameInput"
+              ref={input => (this.input = input)}
+              required
+            />
+            <button className="edit-button" type="submit">Save</button>
+          </form>
+          : null}
+        {this.props.editTrip.editTripDestination ?
+          <form className="d-header__destination"
+            onSubmit={(e) => {
+              e.preventDefault();
+              this.handleDestinationSubmit(e)
+            }}>
             <input
               type="text"
               defaultValue={this.props.destination}

@@ -17,12 +17,7 @@ import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
 import { RENDER_TRIP_SUCCESS } from "../actions/trips-list";
 
 const initialState = {
-  closestTrip: {
-    group: [],
-    trip: {
-      description: ""
-    }
-  },
+  closestTrip: null,
   upcomingTrips: "",
   previousTrips: "",
   error: null

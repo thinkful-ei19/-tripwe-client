@@ -79,9 +79,9 @@ export const addBudget = newBudget => (dispatch, getState) => {
       })
 };
 
-export const deleteBudgetById = (id) => (dispatch, getState) => {
+export const deleteBudgetById = ( transactionId, tripId ) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/transactions/${id}`, {
+  return fetch(`${API_BASE_URL}/trips/${tripId}/transactions/${transactionId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -92,6 +92,6 @@ export const deleteBudgetById = (id) => (dispatch, getState) => {
     if (!res.ok) {
       return Promise.reject(res.statusText);
     }
-    return dispatch(deleteBudget(id));
+    return dispatch(deleteBudget(transactionId));
   });
 };
