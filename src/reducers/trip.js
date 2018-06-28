@@ -134,7 +134,6 @@ export default function reducer(state = initialState, action) {
       })
     });
   } else if (action.type === EDIT_TRIP_SUCCESS) {
-    console.log(action, "ACTIOON");
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         trip: Object.assign({}, state.closestTrip.trip, {
