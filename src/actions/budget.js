@@ -80,9 +80,9 @@ export const addBudget = newBudget => (dispatch, getState) => {
       })
 };
 
-export const deleteBudgetById = ( transactionId, tripId, amount ) => (dispatch, getState) => {
+export const deleteBudgetById = ( transactionId, amount ) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/trips/${tripId}/transactions/${transactionId}`, {
+  return fetch(`${API_BASE_URL}/transactions/${transactionId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

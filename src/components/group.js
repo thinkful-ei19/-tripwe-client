@@ -5,10 +5,9 @@ import GroupMember from './group-member';
 const Group = (props) => {
 
     const groupMemberList = props.group.map((member, index) => {
-      console.log(member, "member")
         return (<li className="group__list--item" key={index}>
             <GroupMember
-                fullname={member.fullname}
+                fullname={member.fullname || member.email}
                 incomingdepartureairport={member.incomingdepartureairport}
                 incomingarrivalairport={member.incomingarrivalairport}
                 incomingarrivaltime={member.incomingarrivaltime}

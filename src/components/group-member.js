@@ -14,7 +14,6 @@ class GroupMember extends Component {
   }
 
   render() {
-    console.log(this.props, "STATE")
     return (
       <div className="g-member">
         <div className="g-member__main">
@@ -36,17 +35,20 @@ class GroupMember extends Component {
                 (
                   <span className="g-member__arr--time">
                     departing at &ensp;
-                <Moment format="MM/DD/YYYY HH:mm">
+                  <Moment format="MM/DD/YYYY HH:mm">
                       {this.props.incomingdeparturetime}
                     </Moment>
                   </span>
                 ) : null}
-              <span className="g-member__arr--time">
-                arriving on &ensp;
+            {this.props.incomingarrivaltime ?
+            (
+            <span className="g-member__arr--time">
+              arriving on &ensp;
               <Moment format="MM/DD/YYYY HH:mm">
-                  {this.props.incomingarrivaltime}
-                </Moment>
-              </span>
+                {this.props.incomingarrivaltime}
+              </Moment>
+            </span>
+          ): null }
             </p>
           </div>
         </div>
