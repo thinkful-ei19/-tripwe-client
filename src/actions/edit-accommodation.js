@@ -43,7 +43,6 @@ export const updateAccommodation = (newAccom, id) => (dispatch, getState) => {
       return res.json();
     })
     .then(json => {
-      console.log(json, "see json");
       dispatch(updateAccommodationSuccess(json));
     })
     .catch(err => {

@@ -21,7 +21,6 @@ class EditAccommodation extends React.Component {
     this.setState({ departureDate: date.utc().format() });
   }
   handleSubmitVal = e => {
-    console.log(this.state.arrivalDate, "targetting");
     const newAccom = {
       name: e.target.name.value,
       address: e.target.address.value,
@@ -34,8 +33,6 @@ class EditAccommodation extends React.Component {
   };
 
   render() {
-    console.log(this.props);
-
     return (
       <form
         className="accommodations__table edit-acc"
@@ -103,14 +100,15 @@ class EditAccommodation extends React.Component {
           }}
           required
         />
-        <button className="edit-button" type="submit">Save</button>
+        <button className="edit-button" type="submit">
+          Save
+        </button>
       </form>
     );
   }
 }
 
 const mapStatetoProps = state => {
-  //console.log(state);
   return {};
 };
 

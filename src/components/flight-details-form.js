@@ -43,7 +43,6 @@ class FlightDetailsForm extends Component {
   }
 
   handleSearchAirports(searchTerm) {
-    // console.log(searchTerm);
     this.props.dispatch(searchAirports(searchTerm));
   }
 
@@ -105,8 +104,8 @@ class FlightDetailsForm extends Component {
       outgoingArrivalAirport: this.state.selectedReturnToOption.value,
       outgoingFlightNum: values.returnFlightNumber
     };
-    this.props.dispatch(createInviteFlight(completeValues, this.props.id))
-    this.props.active()
+    this.props.dispatch(createInviteFlight(completeValues, this.props.id));
+    this.props.active();
   }
 
   render() {
@@ -273,32 +272,35 @@ class FlightDetailsForm extends Component {
             </div>
           </fieldset>
           <div className="ct-next-skip">
-          {this.props.isActive ?
-            <button
-              type="button"
-              className="ct-buildGroup__skip skip"
-              onClick={this.props.handleSubmit(values => this.onNewFlightSubmit(values))}
-            >
-              Save
-            </button> : null }
-          {this.props.isActive ?
-            null :
-            <button
-              type="button"
-              className="ct-buildGroup__skip skip"
-              onClick={this.handleSkip.bind(this)}
-            >
-              Skip
-            </button> }
-          {this.props.isActive ?
-            null :
-            <button
-              type="submit"
-              className="ct-buildGroup__next next"
-              disabled={this.props.pristine || this.props.submitting}
-            >
-              Next
-            </button> }
+            {this.props.isActive ? (
+              <button
+                type="button"
+                className="ct-buildGroup__skip skip"
+                onClick={this.props.handleSubmit(values =>
+                  this.onNewFlightSubmit(values)
+                )}
+              >
+                Save
+              </button>
+            ) : null}
+            {this.props.isActive ? null : (
+              <button
+                type="button"
+                className="ct-buildGroup__skip skip"
+                onClick={this.handleSkip.bind(this)}
+              >
+                Skip
+              </button>
+            )}
+            {this.props.isActive ? null : (
+              <button
+                type="submit"
+                className="ct-buildGroup__next next"
+                disabled={this.props.pristine || this.props.submitting}
+              >
+                Next
+              </button>
+            )}
           </div>
         </form>
       </div>

@@ -33,8 +33,6 @@ class AddUserToAccommodation extends Component {
 }
 
 const mapStatetoProps = state => {
-  //console.log("tripId" + state.trip.closestTrip.trip.id);
-
   return {
     tripId: state.trip.closestTrip.trip.id,
     isUserAddToAccMenu: state.accommodation.isUserAddToAccMenu,
