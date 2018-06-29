@@ -12,7 +12,6 @@ import Description from "./description";
 import Accommodations from "./accommodations";
 import Plans from "./plans";
 import Budget from "./budget";
-import { createNewTripInit } from '../actions/create-new-trip';
 import { editTripName, editTripDescription, editTripDestination, editTripArrival } from '../actions/edit-trip';
 
 class DashboardContent extends Component {
@@ -102,7 +101,7 @@ class DashboardContent extends Component {
           </div>
           <div className="group">
             {this.props.closestTrip.group ? (
-              <Group group={this.props.closestTrip.group} />
+              <Group group={this.props.closestTrip.group} id={this.props.closestTrip.trip.id}/>
             ) : (
               ""
             )}
