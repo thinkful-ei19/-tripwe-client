@@ -18,7 +18,6 @@ export const updatePlanError = error => ({
 });
 
 export const updatePlan = (newPlan, id) => (dispatch, getState) => {
-  console.log(newPlan, "new plan");
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/plans/${id} `, {
     method: "PUT",
@@ -44,7 +43,6 @@ export const updatePlan = (newPlan, id) => (dispatch, getState) => {
       return res.json();
     })
     .then(json => {
-      console.log(json, "see json");
       dispatch(updatePlanSuccess(json));
     })
     .catch(err => {

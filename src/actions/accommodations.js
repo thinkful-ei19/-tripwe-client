@@ -92,7 +92,6 @@ export const addAccommodation = newAccommodation => (dispatch, getState) => {
       return res.json();
     })
     .then(json => {
-      //console.log(json, "see json");
       dispatch(addAccommodationSuccess(json));
     })
     .catch(err => {
@@ -127,7 +126,6 @@ export const addUserToAccommodation = user => (dispatch, getState) => {
       return res.json();
     })
     .then(json => {
-      console.log(json, "see json");
       dispatch(addUserToAccommodationSuccess(json));
     })
     .catch(err => {

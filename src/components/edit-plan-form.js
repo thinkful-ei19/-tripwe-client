@@ -17,7 +17,6 @@ class EditPlan extends React.Component {
   }
 
   handleSubmitVal = e => {
-    console.log(this.state.startDate, "targetting");
     const newPlan = {
       description: e.target.description.value,
       date: this.state.startDate,
@@ -26,8 +25,6 @@ class EditPlan extends React.Component {
     this.props.dispatch(updatePlan(newPlan, this.props.id));
   };
   render() {
-    //console.log(this.props);
-
     return (
       <form
         className="ct-plans__form"
@@ -66,13 +63,14 @@ class EditPlan extends React.Component {
             this.input = input;
           }}
         />
-        <button className="edit-button" type="submit">Save</button>
+        <button className="edit-button" type="submit">
+          Save
+        </button>
       </form>
     );
   }
 }
 const mapStatetoProps = state => {
-  //console.log(state);
   return {};
 };
 

@@ -9,8 +9,6 @@ import EditPlan from "./edit-plan-form";
 
 class Plans extends React.Component {
   render() {
-    // console.log(this.props.isPlanFormHidden);
-
     const plans = this.props.plans.map((obj, index) => {
       return (
         <tr className="plans__table--row" key={index}>
