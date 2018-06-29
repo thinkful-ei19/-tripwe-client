@@ -106,7 +106,6 @@ export const createNewFlight = data => (dispatch, getState) => {
             if (!res.ok) {
                 return Promise.reject(res.statusText);
             }
-            console.log(res);
             // return normalizeResponseErrors(res);
         })
         // .then(res => res.json())

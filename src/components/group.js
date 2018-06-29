@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 
 import GroupMember from './group-member';
-import BuildGroupForm from './build-group-form'
+import BuildGroupForm from './build-group-form';
+import ReactModal from "react-modal";
+
+ReactModal.setAppElement("#root");
 
 class Group extends Component {
   constructor(props) {
@@ -12,7 +15,7 @@ class Group extends Component {
   }
 
   handleInvite() {
-    this.setState({ newInvite: !this.state.newUser });
+    this.setState({ newInvite: !this.state.newInvite });
   }
 
   render(){
@@ -41,8 +44,15 @@ class Group extends Component {
                 {groupMemberList}
             </ul>
             <button className="group__button" onClick={() => this.handleInvite()}>Add traveler</button>
-            {this.state.newInvite ?
-             <BuildGroupForm invite={true} id={this.props.id}/> : null}
+            {this.state.newInvite ? (
+              <ReactModal
+                  isOpen={true}
+                  className="form-modal"
+                  overlayClassName="form-modal__overlay"
+              >
+             <BuildGroupForm id={this.props.id} invite={this.state.newInvite} active={() => this.handleInvite()}/>
+             </ReactModal>
+           ) : null}
         </div>
     )};
 };

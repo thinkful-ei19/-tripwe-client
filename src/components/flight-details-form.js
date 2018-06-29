@@ -8,6 +8,7 @@ import Select from "react-select";
 import "react-select/dist/react-select.css";
 import Input from "./input";
 import { nextStep, createNewFlight } from "../actions/create-new-trip";
+import { createInviteFlight } from "../actions/group";
 import { searchAirports } from "../actions/searchAirports";
 
 class FlightDetailsForm extends Component {
@@ -67,7 +68,6 @@ class FlightDetailsForm extends Component {
   }
 
   onSubmit(values) {
-
     const completeValues = {
       incomingDepartureTime: this.state.departDepartureDate,
       incomingArrivalTime: this.state.departArrivalDate,
@@ -85,8 +85,28 @@ class FlightDetailsForm extends Component {
       outgoingFlightNum: values.returnFlightNumber
     };
 
-    // console.log(completeValues);
     this.props.dispatch(createNewFlight(completeValues));
+  }
+
+  onNewFlightSubmit(values) {
+    const completeValues = {
+      incomingDepartureTime: this.state.departDepartureDate,
+      incomingArrivalTime: this.state.departArrivalDate,
+      incomingDepartureAirport: this.state.selectedDepartFromOption.value,
+      incomingArrivalAirport: this.state.selectedDepartToOption.value,
+      incomingArrivalLatitude: this.state.selectedDepartToOption.latitude,
+      incomingArrivalLongitude: this.state.selectedDepartToOption.longitude,
+      incomingDepartureLatitude: this.state.selectedDepartFromOption.latitude,
+      incomingDepartureLongitude: this.state.selectedDepartFromOption.longitude,
+      incomingFlightNum: values.departFlightNumber,
+      outgoingDepartureTime: this.state.returnDepartureDate,
+      outgoingArrivalTime: this.state.returnArrivalDate,
+      outgoingDepartureAirport: this.state.selectedReturnFromOption.value,
+      outgoingArrivalAirport: this.state.selectedReturnToOption.value,
+      outgoingFlightNum: values.returnFlightNumber
+    };
+    this.props.dispatch(createInviteFlight(completeValues, this.props.id))
+    this.props.active()
   }
 
   render() {
@@ -253,20 +273,32 @@ class FlightDetailsForm extends Component {
             </div>
           </fieldset>
           <div className="ct-next-skip">
+          {this.props.isActive ?
+            <button
+              type="button"
+              className="ct-buildGroup__skip skip"
+              onClick={this.props.handleSubmit(values => this.onNewFlightSubmit(values))}
+            >
+              Save
+            </button> : null }
+          {this.props.isActive ?
+            null :
             <button
               type="button"
               className="ct-buildGroup__skip skip"
               onClick={this.handleSkip.bind(this)}
             >
               Skip
-            </button>
+            </button> }
+          {this.props.isActive ?
+            null :
             <button
               type="submit"
               className="ct-buildGroup__next next"
               disabled={this.props.pristine || this.props.submitting}
             >
               Next
-            </button>
+            </button> }
           </div>
         </form>
       </div>
@@ -275,7 +307,8 @@ class FlightDetailsForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  list: state.searchAirports.list
+  list: state.searchAirports.list,
+  id: state.trip.closestTrip.trip.id
 });
 
 const connectedForm = connect(mapStateToProps)(FlightDetailsForm);

@@ -12,7 +12,6 @@ import Description from "./description";
 import Accommodations from "./accommodations";
 import Plans from "./plans";
 import Budget from "./budget";
-import { createNewTripInit } from '../actions/create-new-trip';
 import { editTripName, editTripDescription, editTripDestination, editTripArrival } from '../actions/edit-trip';
 
 class DashboardContent extends Component {

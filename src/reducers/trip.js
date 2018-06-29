@@ -13,7 +13,7 @@ import { UPDATE_PLAN_SUCCESS } from "../actions/edit-plan";
 import { EDIT_TRIP_SUCCESS } from "../actions/edit-trip";
 import { ADD_BUDGET_SUCCESS, DELETE_BUDGET } from "../actions/budget";
 import { RENDER_TRIP_SUCCESS } from "../actions/trips-list";
-import { CREATE_NEW_INVITE_SUCCESS } from "../actions/group"
+import { CREATE_NEW_INVITE_SUCCESS, CREATE_NEW_FLIGHT_SUCCESS } from "../actions/group"
 
 const initialState = {
   closestTrip: {
@@ -166,6 +166,15 @@ export default function reducer(state = initialState, action) {
     return Object.assign({}, state, {
       closestTrip: Object.assign({}, state.closestTrip, {
         group: [...state.closestTrip.group, action.data]
+      })
+    });
+  } else if (action.type === CREATE_NEW_FLIGHT_SUCCESS) {
+    const newGroup = state.closestTrip.group.filter(
+      traveler => traveler.userId !== action.data[0].userId
+    )
+    return Object.assign({}, state, {
+      closestTrip: Object.assign({}, state.closestTrip, {
+        group: [...newGroup, action.data[0]]
       })
     });
   }

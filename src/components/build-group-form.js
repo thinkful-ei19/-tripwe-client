@@ -9,7 +9,6 @@ import { createInviteGroup } from "../actions/group";
 class BuildGroupForm extends Component {
 
     onSubmit(values) {
-      console.log(values, "valBAD EVENT LISTENER")
         let completedValues = {};
         completedValues.emails = [];
 
@@ -26,11 +25,11 @@ class BuildGroupForm extends Component {
 
       let completedValues = {};
       completedValues.emails = [];
-
       for (let email in values) {
           completedValues.emails.push(values[email]);
       }
       this.props.dispatch(createInviteGroup(completedValues, this.props.id));
+      this.props.active()
     }
 
     handleSkip() {
@@ -38,7 +37,6 @@ class BuildGroupForm extends Component {
     }
 
     render() {
-      // console.log(this.props.id, "Invite props");
         let error;
         if (this.props.error) {
             error = (

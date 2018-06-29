@@ -1,16 +1,26 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
+import FlightDetailsForm from "./flight-details-form";
+
+import ReactModal from "react-modal";
+
+ReactModal.setAppElement("#root");
 
 class GroupMember extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showInfo: false
+      showInfo: false,
+      addFlightDetails: false
     };
   }
 
   handleInfo() {
     this.setState({ showInfo: !this.state.showInfo });
+  }
+
+  handleNewFlight() {
+    this.setState({ addFlightDetails: !this.state.addFlightDetails });
   }
 
   render() {
@@ -77,6 +87,7 @@ class GroupMember extends Component {
                   {this.props.outgoingdeparturetime}
                 </Moment>
               </span>
+              <button onClick={() => this.handleNewFlight()}>Add</button>
             </p>
           </div>)
           : null}
@@ -84,6 +95,15 @@ class GroupMember extends Component {
           onClick={() => this.handleInfo()}
           className="fas fa-info-circle g-member__info--icon"
         />
+        { this.state.addFlightDetails ? (
+          <ReactModal
+              isOpen={true}
+              className="form-modal"
+              overlayClassName="form-modal__overlay"
+          >
+          <FlightDetailsForm isActive={this.state.addFlightDetails} active={() => this.handleNewFlight()}/>
+          </ReactModal>
+      ) : null }
       </div>
     )
   };
