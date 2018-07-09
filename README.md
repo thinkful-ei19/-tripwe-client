@@ -4,8 +4,8 @@ The TripWe app helps organize groups of travellers by storing important travel i
 Check out a live version of TripWe [here](https://tripwe.herokuapp.com/dashboard)
 
 <h2>Demo Account</h2>
-*user:DylanS
-*password:1234567890
+user:DylanS<br />
+password:1234567890<br />
 
 <h2>Screenshots</h2>
 Landing Page
