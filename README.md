@@ -4,8 +4,8 @@ The TripWe app helps organize groups of travellers by storing important travel i
 Check out a live version of TripWe [here](https://tripwe.herokuapp.com/dashboard)
 
 <h2>Demo Account</h2>
-user:DylanS
-password:1234567890
+*user:DylanS
+*password:1234567890
 
 <h2>Screenshots</h2>
 Landing Page
@@ -22,8 +22,8 @@ Accommodations
 <img src="/src/styles/screenshots/accommodations.png" alt="accommodations" >
 Budget
 <img src="/src/styles/screenshots/budget.png" alt="budget" >
-<h2>View the Backend code here:</h2>
-[https://github.com/thinkful-ei19/tripwe-server](https://github.com/thinkful-ei19/tripwe-server)
+View the Backend code[here](https://github.com/thinkful-ei19/tripwe-server)
+
 
 <h2>Technologies used on Client Side</h2>
 <h3>Front End</h3>
