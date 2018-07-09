@@ -22,7 +22,7 @@ Accommodations
 <img src="/src/styles/screenshots/accommodations.png" alt="accommodations" >
 Budget
 <img src="/src/styles/screenshots/budget.png" alt="budget" >
-View the Backend code[here](https://github.com/thinkful-ei19/tripwe-server)
+View the Backend code here:(https://github.com/thinkful-ei19/tripwe-server)
 
 
 <h2>Technologies used on Client Side</h2>
