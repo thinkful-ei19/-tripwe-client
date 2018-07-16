@@ -336,7 +336,8 @@ legend {
       font-size: 2.5rem; }
   .d-nav__subList {
     list-style: none;
-    margin-left: 2rem; }
+    margin-left: 2rem;
+    color: #fff; }
     .d-nav__subList--button {
       background: none;
       border: none;
