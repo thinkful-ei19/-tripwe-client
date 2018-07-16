@@ -16,6 +16,9 @@
     }
     &__form {
         padding: 0 10rem;
+        @include respond(tab-port) {
+            padding: 0 5rem;
+        }
     }
     &__next {}
 }
