@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Input from "./input";
 import { nextStep } from "../actions/create-new-trip";
 import { createNewGroup } from "../actions/create-new-trip";
+import { createInviteGroup } from "../actions/group";
 
 class BuildGroupForm extends Component {
 
@@ -16,10 +17,20 @@ class BuildGroupForm extends Component {
         }
         this.props.dispatch(createNewGroup(completedValues));
         // send one object with key of email and value of array of emails.
-        // endpoint /trips/:id/group --> POST 
+        // endpoint /trips/:id/group --> POST
     }
     // send one object with key of email and value of array of emails.
     // endpoint /trips/:id/group --> POST
+    onInviteSubmit(values) {
+
+      let completedValues = {};
+      completedValues.emails = [];
+      for (let email in values) {
+          completedValues.emails.push(values[email]);
+      }
+      this.props.dispatch(createInviteGroup(completedValues, this.props.id));
+      this.props.active()
+    }
 
     handleSkip() {
         this.props.dispatch(nextStep());
@@ -48,10 +59,14 @@ class BuildGroupForm extends Component {
                     <Field component={Input} type="email" name="email1" id="email1" />
                     <Field component={Input} type="email" name="email2" />
                     <Field component={Input} type="email" name="email3" />
-                    <button type="button" className="ct-buildGroup__add">
+                    <button type="button" className="ct-buildGroup__add"
+                        onClick={this.props.handleSubmit(values =>
+                          this.onInviteSubmit(values))}>
                         Add
           </button>
                     <div className="ct-next-skip">
+                    {this.props.invite ?
+                      null : (
                         <button
                             type="button"
                             className="ct-buildGroup__skip skip"
@@ -59,6 +74,9 @@ class BuildGroupForm extends Component {
                         >
                             Skip
             </button>
+                  )}
+                        {this.props.invite ?
+                          null : (
                         <button
                             type="submit"
                             className="ct-buildGroup__next next"
@@ -66,6 +84,7 @@ class BuildGroupForm extends Component {
                         >
                             Next
             </button>
+                  )}
                     </div>
                 </form>
             </div>

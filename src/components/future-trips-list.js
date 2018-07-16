@@ -9,19 +9,25 @@ class FutureTripsList extends Component {
     }
 
     render() {
-        const futureTrips = this.props.upcomingTrips.map(trip => {
+        let futureTrips
+
+        {this.props.upcomingTrips ?
+        this.props.upcomingTrips.map(trip => {
             const { id, name } = trip;
 
-            return (
+            return futureTrips = (
                 <li key={id}>
                     <button className="d-nav__subList--button" onClick={() => this.renderFutureTrip(id)}>{name}</button>
                 </li>
             );
-        });
+        }) :
+          futureTrips = 'No Future trips'
+        }
+
         return (
-            <ul className="d-nav__subList">
-                {futureTrips}
-            </ul>
+              <ul className="d-nav__subList">
+                  {futureTrips}
+              </ul>
         );
     }
 }

@@ -27,14 +27,12 @@ export class PlansForm extends Component {
     });
   }
 
-  newPlanFormDisplayHandler() {
-    //  console.log(this.formRef.style.display);
-  }
+  newPlanFormDisplayHandler() {}
 
   onSubmit(values) {
     values.date = this.state.startDate.utc().format();
     values.tripId = this.tripId;
-    console.log(values.date);
+
     this.props.dispatch(createNewPlan(values));
   }
 

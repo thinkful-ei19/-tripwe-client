@@ -9,15 +9,21 @@ class PastTripsList extends Component {
     }
 
     render() {
-        const pastTrips = this.props.previousTrips.map(trip => {
+        let pastTrips
+
+        {this.props.previousTrips ?
+        this.props.previousTrips.map(trip => {
             const { id, name } = trip;
 
-            return (
+            return pastTrips = (
                 <li key={id}>
                     <button className="d-nav__subList--button" onClick={() => this.renderPastTrip(id)}>{name}</button>
                 </li>
             );
-        });
+        }) :
+          pastTrips = 'No Past trips'
+        }
+
         return (
             <ul className="d-nav__subList">
                 {pastTrips}

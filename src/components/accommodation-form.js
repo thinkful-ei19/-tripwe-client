@@ -22,7 +22,6 @@ class AccommodationsFrom extends Component {
     this.setState({ departureDate: date.utc().format() });
   }
   onSubmit(values) {
-    console.log(values);
     const newAccommodation = {
       name: values.hotel,
       address: values.address,
@@ -33,11 +32,9 @@ class AccommodationsFrom extends Component {
       id: this.props.id
     };
     this.props.dispatch(addAccommodation(newAccommodation));
-    console.log(this.props.arrivalDate);
   }
 
   render() {
-    // console.log(this.props);
     let error;
     if (this.props.error) {
       error = (
