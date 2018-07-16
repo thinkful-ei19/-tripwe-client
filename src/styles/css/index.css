@@ -16,7 +16,7 @@ html {
       font-size: 50%; } }
   @media (max-width: 40em) {
     html {
-      font-size: 37.5%; } }
+      font-size: 48%; } }
 
 body {
   box-sizing: border-box;
@@ -33,7 +33,8 @@ button {
   background-color: #efefef;
   border: 2px solid #efefef;
   border-radius: 0.5rem;
-  width: 100%; }
+  width: 100%;
+  padding: 0.1rem; }
 
 table {
   border-collapse: collapse; }
@@ -295,7 +296,6 @@ legend {
       display: flex;
       height: 100%;
       position: relative;
-      align-items: center;
       justify-content: space-between;
       padding: 3rem 1rem; } }
   .d-nav__top {
@@ -308,7 +308,7 @@ legend {
     width: 5rem; }
     @media (max-width: 60em) {
       .d-nav__logo {
-        margin-right: 2rem; } }
+        display: none; } }
   .d-nav__logout--button {
     margin-right: 2.5rem;
     color: #efefef;
@@ -534,6 +534,9 @@ legend {
   width: 100%;
   height: 100vh;
   background-color: #13262B; }
+  @media (max-width: 60em) {
+    .d-createNew {
+      margin: 0; } }
 
 .ct-card {
   margin: 2rem 5rem;
@@ -584,6 +587,9 @@ legend {
 
 .ct-main__form {
   padding: 0 10rem; }
+  @media (max-width: 60em) {
+    .ct-main__form {
+      padding: 0 5rem; } }
 
 .ct-buildGroup__header {
   background-image: linear-gradient(rgba(152, 93, 67, 0.47), rgba(133, 34, 34, 0.47)), url("../assets/tripwe-build-groups.jpg");
