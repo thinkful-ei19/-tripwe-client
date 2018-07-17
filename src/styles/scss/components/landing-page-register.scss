@@ -40,6 +40,10 @@
 
     &__form {
         padding: 0 5rem;
+
+        @include respond(phone) {
+            padding: 0 2rem;
+        }
         
         &--button {
             background-color: $color-white;

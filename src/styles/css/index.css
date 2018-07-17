@@ -109,6 +109,9 @@ legend {
 
 .lp-login__form {
   padding: 0 5rem; }
+  @media (max-width: 40em) {
+    .lp-login__form {
+      padding: 0 2rem; } }
   .lp-login__form--button {
     background-color: #fff;
     padding: 1rem 2rem;
@@ -175,6 +178,9 @@ legend {
     margin: 0 10rem; }
   .lp-register__form {
     padding: 0 5rem; }
+    @media (max-width: 40em) {
+      .lp-register__form {
+        padding: 0 2rem; } }
     .lp-register__form--button {
       background-color: #fff;
       padding: 1rem 2rem;
