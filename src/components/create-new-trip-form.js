@@ -8,7 +8,7 @@ import { required, nonEmpty } from "../validators";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
-import { createNewTrip, nextStep } from "../actions/create-new-trip";
+import { createNewTrip } from "../actions/create-new-trip";
 
 class CreateNewTripForm extends Component {
   constructor(props) {

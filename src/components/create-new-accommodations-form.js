@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Field, reduxForm, focus } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import moment from "moment";
 import DatePicker from "react-datepicker";
 import Input from "./input";
-import { required, nonEmpty } from "../validators";
+// import { required, nonEmpty } from "../validators";
 import { nextStep, createNewAccommodation } from "../actions/create-new-trip";
 
 class CreateNewAccommodationsForm extends Component {
