@@ -23,14 +23,14 @@ export class PlansForm extends Component {
   }
   handleChange(date) {
     this.setState({
-      startDate: date
+      startDate: date.utc().format()
     });
   }
 
   newPlanFormDisplayHandler() {}
 
   onSubmit(values) {
-    values.date = this.state.startDate.utc().format();
+    values.date = this.state.startDate;
     values.tripId = this.tripId;
 
     this.props.dispatch(createNewPlan(values));
