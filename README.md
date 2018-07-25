@@ -30,3 +30,5 @@ View the Backend code here:(https://github.com/thinkful-ei19/tripwe-server)
 React/Redux,SCSS
 <h3>Back End</h3>
 Node and Express. With AWS RDS Postgres instance. Sendgrid api for transactional email.
+<h2>API Documentation</h2>
+https://documenter.getpostman.com/collection/view/3823086-191ccc23-b60a-4055-99b4-8467496445e9

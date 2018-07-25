@@ -29,7 +29,7 @@ class BuildGroupForm extends Component {
           completedValues.emails.push(values[email]);
       }
       this.props.dispatch(createInviteGroup(completedValues, this.props.id));
-      
+      this.props.active()
     }
 
     handleSkip() {
